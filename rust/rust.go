@@ -16,6 +16,7 @@ package rust
 
 import (
 	"fmt"
+	"path/filepath"
 	"strconv"
 	"strings"
 
@@ -1227,6 +1228,72 @@ func (mod *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 	moduleInfoJSON := ctx.ModuleInfoJSON()
 	if mod.compiler != nil {
 		mod.compiler.moduleInfoJSON(ctx, moduleInfoJSON)
+	}
+
+	mod.setSymbolsInfoProvider(ctx)
+}
+
+func (mod *Module) baseSymbolInfo(ctx android.ModuleContext) *cc.SymbolInfo {
+	return &cc.SymbolInfo{
+		Name:          mod.BaseModuleName() + mod.Properties.SubName,
+		ModuleDir:     ctx.ModuleDir(),
+		Uninstallable: mod.IsSkipInstall() || !proptools.BoolDefault(mod.Properties.Installable, true) || mod.NoFullInstall(),
+	}
+}
+
+func (mod *Module) getSymbolInfo(ctx android.ModuleContext, t any, info *cc.SymbolInfo) *cc.SymbolInfo {
+	if bd, ok := t.(*binaryDecorator); ok {
+		mod.getSymbolInfo(ctx, bd.baseCompiler, info)
+	} else if td, ok := t.(*testDecorator); ok {
+		mod.getSymbolInfo(ctx, td.binaryDecorator, info)
+	} else if bmd, ok := t.(*benchmarkDecorator); ok {
+		mod.getSymbolInfo(ctx, bmd.binaryDecorator, info)
+	} else if ld, ok := t.(*libraryDecorator); ok {
+		mod.getSymbolInfo(ctx, ld.baseCompiler, info)
+	} else if pmd, ok := t.(*procMacroDecorator); ok {
+		mod.getSymbolInfo(ctx, pmd.baseCompiler, info)
+	} else if bsp, ok := t.(*BaseSourceProvider); ok {
+		outFile := bsp.OutputFiles[0]
+		_, file := filepath.Split(outFile.String())
+		stem, suffix, _ := android.SplitFileExt(file)
+		info.Suffix = suffix
+		info.Stem = stem
+		info.Uninstallable = true
+	} else if bgd, ok := t.(*bindgenDecorator); ok {
+		mod.getSymbolInfo(ctx, bgd.BaseSourceProvider, info)
+	} else if pbd, ok := t.(*protobufDecorator); ok {
+		mod.getSymbolInfo(ctx, pbd.BaseSourceProvider, info)
+	} else if bc, ok := t.(*baseCompiler); ok {
+		if bc.path != (android.InstallPath{}) {
+			info.UnstrippedBinaryPath = bc.unstrippedOutputFile
+			path, file := filepath.Split(bc.path.String())
+			stem, suffix, _ := android.SplitFileExt(file)
+			info.Suffix = suffix
+			info.ModuleDir = path
+			info.Stem = stem
+		}
+	} else if fd, ok := t.(*fuzzDecorator); ok {
+		mod.getSymbolInfo(ctx, fd.binaryDecorator, info)
+	} else if pld, ok := t.(*prebuiltLibraryDecorator); ok {
+		mod.getSymbolInfo(ctx, pld.baseCompiler, info)
+	} else if tld, ok := t.(*toolchainLibraryDecorator); ok {
+		mod.getSymbolInfo(ctx, tld.baseCompiler, info)
+	}
+	return info
+}
+
+func (mod *Module) setSymbolsInfoProvider(ctx android.ModuleContext) {
+	if !mod.Properties.HideFromMake && !mod.hideApexVariantFromMake {
+		infos := &cc.SymbolInfos{}
+		if mod.compiler != nil && !mod.compiler.Disabled() {
+			infos.AppendSymbols(mod.getSymbolInfo(ctx, mod.compiler, mod.baseSymbolInfo(ctx)))
+		} else if mod.sourceProvider != nil {
+			infos.AppendSymbols(mod.getSymbolInfo(ctx, mod.sourceProvider, mod.baseSymbolInfo(ctx)))
+		}
+
+		if mod.sanitize != nil {
+			infos.AppendSymbols(mod.getSymbolInfo(ctx, mod.sanitize, mod.baseSymbolInfo(ctx)))
+		}
 	}
 }
 
