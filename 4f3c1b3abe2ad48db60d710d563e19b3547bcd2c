@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c59af116_6e3b91a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2025-03-19T21:31:22Z",
+      "side": 1,
+      "message": "This warning was enabled in aosp/3440440.",
+      "revId": "4f3c1b3abe2ad48db60d710d563e19b3547bcd2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
