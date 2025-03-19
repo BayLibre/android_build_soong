@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb959994_0184dbba",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 980,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-03-19T22:52:00Z",
+      "side": 1,
+      "message": "Do we need multiple of these? It seems like we should only have 1 unstripped binary path and some common information in the end.",
+      "revId": "152a6a7793f25bb328e1382f869796938b3a9f54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a027f86c_08243042",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2105,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-03-19T22:52:00Z",
+      "side": 1,
+      "message": "Use a type switch, or consider making a interface that these types can implement.",
+      "revId": "152a6a7793f25bb328e1382f869796938b3a9f54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9601d53e_0002daeb",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2151,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-03-19T22:52:00Z",
+      "side": 1,
+      "message": "`c.SubName()`",
+      "range": {
+        "startLine": 2151,
+        "startChar": 39,
+        "endLine": 2151,
+        "endChar": 58
+      },
+      "revId": "152a6a7793f25bb328e1382f869796938b3a9f54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
