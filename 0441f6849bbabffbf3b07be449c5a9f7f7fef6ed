@@ -16,6 +16,52 @@
       "message": "Ok this is now working, verified with tests + tegra\nSorry for the trouble :)",
       "revId": "0441f6849bbabffbf3b07be449c5a9f7f7fef6ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ad7d3ee_c57a214f",
+        "filename": "fsgen/filesystem_creator_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-03-19T22:07:46Z",
+      "side": 1,
+      "message": "remove the `_` so that a failed cast will panic.",
+      "range": {
+        "startLine": 565,
+        "startChar": 10,
+        "endLine": 565,
+        "endChar": 13
+      },
+      "revId": "0441f6849bbabffbf3b07be449c5a9f7f7fef6ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ec47f06_fc6d3b95",
+        "filename": "fsgen/prebuilt_etc_modules_gen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-03-19T22:07:46Z",
+      "side": 1,
+      "message": "Isn\u0027t this equivalent to just `destDir` as `etcInstallPathKey` is now `\"\"`?",
+      "range": {
+        "startLine": 343,
+        "startChar": 37,
+        "endLine": 343,
+        "endChar": 77
+      },
+      "revId": "0441f6849bbabffbf3b07be449c5a9f7f7fef6ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
