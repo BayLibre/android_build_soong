@@ -327,9 +327,16 @@ func TestPrebuiltEtcModuleGen(t *testing.T) {
 		return ""
 	}
 
+	getEtcModule := func(m android.Module) *etc.PrebuiltEtc {
+		if etcModule, ok := m.(*etc.PrebuiltEtc); ok {
+			return etcModule
+		}
+		panic("Module is not a prebuilt_etc module")
+	}
+
 	// check generated prebuilt_* module type install path and install partition
 	generatedModule := result.ModuleForTests(t, "system-frameworks_base_config-etc-0", "android_arm64_armv8-a").Module()
-	etcModule, _ := generatedModule.(*etc.PrebuiltEtc)
+	etcModule := getEtcModule(generatedModule)
 	android.AssertStringEquals(
 		t,
 		"module expected to have etc install path",
@@ -347,7 +354,7 @@ func TestPrebuiltEtcModuleGen(t *testing.T) {
 
 	// check generated prebuilt_* module specifies correct relative_install_path property
 	generatedModule = result.ModuleForTests(t, "system-frameworks_base_data_keyboards-usr_keylayout_subdir-0", "android_arm64_armv8-a").Module()
-	etcModule, _ = generatedModule.(*etc.PrebuiltEtc)
+	etcModule = getEtcModule(generatedModule)
 	android.AssertStringEquals(
 		t,
 		"module expected to set correct relative_install_path properties",
@@ -495,7 +502,7 @@ func TestPrebuiltEtcModuleGen(t *testing.T) {
 	)
 
 	// check generated prebuilt_* module specifies correct install path and relative install path
-	etcModule, _ = generatedModule1.(*etc.PrebuiltEtc)
+	etcModule = getEtcModule(generatedModule1)
 	android.AssertStringEquals(
 		t,
 		"module expected to have . install path",
@@ -530,7 +537,7 @@ func TestPrebuiltEtcModuleGen(t *testing.T) {
 	generatedModule1 = result.ModuleForTests(t, "recovery-device_sample_firmware-1", "android_recovery_common").Module()
 
 	// check generated prebuilt_* module specifies correct install path and relative install path
-	etcModule, _ = generatedModule0.(*etc.PrebuiltEtc)
+	etcModule = getEtcModule(generatedModule0)
 	android.AssertStringEquals(
 		t,
 		"module expected to have . install path",
@@ -562,7 +569,7 @@ func TestPrebuiltEtcModuleGen(t *testing.T) {
 	)
 
 	// check generated prebuilt_* module specifies correct install path and relative install path
-	etcModule, _ = generatedModule1.(*etc.PrebuiltEtc)
+	etcModule = getEtcModule(generatedModule1)
 	android.AssertStringEquals(
 		t,
 		"module expected to have . install path",
@@ -597,7 +604,7 @@ func TestPrebuiltEtcModuleGen(t *testing.T) {
 	generatedModule1 = result.ModuleForTests(t, "recovery-device_sample_firmware-lib_firmware-1", "android_recovery_common").Module()
 
 	// check generated prebuilt_* module specifies correct install path and relative install path
-	etcModule, _ = generatedModule0.(*etc.PrebuiltEtc)
+	etcModule = getEtcModule(generatedModule0)
 	android.AssertStringEquals(
 		t,
 		"module expected to have . install path",
@@ -629,7 +636,7 @@ func TestPrebuiltEtcModuleGen(t *testing.T) {
 	)
 
 	// check generated prebuilt_* module specifies correct install path and relative install path
-	etcModule, _ = generatedModule1.(*etc.PrebuiltEtc)
+	etcModule = getEtcModule(generatedModule1)
 	android.AssertStringEquals(
 		t,
 		"module expected to have . install path",
