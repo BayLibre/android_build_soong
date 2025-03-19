@@ -22,6 +22,7 @@ import (
 	"errors"
 	"fmt"
 	"io"
+	"path/filepath"
 	"slices"
 	"strconv"
 	"strings"
@@ -964,6 +965,23 @@ type installDependencyTag struct {
 	blueprint.BaseDependencyTag
 	android.InstallAlwaysNeededDependencyTag
 	name string
+}
+
+type SymbolInfo struct {
+	Name                 string
+	ModuleDir            string
+	Uninstallable        bool
+	UnstrippedBinaryPath android.Path
+	InstalledStem        string
+	Stem                 string
+	Suffix               string
+}
+type SymbolInfos struct {
+	Symbols []*SymbolInfo
+}
+
+func (si *SymbolInfos) AppendSymbols(infos ...*SymbolInfo) {
+	si.Symbols = append(si.Symbols, infos...)
 }
 
 var (
@@ -2083,6 +2101,74 @@ var (
 	}
 )
 
+func (c *Module) getSymbolInfo(ctx android.ModuleContext, t any, info *SymbolInfo) *SymbolInfo {
+	if bi, ok := t.(*baseInstaller); ok {
+		if bi.path != (android.InstallPath{}) {
+			path, file := filepath.Split(bi.path.String())
+			stem, suffix, _ := android.SplitFileExt(file)
+			info.ModuleDir = path
+			info.Stem = stem
+			info.Suffix = suffix
+		}
+	} else if bd, ok := t.(*binaryDecorator); ok {
+		c.getSymbolInfo(ctx, bd.baseInstaller, info)
+		info.UnstrippedBinaryPath = bd.unstrippedOutputFile
+	} else if bd, ok := t.(*benchmarkDecorator); ok {
+		c.getSymbolInfo(ctx, bd.binaryDecorator, info)
+	} else if td, ok := t.(*testBinary); ok {
+		c.getSymbolInfo(ctx, td.binaryDecorator, info)
+		c.getSymbolInfo(ctx, td.testDecorator, info)
+	} else if fb, ok := t.(*fuzzBinary); ok {
+		c.getSymbolInfo(ctx, fb.binaryDecorator, info)
+	} else if tl, ok := t.(*testLibrary); ok {
+		c.getSymbolInfo(ctx, tl.libraryDecorator, info)
+		c.getSymbolInfo(ctx, tl.testDecorator, info)
+	} else if _, ok := t.(*stubDecorator); ok {
+		info.Uninstallable = true
+	} else if ld, ok := t.(*libraryDecorator); ok {
+		if ld.shared() && !ld.BuildStubs() {
+			if ld.unstrippedOutputFile != nil {
+				info.UnstrippedBinaryPath = ld.unstrippedOutputFile
+			}
+			c.getSymbolInfo(ctx, ld.baseInstaller, info)
+		} else {
+			info.Uninstallable = true
+		}
+	} else if pll, ok := t.(*prebuiltLibraryLinker); ok {
+		c.getSymbolInfo(ctx, pll.libraryDecorator, info)
+		if pll.shared() {
+			c.getSymbolInfo(ctx, &pll.prebuiltLinker, info)
+		}
+	} else if pbl, ok := t.(*prebuiltBinaryLinker); ok {
+		c.getSymbolInfo(ctx, pbl.binaryDecorator, info)
+		c.getSymbolInfo(ctx, &pbl.prebuiltLinker, info)
+	}
+	return info
+}
+
+func (c *Module) baseSymbolInfo(ctx android.ModuleContext) *SymbolInfo {
+	return &SymbolInfo{
+		Name:          c.BaseModuleName() + c.Properties.SubName,
+		ModuleDir:     ctx.ModuleDir(),
+		Uninstallable: c.IsSkipInstall() || !proptools.BoolDefault(c.Properties.Installable, true) || c.NoFullInstall(),
+	}
+}
+
+func (c *Module) collectSymbolsInfo(ctx android.ModuleContext) {
+	if !c.hideApexVariantFromMake && !c.Properties.HideFromMake {
+		infos := &SymbolInfos{}
+		for _, feature := range c.features {
+			infos.AppendSymbols(c.getSymbolInfo(ctx, feature, c.baseSymbolInfo(ctx)))
+		}
+		infos.AppendSymbols(c.getSymbolInfo(ctx, c.compiler, c.baseSymbolInfo(ctx)))
+		infos.AppendSymbols(c.getSymbolInfo(ctx, c.linker, c.baseSymbolInfo(ctx)))
+		if c.sanitize != nil {
+			infos.AppendSymbols(c.getSymbolInfo(ctx, c.sanitize, c.baseSymbolInfo(ctx)))
+		}
+		infos.AppendSymbols(c.getSymbolInfo(ctx, c.installer, c.baseSymbolInfo(ctx)))
+	}
+}
+
 // Returns true if a stub library could be installed in multiple apexes
 func (c *Module) stubLibraryMultipleApexViolation(ctx android.ModuleContext) bool {
 	// If this is not an apex variant, no check necessary
@@ -2435,6 +2521,10 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 
 	if c.makeVarsInfo != nil {
 		android.SetProvider(ctx, CcMakeVarsInfoProvider, c.makeVarsInfo)
+	}
+
+	if !c.hideApexVariantFromMake && !c.Properties.HideFromMake {
+		c.collectSymbolsInfo(ctx)
 	}
 }
 
