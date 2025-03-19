@@ -53,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5538962_b6dc47c6",
+        "filename": "rust/builder.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1891965
+      },
+      "writtenOn": "2025-03-19T17:18:29Z",
+      "side": 1,
+      "message": "Reminder to resolve comments when you\u0027ve addressed them).",
+      "parentUuid": "f77b74a9_499b7f01",
+      "revId": "c5b85da3e4157af31be28a1a23d1ed5510942333",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ebc1d35_57400c3b",
@@ -84,6 +102,24 @@
       "side": 1,
       "message": "Replaced",
       "parentUuid": "5ebc1d35_57400c3b",
+      "revId": "c5b85da3e4157af31be28a1a23d1ed5510942333",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20d3d6fc_00f269ed",
+        "filename": "rust/builder.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1891965
+      },
+      "writtenOn": "2025-03-19T17:18:29Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "f8a6d56f_d203ec24",
       "revId": "c5b85da3e4157af31be28a1a23d1ed5510942333",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -125,6 +161,30 @@
       "side": 1,
       "message": "Yeah I actually like the suggested way more as it reduces code duplication. Updated.",
       "parentUuid": "35dcd04a_3ce71738",
+      "range": {
+        "startLine": 525,
+        "startChar": 0,
+        "endLine": 527,
+        "endChar": 46
+      },
+      "revId": "c5b85da3e4157af31be28a1a23d1ed5510942333",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3dd33b27_8ac79f8b",
+        "filename": "rust/builder.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1891965
+      },
+      "writtenOn": "2025-03-19T17:18:29Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "9f7323a8_eb00708d",
       "range": {
         "startLine": 525,
         "startChar": 0,
@@ -182,6 +242,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "53dbefa2_6bf1f7cc",
+        "filename": "rust/project_json.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1891965
+      },
+      "writtenOn": "2025-03-19T17:18:29Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "bb75b4b4_87746806",
+      "range": {
+        "startLine": 47,
+        "startChar": 50,
+        "endLine": 48,
+        "endChar": 69
+      },
+      "revId": "c5b85da3e4157af31be28a1a23d1ed5510942333",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "434a3636_7be55db8",
@@ -229,6 +313,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f2113d5_36bfd27a",
+        "filename": "scripts/check_rust.py",
+        "patchSetId": 12
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1891965
+      },
+      "writtenOn": "2025-03-19T17:18:29Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "e7995370_03417d91",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 59
+      },
+      "revId": "c5b85da3e4157af31be28a1a23d1ed5510942333",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ffa0681d_ef9125bc",
@@ -260,6 +368,24 @@
       "side": 1,
       "message": "Removed",
       "parentUuid": "ffa0681d_ef9125bc",
+      "revId": "c5b85da3e4157af31be28a1a23d1ed5510942333",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cc2908d_d1e47833",
+        "filename": "scripts/check_rust.py",
+        "patchSetId": 12
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1891965
+      },
+      "writtenOn": "2025-03-19T17:18:29Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "4b2ca7e3_6afe77fb",
       "revId": "c5b85da3e4157af31be28a1a23d1ed5510942333",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -311,6 +437,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e45fcc4c_36670098",
+        "filename": "scripts/check_rust.py",
+        "patchSetId": 12
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1891965
+      },
+      "writtenOn": "2025-03-19T17:18:29Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "c6ff69de_5dca388b",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 148
+      },
+      "revId": "c5b85da3e4157af31be28a1a23d1ed5510942333",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f740cebb_4950b1f2",
@@ -342,6 +492,24 @@
       "side": 1,
       "message": "Replace with `ValueError`",
       "parentUuid": "f740cebb_4950b1f2",
+      "revId": "c5b85da3e4157af31be28a1a23d1ed5510942333",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d94e987c_cda7b903",
+        "filename": "scripts/check_rust.py",
+        "patchSetId": 12
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1891965
+      },
+      "writtenOn": "2025-03-19T17:18:29Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "a2b893e5_85e9abb4",
       "revId": "c5b85da3e4157af31be28a1a23d1ed5510942333",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -383,6 +551,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "09afc22f_0addd5d2",
+        "filename": "scripts/check_rust.py",
+        "patchSetId": 12
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1891965
+      },
+      "writtenOn": "2025-03-19T17:18:29Z",
+      "side": 1,
+      "message": "\"check rust\" is this script itself, no? let\u0027s find away to avoid naming it here.",
+      "parentUuid": "612cbe18_1fddaf82",
+      "revId": "c5b85da3e4157af31be28a1a23d1ed5510942333",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4474c7db_ad2b99eb",
         "filename": "scripts/check_rust.py",
         "patchSetId": 12
@@ -418,6 +604,30 @@
       "side": 1,
       "message": "Removed.",
       "parentUuid": "4474c7db_ad2b99eb",
+      "range": {
+        "startLine": 191,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 61
+      },
+      "revId": "c5b85da3e4157af31be28a1a23d1ed5510942333",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b15d56ef_f3fec8f4",
+        "filename": "scripts/check_rust.py",
+        "patchSetId": 12
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1891965
+      },
+      "writtenOn": "2025-03-19T17:18:29Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "ca2a3e96_3d0ef6fd",
       "range": {
         "startLine": 191,
         "startChar": 0,

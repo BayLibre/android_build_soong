@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b394ee8_cd77e877",
+        "filename": "rust/builder.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1891965
+      },
+      "writtenOn": "2025-03-19T17:18:29Z",
+      "side": 1,
+      "message": "Please add a period.",
+      "revId": "c274ac8890db087655e2cbbe25f91bebff8836fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c0c8496_73fcd8ab",
+        "filename": "scripts/check_rust.py",
+        "patchSetId": 13
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1891965
+      },
+      "writtenOn": "2025-03-19T17:18:29Z",
+      "side": 1,
+      "message": "nit: use the same style as the others \"This will ...\" or update the others to use this style.",
+      "revId": "c274ac8890db087655e2cbbe25f91bebff8836fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65ce0f69_d269607d",
+        "filename": "scripts/check_rust.py",
+        "patchSetId": 13
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1891965
+      },
+      "writtenOn": "2025-03-19T17:18:29Z",
+      "side": 1,
+      "message": "nit: env \u003d soong_env | {\n \"TARGET_PRODUCT\": target_product,\n ...\n}",
+      "revId": "c274ac8890db087655e2cbbe25f91bebff8836fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "972dbb1b_6020c6ae",
+        "filename": "scripts/check_rust.py",
+        "patchSetId": 13
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1891965
+      },
+      "writtenOn": "2025-03-19T17:18:29Z",
+      "side": 1,
+      "message": "can this function just take target_product? you already do this extraction in the caller.",
+      "revId": "c274ac8890db087655e2cbbe25f91bebff8836fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7061c57_9400f011",
+        "filename": "scripts/check_rust.py",
+        "patchSetId": 13
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1891965
+      },
+      "writtenOn": "2025-03-19T17:18:29Z",
+      "side": 1,
+      "message": "these are only used in the `else` branch below, but this code is also pretty confusing. here you fetch these out of a dictionary, and then in `execute_soong_ui` you put them back into a dictionary. Can we avoid some of the back-and-forth?\n\npersonally I find the extraction of `execute_ninja` and `execute_soong_ui` to be more difficult to read than if these functions were just inline here, but I won\u0027t insist on this part.",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 64
+      },
+      "revId": "c274ac8890db087655e2cbbe25f91bebff8836fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
