@@ -16,6 +16,24 @@
       "message": "Could you explain why we\u0027re making this change?",
       "revId": "077b52a82fec96226e17e3c87c287745c2e3ad25",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa2c9cc3_8ebd3db4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-03-19T22:42:27Z",
+      "side": 1,
+      "message": "Mostly to reduce the number of providers, but I do not have a strong opinion regarding this change.",
+      "parentUuid": "2feb91a5_563cb322",
+      "revId": "077b52a82fec96226e17e3c87c287745c2e3ad25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
