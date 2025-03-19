@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db72b2f6_44ff92a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-03-19T23:37:47Z",
+      "side": 1,
+      "message": "Cole, WDYT about this change? It allows us to limit apkcerts.txt to the list of installed apps, which imo is better than creating an entry for every app in the tree.",
+      "revId": "3778add0753f1dbe293b2026fb15d7c959df5d07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
