@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa64b4f1_98b9a487",
+        "filename": "filesystem/system_other.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-03-19T00:13:07Z",
+      "side": 1,
+      "message": "Are the system and sytem_other misc_info.txt files mostly the same? Could we have system_other just copy system\u0027s and `s/system/system_other/` in it?",
+      "revId": "21643c6a89a2ece5cd9a16535a46e10162f585ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
