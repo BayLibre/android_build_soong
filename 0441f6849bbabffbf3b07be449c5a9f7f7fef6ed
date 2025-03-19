@@ -65,6 +65,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcfde1ce_f61b6ab3",
+        "filename": "fsgen/filesystem_creator_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2025-03-19T22:22:18Z",
+      "side": 1,
+      "message": "remote:   https://android-review.googlesource.com/c/platform/build/soong/+/3552879 Panic prebuilt etc module gen test if module isn\u0027t PrebuiltEtc [NEW]",
+      "parentUuid": "c126453c_77350ef6",
+      "range": {
+        "startLine": 565,
+        "startChar": 10,
+        "endLine": 565,
+        "endChar": 13
+      },
+      "revId": "0441f6849bbabffbf3b07be449c5a9f7f7fef6ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4ec47f06_fc6d3b95",
