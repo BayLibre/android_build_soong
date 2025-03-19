@@ -16,6 +16,24 @@
       "message": "Are the system and sytem_other misc_info.txt files mostly the same? Could we have system_other just copy system\u0027s and `s/system/system_other/` in it?",
       "revId": "21643c6a89a2ece5cd9a16535a46e10162f585ba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7ab931d_70469d19",
+        "filename": "filesystem/system_other.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-03-19T03:08:46Z",
+      "side": 1,
+      "message": "They are fairly similar, but we would need to handle the following edge cases\n1. *add_hashtree_footer_args\n```\navb_system_add_hashtree_footer_args\u003d--hash_algorithm sha256 --prop com.android.build.system.os_version:15 --prop com.android.build.system.fingerprint:generic/aosp_cf_x86_64_phone/vsoc_x86_64:Baklava/MAIN/eng.span\nda:userdebug/test-keys\n```\n`system` contains additional `--prop` args and is missing `--rollback_index`\n\n2. `avb_system_algorithm` is missing in the `prop_file_for_misc_info` created for system, but is expected to be present for system_other",
+      "parentUuid": "aa64b4f1_98b9a487",
+      "revId": "21643c6a89a2ece5cd9a16535a46e10162f585ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
