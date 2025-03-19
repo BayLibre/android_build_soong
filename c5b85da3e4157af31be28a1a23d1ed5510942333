@@ -1,0 +1,221 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d22e5bc_89a5fe1e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1891965
+      },
+      "writtenOn": "2025-03-19T14:01:26Z",
+      "side": 1,
+      "message": "Thanks for updating this.",
+      "revId": "c5b85da3e4157af31be28a1a23d1ed5510942333",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40b82e8d_e89944cf",
+        "filename": "rust/builder.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1891965
+      },
+      "writtenOn": "2025-03-19T14:01:26Z",
+      "side": 1,
+      "message": "s/rust_check/`rust_check.py`/",
+      "revId": "c5b85da3e4157af31be28a1a23d1ed5510942333",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ebc1d35_57400c3b",
+        "filename": "rust/builder.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1891965
+      },
+      "writtenOn": "2025-03-19T14:01:26Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "c5b85da3e4157af31be28a1a23d1ed5510942333",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35dcd04a_3ce71738",
+        "filename": "rust/builder.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1891965
+      },
+      "writtenOn": "2025-03-19T14:01:26Z",
+      "side": 1,
+      "message": "do we want to declare this map before the `if`?\n\n```\nargs :\u003d map[string]string{ .... }\nif flags.Clippy {\n  args[\"clippyFlags\"] \u003d ...;\n  \n  ...\n} else {\n  ...\n}\n```",
+      "range": {
+        "startLine": 525,
+        "startChar": 0,
+        "endLine": 527,
+        "endChar": 46
+      },
+      "revId": "c5b85da3e4157af31be28a1a23d1ed5510942333",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd7747a0_72f55283",
+        "filename": "rust/project_json.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1891965
+      },
+      "writtenOn": "2025-03-19T14:01:26Z",
+      "side": 1,
+      "message": "Is this because Soong only asks for the crate root?",
+      "range": {
+        "startLine": 47,
+        "startChar": 50,
+        "endLine": 48,
+        "endChar": 69
+      },
+      "revId": "c5b85da3e4157af31be28a1a23d1ed5510942333",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "434a3636_7be55db8",
+        "filename": "scripts/check_rust.py",
+        "patchSetId": 12
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1891965
+      },
+      "writtenOn": "2025-03-19T14:01:26Z",
+      "side": 1,
+      "message": "why catch these?",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 59
+      },
+      "revId": "c5b85da3e4157af31be28a1a23d1ed5510942333",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffa0681d_ef9125bc",
+        "filename": "scripts/check_rust.py",
+        "patchSetId": 12
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1891965
+      },
+      "writtenOn": "2025-03-19T14:01:26Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "c5b85da3e4157af31be28a1a23d1ed5510942333",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fd0509e_dcd69ba6",
+        "filename": "scripts/check_rust.py",
+        "patchSetId": 12
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1891965
+      },
+      "writtenOn": "2025-03-19T14:01:26Z",
+      "side": 1,
+      "message": "consider breaking this into a comment for each string below. that would make it easier to spot omissions. currently `--make-mode` is not described.",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 148
+      },
+      "revId": "c5b85da3e4157af31be28a1a23d1ed5510942333",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f740cebb_4950b1f2",
+        "filename": "scripts/check_rust.py",
+        "patchSetId": 12
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1891965
+      },
+      "writtenOn": "2025-03-19T14:01:26Z",
+      "side": 1,
+      "message": "use something like [`https://docs.python.org/3/library/exceptions.html#ValueError`]. `Exception` is the base class, it is considered unidiomatic to raise/except it.",
+      "revId": "c5b85da3e4157af31be28a1a23d1ed5510942333",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae4a2e47_a7ef1df5",
+        "filename": "scripts/check_rust.py",
+        "patchSetId": 12
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1891965
+      },
+      "writtenOn": "2025-03-19T14:01:26Z",
+      "side": 1,
+      "message": "what is `rust_check`?",
+      "revId": "c5b85da3e4157af31be28a1a23d1ed5510942333",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4474c7db_ad2b99eb",
+        "filename": "scripts/check_rust.py",
+        "patchSetId": 12
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1891965
+      },
+      "writtenOn": "2025-03-19T14:01:26Z",
+      "side": 1,
+      "message": "here too - why?",
+      "range": {
+        "startLine": 191,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 61
+      },
+      "revId": "c5b85da3e4157af31be28a1a23d1ed5510942333",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
