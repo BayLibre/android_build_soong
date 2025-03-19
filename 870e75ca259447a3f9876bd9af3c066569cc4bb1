@@ -34,6 +34,24 @@
       ],
       "revId": "870e75ca259447a3f9876bd9af3c066569cc4bb1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22e8d307_f6b45820",
+        "filename": "cmd/release_config/release_config_lib/release_configs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2025-03-19T18:40:57Z",
+      "side": 1,
+      "message": "Doh!  Fixed.",
+      "parentUuid": "1c1bf912_060c8ea7",
+      "revId": "870e75ca259447a3f9876bd9af3c066569cc4bb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
