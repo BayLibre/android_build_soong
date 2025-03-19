@@ -16,6 +16,29 @@
       "message": "I think this is what you asked for?",
       "revId": "ab1362b7a5ddee09d0527738bb22b9d054e2d919",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "458a02f0_febc6e4a",
+        "filename": "fsgen/filesystem_creator_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-03-19T23:57:46Z",
+      "side": 1,
+      "message": "You don\u0027t need to make a function, just `etcModule :\u003d generatedModule.(*etc.PrebuiltEtc)` would work.",
+      "range": {
+        "startLine": 339,
+        "startChar": 1,
+        "endLine": 339,
+        "endChar": 43
+      },
+      "revId": "ab1362b7a5ddee09d0527738bb22b9d054e2d919",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
