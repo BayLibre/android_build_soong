@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c126453c_77350ef6",
+        "filename": "fsgen/filesystem_creator_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2025-03-19T22:12:31Z",
+      "side": 1,
+      "message": "I was just copying the previous code, I can make another CL to ensure casting fails  panic?",
+      "parentUuid": "7ad7d3ee_c57a214f",
+      "range": {
+        "startLine": 565,
+        "startChar": 10,
+        "endLine": 565,
+        "endChar": 13
+      },
+      "revId": "0441f6849bbabffbf3b07be449c5a9f7f7fef6ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4ec47f06_fc6d3b95",
         "filename": "fsgen/prebuilt_etc_modules_gen.go",
         "patchSetId": 2
@@ -54,6 +78,30 @@
       "writtenOn": "2025-03-19T22:07:46Z",
       "side": 1,
       "message": "Isn\u0027t this equivalent to just `destDir` as `etcInstallPathKey` is now `\"\"`?",
+      "range": {
+        "startLine": 343,
+        "startChar": 37,
+        "endLine": 343,
+        "endChar": 77
+      },
+      "revId": "0441f6849bbabffbf3b07be449c5a9f7f7fef6ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b5365e5_e1f847f0",
+        "filename": "fsgen/prebuilt_etc_modules_gen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2025-03-19T22:12:31Z",
+      "side": 1,
+      "message": "Yes it is, I\u0027ll use that instead.",
+      "parentUuid": "4ec47f06_fc6d3b95",
       "range": {
         "startLine": 343,
         "startChar": 37,
