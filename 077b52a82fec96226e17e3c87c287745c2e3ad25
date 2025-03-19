@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2feb91a5_563cb322",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-03-19T22:37:17Z",
+      "side": 1,
+      "message": "Could you explain why we\u0027re making this change?",
+      "revId": "077b52a82fec96226e17e3c87c287745c2e3ad25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
