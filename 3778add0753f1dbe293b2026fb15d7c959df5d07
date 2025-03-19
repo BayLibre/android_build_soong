@@ -16,6 +16,23 @@
       "message": "Cole, WDYT about this change? It allows us to limit apkcerts.txt to the list of installed apps, which imo is better than creating an entry for every app in the tree.",
       "revId": "3778add0753f1dbe293b2026fb15d7c959df5d07",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e11be762_eb3ea7e0",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-03-19T23:54:11Z",
+      "side": 1,
+      "message": "Could we extract the apex at execution time and then build the apkcerts.txt from the extracted apks? It appears that\u0027s what app sets do, with the extract_apks tool.",
+      "revId": "3778add0753f1dbe293b2026fb15d7c959df5d07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
