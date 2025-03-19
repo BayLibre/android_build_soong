@@ -1,0 +1,39 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c1bf912_060c8ea7",
+        "filename": "cmd/release_config/release_config_lib/release_configs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2025-03-19T18:28:04Z",
+      "side": 1,
+      "message": "It prints an error but doesn\u0027t exit. Is that what you want? Build warnings are generally ignored and just lead to log spew.",
+      "fixSuggestions": [
+        {
+          "fixId": "73cdc0a3_b758f4fc",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "cmd/release_config/release_config_lib/release_configs.go",
+              "range": {
+                "startLine": 318,
+                "startChar": 0,
+                "endLine": 319,
+                "endChar": 0
+              },
+              "replacement": "\t\t\treturn fmt.Errorf(\"Flag declaration %s has no namespace.\", path)\n"
+            }
+          ]
+        }
+      ],
+      "revId": "870e75ca259447a3f9876bd9af3c066569cc4bb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
