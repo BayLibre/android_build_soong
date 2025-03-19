@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ab940dd_c698b978",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2926,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-03-19T23:12:09Z",
+      "side": 1,
+      "message": "remove empty partition, the \"apex\" partition is used in some other places too.",
+      "range": {
+        "startLine": 2926,
+        "startChar": 61,
+        "endLine": 2926,
+        "endChar": 65
+      },
+      "revId": "08388bb5370d2965f1a8a7e6c5a147d00dd3c839",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
