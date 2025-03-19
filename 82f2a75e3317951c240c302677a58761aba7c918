@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c2c7069_9327f4d9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2025-03-19T20:33:45Z",
+      "side": 1,
+      "message": "Ideally they would get copied into /system/ to use the existing prebuilt_system... but I digress",
+      "revId": "82f2a75e3317951c240c302677a58761aba7c918",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
