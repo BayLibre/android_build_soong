@@ -539,6 +539,10 @@ func (b *bootimg) buildPropFileForMiscInfo(ctx android.ModuleContext) android.Pa
 
 	bootImgType := proptools.String(b.properties.Boot_image_type)
 	addStr("avb_"+bootImgType+"_add_hash_footer_args", b.getAvbHashFooterArgs(ctx))
+	if bootImgType == "vendor_boot" && ctx.DeviceConfig().BoardMoveRecoveryResourcesToVendorBoot() {
+		// Create a dup entry for recovery
+		addStr("avb_recovery_add_hash_footer_args", strings.ReplaceAll(b.getAvbHashFooterArgs(ctx), "vendor_boot", "recovery"))
+	}
 	if b.properties.Avb_private_key != nil {
 		addStr("avb_"+bootImgType+"_algorithm", proptools.StringDefault(b.properties.Avb_algorithm, "SHA256_RSA4096"))
 		addStr("avb_"+bootImgType+"_key_path", android.PathForModuleSrc(ctx, proptools.String(b.properties.Avb_private_key)).String())
