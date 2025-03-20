@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6dc38d4_32eb3848",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2169,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-03-20T17:36:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04ad54e7_4d1ad35c",
+      "revId": "2dd4551916aee47853e784f5ae7a72eba6383909",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f916eee_0c14be8b",
@@ -41,6 +59,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7cb0af6_4a3a40a6",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2185,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-03-20T17:36:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f916eee_0c14be8b",
+      "range": {
+        "startLine": 2185,
+        "startChar": 8,
+        "endLine": 2185,
+        "endChar": 77
+      },
+      "revId": "2dd4551916aee47853e784f5ae7a72eba6383909",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d14b90e2_822ba434",
@@ -54,6 +96,24 @@
       "writtenOn": "2025-03-19T23:06:43Z",
       "side": 1,
       "message": "Are the symbols still copied when doing `m foo`? I think they might be in soong+make but not soong-only. We might also have to add the symbols as dependencies in `generateModuleTarget`.",
+      "revId": "2dd4551916aee47853e784f5ae7a72eba6383909",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcbd58f2_34c86d27",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2261,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-03-20T17:36:19Z",
+      "side": 1,
+      "message": "Yeah the dependency to the module exists in [make](https://cs.android.com/android/platform/superproject/main/+/main:build/make/core/soong_cc_rust_prebuilt.mk;l\u003d199;drc\u003d1509ee5ab52f6f07774d651ace44778dc6f0d08d) but not in Soong. I\u0027ve added `SetOutputFiles` calls on the generated symbols files and the elf mapping proto files, so they are built when running `m foo`.",
+      "parentUuid": "d14b90e2_822ba434",
       "revId": "2dd4551916aee47853e784f5ae7a72eba6383909",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
