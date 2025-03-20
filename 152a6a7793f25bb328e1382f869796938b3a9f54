@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "70a06c5d_debad0d3",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 980,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-03-20T17:35:22Z",
+      "side": 1,
+      "message": "This is true for cc/rust modules, but a java module (jni libs) or an apex module may produce multiple symbols copies.",
+      "parentUuid": "cb959994_0184dbba",
+      "revId": "152a6a7793f25bb328e1382f869796938b3a9f54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a027f86c_08243042",
         "filename": "cc/cc.go",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2025-03-19T22:52:00Z",
       "side": 1,
       "message": "Use a type switch, or consider making a interface that these types can implement.",
+      "revId": "152a6a7793f25bb328e1382f869796938b3a9f54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20af84ad_e525dd6a",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2105,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-03-20T17:35:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a027f86c_08243042",
       "revId": "152a6a7793f25bb328e1382f869796938b3a9f54",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -48,6 +84,30 @@
       "writtenOn": "2025-03-19T22:52:00Z",
       "side": 1,
       "message": "`c.SubName()`",
+      "range": {
+        "startLine": 2151,
+        "startChar": 39,
+        "endLine": 2151,
+        "endChar": 58
+      },
+      "revId": "152a6a7793f25bb328e1382f869796938b3a9f54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71628f91_44b12ca3",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2151,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-03-20T17:35:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9601d53e_0002daeb",
       "range": {
         "startLine": 2151,
         "startChar": 39,
