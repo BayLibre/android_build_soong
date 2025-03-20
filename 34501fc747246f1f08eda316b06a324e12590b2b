@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad12e951_037ac928",
+        "filename": "filesystem/bootimg.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-03-20T21:28:15Z",
+      "side": 1,
+      "message": "This should come from properties. I beleive the boot image has a dependency on only ramdisk, which then has a dep on recovery. Could you export information from ramdisk about if there\u0027s an included recovery image?",
+      "range": {
+        "startLine": 542,
+        "startChar": 55,
+        "endLine": 542,
+        "endChar": 93
+      },
+      "revId": "34501fc747246f1f08eda316b06a324e12590b2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
