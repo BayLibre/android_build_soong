@@ -82,6 +82,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0cfa0ef_486df840",
+        "filename": "android/packaging.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2025-03-20T07:23:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad7e7f7a_1b988e8d",
+      "range": {
+        "startLine": 510,
+        "startChar": 1,
+        "endLine": 510,
+        "endChar": 12
+      },
+      "revId": "734fd31b482bbf93f1a1c39c9667fb37572ac429",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c969165_d5d68859",
@@ -133,6 +157,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "879b6cc0_e165be00",
+        "filename": "android/packaging.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2025-03-20T07:23:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c969165_d5d68859",
+      "range": {
+        "startLine": 512,
+        "startChar": 0,
+        "endLine": 513,
+        "endChar": 36
+      },
+      "revId": "734fd31b482bbf93f1a1c39c9667fb37572ac429",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9c6c6251_b456492b",
@@ -146,6 +194,30 @@
       "writtenOn": "2025-03-20T07:08:43Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 564,
+        "startChar": 17,
+        "endLine": 564,
+        "endChar": 23
+      },
+      "revId": "734fd31b482bbf93f1a1c39c9667fb37572ac429",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e4b2e30_f846a11b",
+        "filename": "android/packaging.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2025-03-20T07:23:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c6c6251_b456492b",
       "range": {
         "startLine": 564,
         "startChar": 17,
