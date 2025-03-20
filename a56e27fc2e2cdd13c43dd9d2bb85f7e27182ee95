@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0f3edcf_e4ff6d83",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-03-20T18:11:46Z",
+      "side": 1,
+      "message": "Do we need this if? Can\u0027t we just always build the symbols zip?",
+      "revId": "a56e27fc2e2cdd13c43dd9d2bb85f7e27182ee95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
