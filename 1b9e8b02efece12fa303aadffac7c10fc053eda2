@@ -22,6 +22,30 @@
       },
       "revId": "1b9e8b02efece12fa303aadffac7c10fc053eda2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb02261a_e91b14c8",
+        "filename": "cc/fdo_profile.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2025-03-20T03:16:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa602cf7_c56ef11e",
+      "range": {
+        "startLine": 39,
+        "startChar": 50,
+        "endLine": 39,
+        "endChar": 62
+      },
+      "revId": "1b9e8b02efece12fa303aadffac7c10fc053eda2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
