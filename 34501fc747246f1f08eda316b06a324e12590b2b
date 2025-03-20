@@ -22,6 +22,30 @@
       },
       "revId": "34501fc747246f1f08eda316b06a324e12590b2b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b70592a_c2869d29",
+        "filename": "filesystem/bootimg.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-03-20T21:52:12Z",
+      "side": 1,
+      "message": "Is there a known way to determine whether the ramdisk contains the recovery partition?\n\nOne option might be to check `len(Include_files_of)` of the ramdisk, and if it is greater than 0, then we can assume that the ramdisk contains a recovery partition. \n\nWould you know if there is a better way to do this determination?",
+      "parentUuid": "ad12e951_037ac928",
+      "range": {
+        "startLine": 542,
+        "startChar": 55,
+        "endLine": 542,
+        "endChar": 93
+      },
+      "revId": "34501fc747246f1f08eda316b06a324e12590b2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
