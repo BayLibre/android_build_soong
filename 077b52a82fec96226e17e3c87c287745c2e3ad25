@@ -52,6 +52,24 @@
       "parentUuid": "fa2c9cc3_8ebd3db4",
       "revId": "077b52a82fec96226e17e3c87c287745c2e3ad25",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0886d1ff_cac747ba",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-03-20T17:34:47Z",
+      "side": 1,
+      "message": "This is actually used in a child change. See [here](https://r.android.com/c/platform/build/soong/+/3552302/2/filesystem/android_device.go#349\n). This is needed as `android.IsPrebuiltModule` does not work as expected for `ModuleProxy`.",
+      "parentUuid": "e6f6aa30_d2355bfa",
+      "revId": "077b52a82fec96226e17e3c87c287745c2e3ad25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
