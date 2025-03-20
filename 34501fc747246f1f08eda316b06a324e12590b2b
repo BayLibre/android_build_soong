@@ -46,6 +46,30 @@
       },
       "revId": "34501fc747246f1f08eda316b06a324e12590b2b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0a1a880_46103abe",
+        "filename": "filesystem/bootimg.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-03-20T21:55:28Z",
+      "side": 1,
+      "message": "You should be able to include the partition type in the FilesystemInfo, and then when processing `include_files_of` you gather those partition types and re-export them.",
+      "parentUuid": "5b70592a_c2869d29",
+      "range": {
+        "startLine": 542,
+        "startChar": 55,
+        "endLine": 542,
+        "endChar": 93
+      },
+      "revId": "34501fc747246f1f08eda316b06a324e12590b2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
