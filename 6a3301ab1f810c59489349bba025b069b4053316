@@ -52,6 +52,79 @@
       "parentUuid": "98c8b1b5_475846ec",
       "revId": "6a3301ab1f810c59489349bba025b069b4053316",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7ffb657_3922616f",
+        "filename": "android/neverallow.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-03-20T16:19:54Z",
+      "side": 1,
+      "message": "I see, thanks for the explanation!",
+      "parentUuid": "575cba3d_853ebcb2",
+      "revId": "6a3301ab1f810c59489349bba025b069b4053316",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c858458_8aad02f1",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 871,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-03-20T16:19:54Z",
+      "side": 1,
+      "message": "Instead of introducing `prebuilt_lib_firmware`, I believe it\u0027s more useful to introduce `prebuilt_lib` module type and set `relative_install_path: \"firmware\"` in converting the android.mk module. This prevents introducing other `prebuilt_lib_*` module types in the future.",
+      "fixSuggestions": [
+        {
+          "fixId": "af88e09f_ace182a1",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "etc/prebuilt_etc.go",
+              "range": {
+                "startLine": 68,
+                "startChar": 0,
+                "endLine": 69,
+                "endChar": 0
+              },
+              "replacement": "\tctx.RegisterModuleType(\"prebuilt_lib\", PrebuiltLibFactory)\n"
+            },
+            {
+              "path": "etc/prebuilt_etc.go",
+              "range": {
+                "startLine": 865,
+                "startChar": 0,
+                "endLine": 866,
+                "endChar": 0
+              },
+              "replacement": "// prebuilt_lib installs a firmware file to \u003cpartition\u003e/lib/firmware directory for system\n"
+            },
+            {
+              "path": "etc/prebuilt_etc.go",
+              "range": {
+                "startLine": 869,
+                "startChar": 0,
+                "endLine": 870,
+                "endChar": 0
+              },
+              "replacement": "func PrebuiltLibFactory() android.Module {\n"
+            }
+          ]
+        }
+      ],
+      "revId": "6a3301ab1f810c59489349bba025b069b4053316",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
