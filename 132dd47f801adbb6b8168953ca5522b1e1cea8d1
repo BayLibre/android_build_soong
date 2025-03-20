@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a2f4362_4647bca5",
+        "filename": "android/otatools_package_cert_zip.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1317851
+      },
+      "writtenOn": "2025-03-20T07:01:03Z",
+      "side": 1,
+      "message": "Create one new build rule to generate the depfile. And it stop to rebuild if the list are the same.",
+      "parentUuid": "b489ff43_bcb0c96b",
+      "revId": "132dd47f801adbb6b8168953ca5522b1e1cea8d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d251569f_9ee7228b",
