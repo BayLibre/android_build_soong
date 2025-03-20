@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b489ff43_bcb0c96b",
+        "filename": "android/otatools_package_cert_zip.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1317851
+      },
+      "writtenOn": "2025-03-20T02:13:23Z",
+      "side": 1,
+      "message": "In normal case, it will use \"$out.d\" for \"Depfile\". But this case is \"OtaToolsCertFiles.list\" that is the input file.\n\nI am not sure use `Depfile:\":$in\"` is correct.",
+      "parentUuid": "cdc5b626_b8aa85f2",
+      "revId": "132dd47f801adbb6b8168953ca5522b1e1cea8d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d251569f_9ee7228b",
         "filename": "android/otatools_package_cert_zip.go",
         "patchSetId": 2
@@ -31,6 +49,24 @@
       "writtenOn": "2025-03-19T17:21:16Z",
       "side": 1,
       "message": "Assert that `ctx.ModuleDir() \u003d\u003d \"build/make/tools/otatools_package\"` so people don\u0027t add more instances of this module.",
+      "revId": "132dd47f801adbb6b8168953ca5522b1e1cea8d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44b6aada_517adb84",
+        "filename": "android/otatools_package_cert_zip.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1317851
+      },
+      "writtenOn": "2025-03-20T02:13:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d251569f_9ee7228b",
       "revId": "132dd47f801adbb6b8168953ca5522b1e1cea8d1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
