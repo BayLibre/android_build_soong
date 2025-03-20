@@ -34,6 +34,24 @@
       ],
       "revId": "6a3301ab1f810c59489349bba025b069b4053316",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "575cba3d_853ebcb2",
+        "filename": "android/neverallow.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1308036
+      },
+      "writtenOn": "2025-03-20T07:52:28Z",
+      "side": 1,
+      "message": "Using install_in_root is because subdir \"system\" will be under output path without install_in_root.\n\nOur target output is like out/target/product/oriole/vendor_ramdisk/first_stage_ramdisk/lib/firmware/drv2624.bin, not out/target/product/oriole/vendor_ramdisk/first_stage_ramdisk/system/lib/firmware/drv2624.bin. (ag/32252618)",
+      "parentUuid": "98c8b1b5_475846ec",
+      "revId": "6a3301ab1f810c59489349bba025b069b4053316",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
