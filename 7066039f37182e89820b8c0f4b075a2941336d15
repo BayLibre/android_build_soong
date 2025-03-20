@@ -52,6 +52,24 @@
       "parentUuid": "5fa26259_b5e74844",
       "revId": "7066039f37182e89820b8c0f4b075a2941336d15",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77475267_7d0d92f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1307979
+      },
+      "writtenOn": "2025-03-20T18:41:23Z",
+      "side": 1,
+      "message": "The immediate fix is to change `TARGET_ARCH_VARIANT` for this device to `armv8-2a-dotprod`. I\u0027ll upload this today.\n\nThe short-term fix would be to add `armv9-a-nosve` arch variant as pirama@ described.\n\nThe longer-term fix would be to add a new configuration variable `TARGET_ARCH_FEATURES` so that we wouldn\u0027t need to a new arch variant for every version and feature combination.",
+      "parentUuid": "633ca12f_75ad2d90",
+      "revId": "7066039f37182e89820b8c0f4b075a2941336d15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
