@@ -34,6 +34,24 @@
       "tag": "mailMessageId\u003d\u003cCAPqUeWmUQN9dRYxq8wpSSr9HyROnxMgrm08\u003dyKwsFprYbekHsg@mail.gmail.com\u003e",
       "revId": "7066039f37182e89820b8c0f4b075a2941336d15",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "633ca12f_75ad2d90",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2025-03-20T17:04:53Z",
+      "side": 1,
+      "message": "\u003e el0_sve_acc+0x70/0x74\nI presume sm8x50 doesn\u0027t have either sve or sve2.  Clang assumes armv9 includes sve and sve2, per https://godbolt.org/z/zsTGEhEY7.\n\n\u003e \"target-features\"\u003d\"...+sve,+sve2...\"\n\nChanging the CPU is not going to fix this.  The fix will be to create a \"armv9-a_nosve\" arch variant and use `-march\u003darmv9-a+nosve2` for it.  @ccross@android.com - thoughts?",
+      "parentUuid": "5fa26259_b5e74844",
+      "revId": "7066039f37182e89820b8c0f4b075a2941336d15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
