@@ -134,6 +134,24 @@
       "parentUuid": "fcbd58f2_34c86d27",
       "revId": "2dd4551916aee47853e784f5ae7a72eba6383909",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0759a34d_15588546",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2261,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-03-20T22:36:17Z",
+      "side": 1,
+      "message": "Wdyt about replacing these `ctx.SetOutputFiles` calls with [`ctx.CheckbuildFile`](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/android/module_context.go;l\u003d889;drc\u003d118b0803594c21065509c5ae6802f629c9a9c1a5)?  IIUC checkbuild files are [built](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/android/module.go;l\u003d1705;drc\u003d118b0803594c21065509c5ae6802f629c9a9c1a5) when running `m foo`, and I\u0027d prefer to keep the `SymbolInfosProvider` and `SymbolInfos` in the cc package.",
+      "parentUuid": "e7e693e1_158b4a1a",
+      "revId": "2dd4551916aee47853e784f5ae7a72eba6383909",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
