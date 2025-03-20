@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c57abb90_3a1ba610",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2025-03-20T04:26:12Z",
+      "side": 1,
+      "message": "I think the implementation is correct. But probably some targets used the false dependencies to install the required files?",
+      "revId": "de8285e9eb76f2a2c7d316513538f66be6a642b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
