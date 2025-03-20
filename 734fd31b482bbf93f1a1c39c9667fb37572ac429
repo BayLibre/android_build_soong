@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad7e7f7a_1b988e8d",
+        "filename": "android/packaging.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2025-03-20T07:08:43Z",
+      "side": 1,
+      "message": "`modulesToInstall`?",
+      "range": {
+        "startLine": 510,
+        "startChar": 1,
+        "endLine": 510,
+        "endChar": 12
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "18d30b8a_a0b3f31b",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "android/packaging.go",
+              "range": {
+                "startLine": 509,
+                "startChar": 0,
+                "endLine": 511,
+                "endChar": 0
+              },
+              "replacement": "\t// all modules which are not overridden.\n\tmodulesToInstall :\u003d make(map[string]bool)\n"
+            },
+            {
+              "path": "android/packaging.go",
+              "range": {
+                "startLine": 564,
+                "startChar": 0,
+                "endLine": 565,
+                "endChar": 0
+              },
+              "replacement": "\t// gather modules to install, skipping overridden modules\n"
+            },
+            {
+              "path": "android/packaging.go",
+              "range": {
+                "startLine": 575,
+                "startChar": 0,
+                "endLine": 576,
+                "endChar": 0
+              },
+              "replacement": "\t\tmodulesToInstall[owner] \u003d true\n"
+            },
+            {
+              "path": "android/packaging.go",
+              "range": {
+                "startLine": 580,
+                "startChar": 0,
+                "endLine": 581,
+                "endChar": 0
+              },
+              "replacement": "\t\t// input minus packaging specs that are not modules to install\n"
+            },
+            {
+              "path": "android/packaging.go",
+              "range": {
+                "startLine": 583,
+                "startChar": 0,
+                "endLine": 584,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tif !modulesToInstall[ps.owner] {\n"
+            }
+          ]
+        }
+      ],
+      "revId": "734fd31b482bbf93f1a1c39c9667fb37572ac429",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c969165_d5d68859",
+        "filename": "android/packaging.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2025-03-20T07:08:43Z",
+      "side": 1,
+      "message": "Move this to above the other map to be in sync with the order of they are filled.",
+      "range": {
+        "startLine": 512,
+        "startChar": 0,
+        "endLine": 513,
+        "endChar": 36
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "4e34e921_671bca3f",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "android/packaging.go",
+              "range": {
+                "startLine": 509,
+                "startChar": 0,
+                "endLine": 512,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "android/packaging.go",
+              "range": {
+                "startLine": 515,
+                "startChar": 0,
+                "endLine": 515,
+                "endChar": 0
+              },
+              "replacement": "\t// all owners of packages which are not overridden.\n\tvalidOwners :\u003d make(map[string]bool)\n\n"
+            }
+          ]
+        }
+      ],
+      "revId": "734fd31b482bbf93f1a1c39c9667fb37572ac429",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c6c6251_b456492b",
+        "filename": "android/packaging.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2025-03-20T07:08:43Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 564,
+        "startChar": 17,
+        "endLine": 564,
+        "endChar": 23
+      },
+      "revId": "734fd31b482bbf93f1a1c39c9667fb37572ac429",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
