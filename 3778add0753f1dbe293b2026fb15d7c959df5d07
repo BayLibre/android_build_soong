@@ -33,6 +33,24 @@
       "message": "Could we extract the apex at execution time and then build the apkcerts.txt from the extracted apks? It appears that\u0027s what app sets do, with the extract_apks tool.",
       "revId": "3778add0753f1dbe293b2026fb15d7c959df5d07",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f79283f_d11d2f52",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-03-20T00:07:47Z",
+      "side": 1,
+      "message": "I think similar extraction during exceution would require some additional information. Unlike `extract_apks` where all apks are `PRESIGNED`, the apps in the prebuilt shim apexes (companinon CL in this topic) should be written as\n```\nname\u003d\"CtsShim.apk\" certificate\u003d\"build/make/target/product/security/testkey.x509.pem\" private_key\u003d\"build/make/target/product/security/testkey.pk8\" partition\u003d\"system\"\n```\n\nDuring execution, we would be able to determine that `CtsShim.apk` is an apk-in-apex, but we would not know its test certificates.\n\nHowever, I do agree that this can lead to signing issues if users do not declare the apps explicitly. As an alternative, WDYT about creating a validation action for prebuilt_apexes that deapexes them and checks that if there any .apks, they must be declared in `Apps`?",
+      "parentUuid": "e11be762_eb3ea7e0",
+      "revId": "3778add0753f1dbe293b2026fb15d7c959df5d07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
