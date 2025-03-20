@@ -152,6 +152,24 @@
       "parentUuid": "e7e693e1_158b4a1a",
       "revId": "2dd4551916aee47853e784f5ae7a72eba6383909",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "070eb5bb_268704c8",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2261,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-03-20T23:04:42Z",
+      "side": 1,
+      "message": "Sure, that works.",
+      "parentUuid": "0759a34d_15588546",
+      "revId": "2dd4551916aee47853e784f5ae7a72eba6383909",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
