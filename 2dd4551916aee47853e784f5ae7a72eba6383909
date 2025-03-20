@@ -116,6 +116,24 @@
       "parentUuid": "d14b90e2_822ba434",
       "revId": "2dd4551916aee47853e784f5ae7a72eba6383909",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7e693e1_158b4a1a",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2261,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-03-20T18:09:19Z",
+      "side": 1,
+      "message": "Could you not set output files and instead make `generateModuleTarget` get the `SymbolInfosProvider` and add them as deps explicitly? I\u0027m worried about adding a public api to get the symbols files via the `:mod{symbols}` syntax in bp files, especially because these are the copied locations and not an `out/soong/.intermediates` path.",
+      "parentUuid": "fcbd58f2_34c86d27",
+      "revId": "2dd4551916aee47853e784f5ae7a72eba6383909",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
