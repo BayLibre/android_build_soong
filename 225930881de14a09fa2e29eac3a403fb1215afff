@@ -46,6 +46,30 @@
       },
       "revId": "225930881de14a09fa2e29eac3a403fb1215afff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdf67e84_b770255e",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1315,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-03-21T18:50:16Z",
+      "side": 1,
+      "message": "I like `HasOrIsRecovery` more, I think in most cases we just care about the existence of recovery in general, not that it exists but is not a direct dependency.",
+      "parentUuid": "12fd2e02_5fd363a5",
+      "range": {
+        "startLine": 1315,
+        "startChar": 8,
+        "endLine": 1315,
+        "endChar": 13
+      },
+      "revId": "225930881de14a09fa2e29eac3a403fb1215afff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
