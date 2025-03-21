@@ -70,6 +70,30 @@
       },
       "revId": "225930881de14a09fa2e29eac3a403fb1215afff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c38d1337_679e8844",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1315,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-03-21T20:19:58Z",
+      "side": 1,
+      "message": "I have updated the implementation to `HasOrIsRecovery`.",
+      "parentUuid": "fdf67e84_b770255e",
+      "range": {
+        "startLine": 1315,
+        "startChar": 8,
+        "endLine": 1315,
+        "endChar": 13
+      },
+      "revId": "225930881de14a09fa2e29eac3a403fb1215afff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
