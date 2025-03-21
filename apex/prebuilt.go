@@ -48,6 +48,14 @@ var (
 		CommandDeps: []string{"${deapexer}"},
 		Description: "decompress $out",
 	})
+	// Compares the declared apps of `prebuilt_apex` with the actual apks
+	validateApkInPrebuiltApex = pctx.StaticRule("validateApkinPrebuiltApex", blueprint.RuleParams{
+		Command: `rm -rf $out && cmp -s ${expectedApks} <(${deapexer} --debugfs=${debugfs_static} list ${in} | grep apk$$ | awk -F '/' '{print $$NF}' | sort -u) && touch ${out}` +
+			` || (echo "Found diffs between "apps" property of ${apexName} and actual contents of ${in}.` +
+			` Please ensure that all apk-in-apexes are declared in 'apps' property." && exit 1)`,
+		CommandDeps: []string{"${deapexer}", "${debugfs_static}"},
+		Description: "validate apk in prebuilt_apex $out",
+	}, "expectedApks", "apexName")
 )
 
 type prebuilt interface {
@@ -86,6 +94,7 @@ type prebuiltCommon struct {
 	// Certificate information of any apk packaged inside the prebuilt apex.
 	// This will be nil if the prebuilt apex does not contain any apk.
 	apkCertsFile android.WritablePath
+	apkListFile  android.WritablePath
 }
 
 type sanitizedPrebuilt interface {
@@ -656,6 +665,7 @@ func (p *Prebuilt) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	}
 
 	p.checkExportedDependenciesArePrebuilts(ctx)
+	p.addApkCertsInfo(ctx)
 
 	p.apexKeysPath = writeApexKeys(ctx, p)
 	// TODO(jungjw): Check the key validity.
@@ -667,9 +677,10 @@ func (p *Prebuilt) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	}
 	p.outputApex = android.PathForModuleOut(ctx, p.installFilename)
 	ctx.Build(pctx, android.BuildParams{
-		Rule:   android.Cp,
-		Input:  p.inputApex,
-		Output: p.outputApex,
+		Rule:       android.Cp,
+		Input:      p.inputApex,
+		Output:     p.outputApex,
+		Validation: p.validateApkInPrebuiltApex(ctx),
 	})
 
 	if p.prebuiltCommon.checkForceDisable(ctx) {
@@ -704,11 +715,37 @@ func (p *Prebuilt) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		p.provenanceMetaDataFile = provenance.GenerateArtifactProvenanceMetaData(ctx, p.inputApex, p.installedFile)
 	}
 
-	p.addApkCertsInfo(ctx)
-
 	ctx.SetOutputFiles(android.Paths{p.outputApex}, "")
 
 	android.SetProvider(ctx, filesystem.ApexKeyPathInfoProvider, filesystem.ApexKeyPathInfo{p.apexKeysPath})
+}
+
+var validateApkInPrebuiltApexDenylist = []string{"apex.corrupted_b146895998"} // corrupt apex that cannot be deapexed.
+
+// Creates a timestamp file that will be used to validate that there is no mismtach
+// between apks declared via `apps` and the actual apks inside the apex.
+func (p *Prebuilt) validateApkInPrebuiltApex(ctx android.ModuleContext) android.Path {
+	timestamp := android.PathForModuleOut(ctx, "apk_in_prebuilt_apex.timestamp")
+	if !p.installable() || android.InList(p.Name(), validateApkInPrebuiltApexDenylist) {
+		// Skip validation for uninstallable apexes
+		ctx.Build(pctx, android.BuildParams{
+			Rule:   android.Touch,
+			Output: timestamp,
+		})
+	} else {
+		ctx.Build(pctx, android.BuildParams{
+			Rule:     validateApkInPrebuiltApex,
+			Input:    p.inputApex,
+			Output:   timestamp,
+			Implicit: p.apkListFile,
+			Args: map[string]string{
+				"expectedApks": p.apkListFile.String(),
+				"apexName":     p.Name(),
+			},
+		})
+	}
+
+	return timestamp
 }
 
 // `addApkCertsInfo` sets a provider that will be used to create apkcerts.txt
@@ -737,10 +774,6 @@ func (p *Prebuilt) addApkCertsInfo(ctx android.ModuleContext) {
 		return appInfos[i].InstallApkName < appInfos[j].InstallApkName
 	})
 
-	if len(appInfos) == 0 {
-		return
-	}
-
 	// Set a provider for use by `android_device`.
 	// `android_device` will create an apkcerts.txt with the list of installed apps for that device.
 	android.SetProvider(ctx, java.AppInfosProvider, appInfos)
@@ -751,9 +784,19 @@ func (p *Prebuilt) addApkCertsInfo(ctx android.ModuleContext) {
 	for _, appInfo := range appInfos {
 		lines = append(lines, formatLine(appInfo.Certificate, appInfo.InstallApkName+".apk", p.PartitionTag(ctx.DeviceConfig())))
 	}
-	if len(lines) > 0 {
-		p.apkCertsFile = android.PathForModuleOut(ctx, "apkcerts.txt")
-		android.WriteFileRule(ctx, p.apkCertsFile, strings.Join(lines, "\n"))
+	p.apkCertsFile = android.PathForModuleOut(ctx, "apkcerts.txt")
+	android.WriteFileRuleVerbatim(ctx, p.apkCertsFile, strings.Join(lines, "\n"))
+
+	// Create a list of all installed apks. Will be used to run a validation action.
+	var installedApks []string
+	for _, appInfo := range appInfos {
+		installedApks = append(installedApks, appInfo.InstallApkName+".apk")
+	}
+	p.apkListFile = android.PathForModuleOut(ctx, "apklist.txt")
+	if len(installedApks) == 0 {
+		android.WriteFileRuleVerbatim(ctx, p.apkListFile, "") // Without newline
+	} else {
+		android.WriteFileRule(ctx, p.apkListFile, strings.Join(android.SortedUniqueStrings(installedApks), "\n")) // With newline
 	}
 }
 
