@@ -73,6 +73,11 @@ type BaseCompilerProperties struct {
 	// module.
 	Instruction_set *string `android:"arch_variant"`
 
+	// always build this module using the Arm64 toolchain. This property is only available on ART
+	// simulator only modules, i.e: modules that are only enabled when ART_USE_SIMULATOR=true.
+	// Defaults to false.
+	Force_arm64 bool
+
 	// list of directories relative to the root of the source tree that will
 	// be added to the include path using -I.
 	// If possible, don't use this.  If adding paths from the current directory use

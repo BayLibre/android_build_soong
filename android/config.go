@@ -690,7 +690,7 @@ func NewConfig(cmdArgs CmdArgs, availableEnv map[string]string) (Config, error) 
 	// Make the CommonOS OsType available for all products.
 	targets[CommonOS] = []Target{commonTargetMap[CommonOS.Name]}
 
-	var archConfig []archConfig
+	var archConfig []ArchConfig
 	if config.NdkAbis() {
 		archConfig = getNdkAbisConfig()
 	} else if config.AmlAbis() {

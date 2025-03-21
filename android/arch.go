@@ -1598,7 +1598,7 @@ func decodeTargetProductVariables(config *config) (map[OsType][]Target, error) {
 			return
 		}
 
-		arch, err := decodeArch(target.os, target.archName, target.archVariant, target.cpuVariant, target.abi)
+		arch, err := DecodeArch(target.os, target.archName, target.archVariant, target.cpuVariant, target.abi)
 		if err != nil {
 			targetErr = err
 			return
@@ -1762,8 +1762,8 @@ func hasArmAndroidArch(targets []Target) bool {
 	return false
 }
 
-// archConfig describes a built-in configuration.
-type archConfig struct {
+// ArchConfig describes a built-in configuration.
+type ArchConfig struct {
 	Arch        string   `json:"arch"`
 	ArchVariant string   `json:"arch_variant"`
 	CpuVariant  string   `json:"cpu_variant"`
@@ -1772,8 +1772,8 @@ type archConfig struct {
 
 // getNdkAbisConfig returns the list of archConfigs that are used for building
 // the API stubs and static libraries that are included in the NDK.
-func getNdkAbisConfig() []archConfig {
-	return []archConfig{
+func getNdkAbisConfig() []ArchConfig {
+	return []ArchConfig{
 		{"arm64", "armv8-a-branchprot", "", []string{"arm64-v8a"}},
 		{"arm", "armv7-a-neon", "", []string{"armeabi-v7a"}},
 		{"riscv64", "", "", []string{"riscv64"}},
@@ -1783,8 +1783,8 @@ func getNdkAbisConfig() []archConfig {
 }
 
 // getAmlAbisConfig returns a list of archConfigs for the ABIs supported by mainline modules.
-func getAmlAbisConfig() []archConfig {
-	return []archConfig{
+func getAmlAbisConfig() []ArchConfig {
+	return []ArchConfig{
 		{"arm64", "armv8-a", "", []string{"arm64-v8a"}},
 		{"arm", "armv7-a-neon", "", []string{"armeabi-v7a"}},
 		{"x86_64", "", "", []string{"x86_64"}},
@@ -1793,11 +1793,11 @@ func getAmlAbisConfig() []archConfig {
 }
 
 // decodeArchSettings converts a list of archConfigs into a list of Targets for the given OsType.
-func decodeAndroidArchSettings(archConfigs []archConfig) ([]Target, error) {
+func decodeAndroidArchSettings(archConfigs []ArchConfig) ([]Target, error) {
 	var ret []Target
 
 	for _, config := range archConfigs {
-		arch, err := decodeArch(Android, config.Arch, &config.ArchVariant,
+		arch, err := DecodeArch(Android, config.Arch, &config.ArchVariant,
 			&config.CpuVariant, config.Abi)
 		if err != nil {
 			return nil, err
@@ -1812,8 +1812,8 @@ func decodeAndroidArchSettings(archConfigs []archConfig) ([]Target, error) {
 	return ret, nil
 }
 
-// decodeArch converts a set of strings from product variables into an Arch struct.
-func decodeArch(os OsType, arch string, archVariant, cpuVariant *string, abi []string) (Arch, error) {
+// DecodeArch converts a set of strings from product variables into an Arch struct.
+func DecodeArch(os OsType, arch string, archVariant, cpuVariant *string, abi []string) (Arch, error) {
 	// Verify the arch is valid
 	archType, ok := archTypeMap[arch]
 	if !ok {

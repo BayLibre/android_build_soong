@@ -2138,6 +2138,32 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 		Toolchain: c.toolchain(ctx),
 		EmitXrefs: ctx.Config().EmitXrefRules(),
 	}
+
+	// If the force_arm64 flag is true then set the toolchain to Arm64 regardless of context.
+	if c.compiler != nil && c.compiler.baseCompilerProps().Force_arm64 {
+		if !ctx.Config().IsEnvTrue("ART_USE_SIMULATOR") {
+			ctx.PropertyErrorf("force_arm64",
+				"force_arm64 is only available on the ART simulator")
+		}
+
+		archConfig := android.ArchConfig{
+			Arch: "arm64",
+			ArchVariant: "armv8-a",
+			CpuVariant: "",
+			Abi: []string{"arm64-v8a"},
+		}
+		arch, err := android.DecodeArch(android.Android, archConfig.Arch, &archConfig.ArchVariant,
+			&archConfig.CpuVariant, archConfig.Abi)
+		if err != nil {
+			panic(fmt.Errorf("failed to decode architecture: %s", err))
+		}
+
+		// Update the toolchain and the cached toolchain in the module.
+		toolchain := config.FindToolchain(android.Android, arch)
+		c.setToolchain(toolchain)
+		flags.Toolchain = toolchain
+	}
+
 	for _, generator := range c.generators {
 		flags = generator.GeneratorFlags(ctx, flags, deps)
 	}
@@ -2537,9 +2563,13 @@ func (c *Module) maybeInstall(ctx ModuleContext, apexInfo android.ApexInfo) {
 
 func (c *Module) toolchain(ctx android.BaseModuleContext) config.Toolchain {
 	if c.cachedToolchain == nil {
-		c.cachedToolchain = config.FindToolchainWithContext(ctx)
+		c.setToolchain(config.FindToolchainWithContext(ctx))
 	}
 	return c.cachedToolchain
+}
+
+func (c *Module) setToolchain(toolchain config.Toolchain) {
+	c.cachedToolchain = toolchain
 }
 
 func (c *Module) begin(ctx BaseModuleContext) {
