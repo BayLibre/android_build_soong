@@ -88,6 +88,24 @@
       "parentUuid": "77475267_7d0d92f7",
       "revId": "7066039f37182e89820b8c0f4b075a2941336d15",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "677dbce0_4b6a6df8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1031448
+      },
+      "writtenOn": "2025-03-21T06:37:34Z",
+      "side": 1,
+      "message": "Thank you Pirama and Krzysztof.",
+      "parentUuid": "6f071814_d71fa113",
+      "revId": "7066039f37182e89820b8c0f4b075a2941336d15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
