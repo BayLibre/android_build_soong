@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a75732fc_4887b75f",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1315,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-03-21T18:19:20Z",
+      "side": 1,
+      "message": "Should this also be true if the current filesystem is the recovery partition?",
+      "range": {
+        "startLine": 1315,
+        "startChar": 8,
+        "endLine": 1315,
+        "endChar": 13
+      },
+      "revId": "225930881de14a09fa2e29eac3a403fb1215afff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
