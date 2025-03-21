@@ -1,5 +1,97 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b24a76dc_258519d9",
+        "filename": "java/dex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2025-03-21T19:56:40Z",
+      "side": 1,
+      "message": "Any reason we couldn\u0027t start by respecting explicit `Optimize.Enabled` settings? And then on `eng`, when not set explicitly, return `false`, otherwise the default?\n\nIs it because that would leave too many targets still using R8?\n\nI\u0027m thinking something like:\n\n```\nreturn BoolDefault(d.dexPreoprties.Optimize.Enabled, !ctx.Config().Eng() \u0026\u0026 d.dexProperties.Optimize.EnabledByDefault)\n```\n\nAlternatively if you want granular control just for `eng`, but which still respects existing explicit optimize enabling configs:\n```\nif ctx.Config().Eng() {\n    return BoolDefault(d.dexProperties.Optimize.Enabled_on_eng, proptools.Bool(d.dexProperties.Optimize.Enabled))\n}\nreturn BoolDefault(d.dexProperties.Optimize.Enabled,  d.dexProperties.Optimize.EnabledByDefault)\n```",
+      "range": {
+        "startLine": 171,
+        "startChar": 45,
+        "endLine": 171,
+        "endChar": 52
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "6c4cc386_e8af886e",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "java/dex.go",
+              "range": {
+                "startLine": 28,
+                "startChar": 0,
+                "endLine": 28,
+                "endChar": 0
+              },
+              "replacement": "// DexProperties contains properties for dexing a module.\n"
+            },
+            {
+              "path": "java/dex.go",
+              "range": {
+                "startLine": 38,
+                "startChar": 0,
+                "endLine": 38,
+                "endChar": 0
+              },
+              "replacement": "\t// Optimize contains properties for optimizing a module.\n"
+            },
+            {
+              "path": "java/dex.go",
+              "range": {
+                "startLine": 166,
+                "startChar": 0,
+                "endLine": 173,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "java/dex.go",
+              "range": {
+                "startLine": 183,
+                "startChar": 0,
+                "endLine": 184,
+                "endChar": 0
+              },
+              "replacement": "\treturn BoolDefault(d.dexProperties.Optimize.Enabled, d.dexProperties.Optimize.EnabledByDefault) \u0026\u0026 (proptools.Bool(d.dexProperties.Optimize.Optimize) || proptools.Bool(d.dexProperties.Optimize.Obfuscate))\n"
+            },
+            {
+              "path": "java/dex.go",
+              "range": {
+                "startLine": 362,
+                "startChar": 0,
+                "endLine": 363,
+                "endChar": 0
+              },
+              "replacement": "\t} else if !BoolDefault(d.dexProperties.Optimize.Enabled, d.dexProperties.Optimize.EnabledByDefault) \u0026\u0026 d.dexProperties.Optimize.EnabledByDefault {\n"
+            },
+            {
+              "path": "java/dex.go",
+              "range": {
+                "startLine": 636,
+                "startChar": 0,
+                "endLine": 637,
+                "endChar": 0
+              },
+              "replacement": "\tuseR8 :\u003d BoolDefault(d.dexProperties.Optimize.Enabled, d.dexProperties.Optimize.EnabledByDefault)\n"
+            }
+          ]
+        }
+      ],
+      "revId": "91e05ea05655e9a8d7c1e661f82ce0f71bc57117",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
