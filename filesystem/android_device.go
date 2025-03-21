@@ -395,6 +395,11 @@ func (a *androidDevice) distFiles(ctx android.ModuleContext) {
 		if a.deviceProps.Android_info != nil {
 			ctx.DistForGoal("droidcore-unbundled", android.PathForModuleSrc(ctx, *a.deviceProps.Android_info))
 		}
+		if a.miscInfo != nil {
+			ctx.DistForGoal("droidcore-unbundled", a.miscInfo)
+			ctx.DistForGoalWithFilename("dist_files", a.miscInfo, "super_misc_info.txt")
+		}
+
 	}
 }
 
