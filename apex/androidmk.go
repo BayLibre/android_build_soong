@@ -296,6 +296,13 @@ func (a *apexBundle) androidMkForType() android.AndroidMkData {
 				fmt.Fprintln(w, dist)
 			}
 
+			for _, moduleName := range moduleNames {
+				fmt.Fprintf(w, "$(info ALL_MODULES.%s.SYMBOLIC_OUTPUT_PATH: $(ALL_MODULES.%s.SYMBOLIC_OUTPUT_PATH))\n", moduleName, moduleName)
+				fmt.Fprintf(w, "$(info ALL_MODULES.%s.ELF_SYMBOL_MAPPING_PATH: $(ALL_MODULES.%s.ELF_SYMBOL_MAPPING_PATH))\n", moduleName, moduleName)
+				fmt.Fprintf(w, "ALL_MODULES.$(my_register_name).SYMBOLIC_OUTPUT_PATH += $(ALL_MODULES.%s.SYMBOLIC_OUTPUT_PATH))\n", moduleName)
+				fmt.Fprintf(w, "ALL_MODULES.$(my_register_name).ELF_SYMBOL_MAPPING_PATH += $(ALL_MODULES.%s.ELF_SYMBOL_MAPPING_PATH))\n", moduleName)
+			}
+
 			distCoverageFiles(w, "ndk_apis_usedby_apex", a.nativeApisUsedByModuleFile.String())
 			distCoverageFiles(w, "ndk_apis_backedby_apex", a.nativeApisBackedByModuleFile.String())
 			distCoverageFiles(w, "java_apis_used_by_apex", a.javaApisUsedByModuleFile.String())
