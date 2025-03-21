@@ -1814,6 +1814,11 @@ func AndroidTestFactory() android.Module {
 	android.InitDefaultableModule(module)
 	android.InitOverridableModule(module, &module.overridableAppProperties.Overrides)
 
+	// If the module did not explicitly specify optimize.enabled_on_eng, copy optimize.enabled.
+	if module.Module.dexProperties.Optimize.Enabled_on_eng == nil {
+		module.Module.dexProperties.Optimize.Enabled_on_eng = module.Module.dexProperties.Optimize.Enabled
+	}
+
 	return module
 }
 
