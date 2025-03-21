@@ -40,6 +40,30 @@
       ],
       "revId": "6d2be3e0c689b094db01e22a4f1ca436ee886b58",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "260c3dcb_219943b0",
+        "filename": "ui/build/androidmk_denylist.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2025-03-21T23:09:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1251cc5e_4d3b1359",
+      "range": {
+        "startLine": 85,
+        "startChar": 32,
+        "endLine": 85,
+        "endChar": 77
+      },
+      "revId": "6d2be3e0c689b094db01e22a4f1ca436ee886b58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
