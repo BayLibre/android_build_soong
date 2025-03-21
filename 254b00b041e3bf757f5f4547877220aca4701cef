@@ -16,6 +16,24 @@
       "message": "Only dist this one if there\u0027s a super image dependency.",
       "revId": "254b00b041e3bf757f5f4547877220aca4701cef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4369c80d_d7727f33",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-03-21T21:36:40Z",
+      "side": 1,
+      "message": "Good catch, done.",
+      "parentUuid": "27a49b86_db05f88d",
+      "revId": "254b00b041e3bf757f5f4547877220aca4701cef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
