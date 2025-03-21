@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7cfcfd8e_09d0b43f",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2025-03-21T21:44:53Z",
+      "side": 1,
+      "message": "nit: .apks is a known filetype (`ApexSet` module type handles this). A bit confusing. ;-)\n\nI\u0027m curious if this should be listed somewhere as intermediate output.",
+      "range": {
+        "startLine": 53,
+        "startChar": 26,
+        "endLine": 53,
+        "endChar": 37
+      },
+      "revId": "5267968369bbe15649b1a6041ba9f0607b045c66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "73414737_0fe50d37",
         "filename": "apex/prebuilt.go",
         "patchSetId": 3
@@ -44,6 +67,57 @@
                 "endChar": 0
               },
               "replacement": "\t\tCommandDeps: []string{\"apex-ls\"},\n"
+            }
+          ]
+        }
+      ],
+      "revId": "5267968369bbe15649b1a6041ba9f0607b045c66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4033a0d_e06c4041",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2025-03-21T21:44:53Z",
+      "side": 1,
+      "message": "nit: Can we run the validation anyway? (regardless of installation) I\u0027m not saying this is incorrect, but for the sake of simplicity.\n\niiuc, validation rule is triggered only when the artifact is built. So the apex is not built for some reason (!installable, !inlist..) the validation is skipped either.",
+      "range": {
+        "startLine": 731,
+        "startChar": 4,
+        "endLine": 731,
+        "endChar": 83
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "fc798811_1a826618",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "apex/prebuilt.go",
+              "range": {
+                "startLine": 724,
+                "startChar": 0,
+                "endLine": 726,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "apex/prebuilt.go",
+              "range": {
+                "startLine": 731,
+                "startChar": 0,
+                "endLine": 749,
+                "endChar": 0
+              },
+              "replacement": "\tctx.Build(pctx, android.BuildParams{\n\t\tRule:     validateApkInPrebuiltApex,\n\t\tInput:    p.inputApex,\n\t\tOutput:   timestamp,\n\t\tImplicit: p.apkListFile,\n\t\tArgs: map[string]string{\n\t\t\t\"expectedApks\": p.apkListFile.String(),\n\t\t\t\"apexName\":     p.Name(),\n\t\t},\n\t})\n"
             }
           ]
         }
