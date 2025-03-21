@@ -125,6 +125,24 @@
       ],
       "revId": "6a3301ab1f810c59489349bba025b069b4053316",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6bd8bc0_009bd971",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 871,
+      "author": {
+        "id": 1308036
+      },
+      "writtenOn": "2025-03-21T05:30:20Z",
+      "side": 1,
+      "message": "Thanks Jihoon for this suggestions.\nI\u0027ve fixed it. PTAL.",
+      "parentUuid": "2c858458_8aad02f1",
+      "revId": "6a3301ab1f810c59489349bba025b069b4053316",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
