@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27a49b86_db05f88d",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-03-21T21:34:05Z",
+      "side": 1,
+      "message": "Only dist this one if there\u0027s a super image dependency.",
+      "revId": "254b00b041e3bf757f5f4547877220aca4701cef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
