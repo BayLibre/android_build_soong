@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "009c3a66_fe843779",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1819,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2025-03-21T20:05:57Z",
+      "side": 1,
+      "message": "What do you think of https://android-review.git.corp.google.com/c/platform/build/soong/+/3555644/comment/b24a76dc_258519d9/? \n\nNot sure about a special carveout just for a test target, what about test helper apps? or apps built for testing?\n\nIn parallel to https://android-review.git.corp.google.com/c/platform/build/soong/+/3555644/comment/b24a76dc_258519d9/, we could go through and update/delete redundant explicit rules that don\u0027t differ from the defaults.\n\nDon\u0027t feel super strongly though.",
+      "range": {
+        "startLine": 1819,
+        "startChar": 30,
+        "endLine": 1819,
+        "endChar": 38
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "b758138e_da098197",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "java/app.go",
+              "range": {
+                "startLine": 1816,
+                "startChar": 0,
+                "endLine": 1821,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "d5fdfd200e5f27b42f8eb44af46803f039ba95e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
