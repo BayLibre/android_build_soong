@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73414737_0fe50d37",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2025-03-21T21:36:34Z",
+      "side": 1,
+      "message": "Ths may not work with EROFS APEX. Besides, we want to avoid using debugfs_static due to b/399476012.\nCan you replace this with `apex-ls`, which should list the contents of apex.",
+      "range": {
+        "startLine": 54,
+        "startChar": 5,
+        "endLine": 54,
+        "endChar": 49
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "d4ab3694_fc8061d3",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "apex/prebuilt.go",
+              "range": {
+                "startLine": 54,
+                "startChar": 0,
+                "endLine": 55,
+                "endChar": 0
+              },
+              "replacement": "\t\t\t` apex-ls ${in} | grep apk$$ | awk -F \u0027/\u0027 \u0027{print $$NF}\u0027 | sort -u \u003e ${out}.apks \u0026\u0026` +\n"
+            },
+            {
+              "path": "apex/prebuilt.go",
+              "range": {
+                "startLine": 58,
+                "startChar": 0,
+                "endLine": 59,
+                "endChar": 0
+              },
+              "replacement": "\t\tCommandDeps: []string{\"apex-ls\"},\n"
+            }
+          ]
+        }
+      ],
+      "revId": "5267968369bbe15649b1a6041ba9f0607b045c66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
