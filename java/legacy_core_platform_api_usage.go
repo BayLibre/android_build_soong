@@ -49,6 +49,7 @@ var legacyCorePlatformApiModules = []string{
 	"sammanagerlibrary",
 	"services",
 	"services.core.unboosted",
+	"services.impl",
 	"Settings-core",
 	"SettingsGoogle",
 	"SettingsGoogleOverlayCoral",
