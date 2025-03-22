@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6aee66f6_c680c1de",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-03-22T00:26:56Z",
+      "side": 1,
+      "message": "Agreed, `.apks` would be a cause of confusion. I have renamed this to `actual_apk_in_prebuilt_apex.txt`, and declared it as an `ImplicitOutput`.",
+      "parentUuid": "7cfcfd8e_09d0b43f",
+      "range": {
+        "startLine": 53,
+        "startChar": 26,
+        "endLine": 53,
+        "endChar": 37
+      },
+      "revId": "5267968369bbe15649b1a6041ba9f0607b045c66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "73414737_0fe50d37",
@@ -75,6 +99,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f257873_53344ef2",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-03-22T00:26:56Z",
+      "side": 1,
+      "message": "Thanks for pointing this out. I have replaced this with `apex-ls`.",
+      "parentUuid": "73414737_0fe50d37",
+      "range": {
+        "startLine": 54,
+        "startChar": 5,
+        "endLine": 54,
+        "endChar": 49
+      },
+      "revId": "5267968369bbe15649b1a6041ba9f0607b045c66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e4033a0d_e06c4041",
@@ -122,6 +170,30 @@
           ]
         }
       ],
+      "revId": "5267968369bbe15649b1a6041ba9f0607b045c66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "608f716e_cba9f98d",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-03-22T00:26:56Z",
+      "side": 1,
+      "message": "My reasoning for this implementation was that uninstallable apexes do not need to be signed, and therefore I wanted to prevent imposing a requirement on the owners of such prebuilt apexes to keep their `apps` property uptodate.\n\nBut I had to reimplement this altogether in #patchet4. Previously I ran into presubmit errors on the minimal art branches because those branches do not contain `frameworks/base` where some of the shim Cts apk-in-apexes are defined. In #patchset4 I have moved the validation action out of the transitive closure of `m $my_prebuilt_apex`. It will now be run when we build the disted `apkcerts.txt` file.\n\nThe incidental side benefit is that we can remove this conditional here.",
+      "parentUuid": "e4033a0d_e06c4041",
+      "range": {
+        "startLine": 731,
+        "startChar": 4,
+        "endLine": 731,
+        "endChar": 83
+      },
       "revId": "5267968369bbe15649b1a6041ba9f0607b045c66",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
