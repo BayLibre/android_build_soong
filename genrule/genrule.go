@@ -112,7 +112,7 @@ func (t hostToolDependencyTag) AllowDisabledModuleDependency(target android.Modu
 
 func (t hostToolDependencyTag) AllowDisabledModuleDependencyProxy(
 	ctx android.OtherModuleProviderContext, target android.ModuleProxy) bool {
-	return android.OtherModuleProviderOrDefault(
+	return android.OtherModulePointerProviderOrDefault(
 		ctx, target, android.CommonModuleInfoProvider).ReplacedByPrebuilt
 }
 
@@ -353,7 +353,7 @@ func (g *Module) generateCommonBuildActions(ctx android.ModuleContext) {
 				if h, ok := android.OtherModuleProvider(ctx, module, android.HostToolProviderInfoProvider); ok {
 					// A HostToolProvider provides the path to a tool, which will be copied
 					// into the sandbox.
-					if !android.OtherModuleProviderOrDefault(ctx, module, android.CommonModuleInfoProvider).Enabled {
+					if !android.OtherModulePointerProviderOrDefault(ctx, module, android.CommonModuleInfoProvider).Enabled {
 						if ctx.Config().AllowMissingDependencies() {
 							ctx.AddMissingDependencies([]string{tool})
 						} else {
@@ -969,29 +969,8 @@ func DefaultsFactory(props ...interface{}) android.Module {
 	return module
 }
 
-var sandboxingAllowlistKey = android.NewOnceKey("genruleSandboxingAllowlistKey")
-
-type sandboxingAllowlistSets struct {
-	sandboxingDenyModuleSet map[string]bool
-}
-
-func getSandboxingAllowlistSets(ctx android.PathContext) *sandboxingAllowlistSets {
-	return ctx.Config().Once(sandboxingAllowlistKey, func() interface{} {
-		sandboxingDenyModuleSet := map[string]bool{}
-
-		android.AddToStringSet(sandboxingDenyModuleSet, SandboxingDenyModuleList)
-		return &sandboxingAllowlistSets{
-			sandboxingDenyModuleSet: sandboxingDenyModuleSet,
-		}
-	}).(*sandboxingAllowlistSets)
-}
-
 func getSandboxedRuleBuilder(ctx android.ModuleContext, r *android.RuleBuilder) *android.RuleBuilder {
 	if !ctx.DeviceConfig().GenruleSandboxing() {
-		return r.SandboxTools()
-	}
-	sandboxingAllowlistSets := getSandboxingAllowlistSets(ctx)
-	if sandboxingAllowlistSets.sandboxingDenyModuleSet[ctx.ModuleName()] {
 		return r.SandboxTools()
 	}
 	return r.SandboxInputs()

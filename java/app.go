@@ -691,7 +691,7 @@ func (a *AndroidApp) aaptBuildActions(ctx android.ModuleContext) {
 	}
 
 	// Use non final ids if we are doing optimized shrinking and are using R8.
-	nonFinalIds := a.dexProperties.optimizedResourceShrinkingEnabled(ctx) && a.dexer.effectiveOptimizeEnabled()
+	nonFinalIds := a.dexProperties.optimizedResourceShrinkingEnabled(ctx) && a.dexer.effectiveOptimizeEnabled(ctx)
 
 	aconfigTextFilePaths := getAconfigFilePaths(ctx)
 
@@ -1233,7 +1233,7 @@ func collectJniDeps(ctx android.ModuleContext,
 	seenModulePaths := make(map[string]bool)
 
 	ctx.WalkDepsProxy(func(module, parent android.ModuleProxy) bool {
-		if !android.OtherModuleProviderOrDefault(ctx, module, android.CommonModuleInfoProvider).Enabled {
+		if !android.OtherModulePointerProviderOrDefault(ctx, module, android.CommonModuleInfoProvider).Enabled {
 			return false
 		}
 		otherName := ctx.OtherModuleName(module)
@@ -1253,7 +1253,7 @@ func collectJniDeps(ctx android.ModuleContext,
 					}
 					seenModulePaths[path.String()] = true
 
-					commonInfo := android.OtherModuleProviderOrDefault(ctx, module, android.CommonModuleInfoProvider)
+					commonInfo := android.OtherModulePointerProviderOrDefault(ctx, module, android.CommonModuleInfoProvider)
 					if checkNativeSdkVersion && commonInfo.SdkVersion == "" {
 						ctx.PropertyErrorf("jni_libs", "JNI dependency %q uses platform APIs, but this module does not",
 							otherName)
@@ -1316,7 +1316,7 @@ func (a *AndroidApp) buildAppDependencyInfo(ctx android.ModuleContext) {
 
 		// Skip dependencies that are only available to APEXes; they are developed with updatability
 		// in mind and don't need manual approval.
-		if android.OtherModuleProviderOrDefault(ctx, to, android.CommonModuleInfoProvider).NotAvailableForPlatform {
+		if android.OtherModulePointerProviderOrDefault(ctx, to, android.CommonModuleInfoProvider).NotAvailableForPlatform {
 			return true
 		}
 
