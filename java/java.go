@@ -670,12 +670,12 @@ func sdkDeps(ctx android.BottomUpMutatorContext, sdkContext android.SdkContext, 
 		ctx.AddVariationDependencies(nil, bootClasspathTag, sdkDep.bootclasspath...)
 		ctx.AddVariationDependencies(nil, java9LibTag, sdkDep.java9Classpath...)
 		ctx.AddVariationDependencies(nil, sdkLibTag, sdkDep.classpath...)
-		if d.effectiveOptimizeEnabled() && sdkDep.hasStandardLibs() {
+		if d.effectiveOptimizeEnabled(ctx) && sdkDep.hasStandardLibs() {
 			ctx.AddVariationDependencies(nil, proguardRaiseTag,
 				config.LegacyCorePlatformBootclasspathLibraries...,
 			)
 		}
-		if d.effectiveOptimizeEnabled() && sdkDep.hasFrameworkLibs() {
+		if d.effectiveOptimizeEnabled(ctx) && sdkDep.hasFrameworkLibs() {
 			ctx.AddVariationDependencies(nil, proguardRaiseTag, config.FrameworkLibraries...)
 		}
 	}
@@ -2235,7 +2235,7 @@ func (j *Binary) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	// install these alongside the java binary.
 	ctx.VisitDirectDepsProxyWithTag(jniInstallTag, func(jni android.ModuleProxy) {
 		// Use the BaseModuleName of the dependency (without any prebuilt_ prefix)
-		commonInfo, _ := android.OtherModuleProvider(ctx, jni, android.CommonModuleInfoProvider)
+		commonInfo := android.OtherModulePointerProviderOrDefault(ctx, jni, android.CommonModuleInfoProvider)
 		j.androidMkNamesOfJniLibs = append(j.androidMkNamesOfJniLibs, commonInfo.BaseModuleName+":"+commonInfo.Target.Arch.ArchType.Bitness())
 	})
 	// Check that native libraries are not listed in `required`. Prompt users to use `jni_libs` instead.
