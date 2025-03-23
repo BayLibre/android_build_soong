@@ -17,8 +17,6 @@ package cc
 import (
 	"android/soong/android"
 	"github.com/google/blueprint"
-
-	"github.com/google/blueprint/proptools"
 )
 
 func init() {
@@ -36,7 +34,7 @@ type fdoProfile struct {
 }
 
 type fdoProfileProperties struct {
-	Profile proptools.Configurable[string] `android:"arch_variant,replace_instead_of_append"`
+	Profile *string `android:"arch_variant"`
 }
 
 // FdoProfileInfo is provided by FdoProfileProvider
@@ -49,9 +47,8 @@ var FdoProfileProvider = blueprint.NewProvider[FdoProfileInfo]()
 
 // GenerateAndroidBuildActions of fdo_profile does not have any build actions
 func (fp *fdoProfile) GenerateAndroidBuildActions(ctx android.ModuleContext) {
-	profile := fp.properties.Profile.GetOrDefault(ctx, "")
-	if profile != "" {
-		path := android.PathForModuleSrc(ctx, profile)
+	if fp.properties.Profile != nil {
+		path := android.PathForModuleSrc(ctx, *fp.properties.Profile)
 		android.SetProvider(ctx, FdoProfileProvider, FdoProfileInfo{
 			Path: path,
 		})
