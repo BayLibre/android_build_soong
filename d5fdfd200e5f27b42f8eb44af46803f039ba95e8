@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99647c07_e9bf26ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2025-03-24T17:19:06Z",
+      "side": 1,
+      "message": "prerequisite CLs are being reverted.",
+      "revId": "d5fdfd200e5f27b42f8eb44af46803f039ba95e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "009c3a66_fe843779",
