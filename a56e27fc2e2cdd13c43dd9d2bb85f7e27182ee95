@@ -16,6 +16,24 @@
       "message": "Do we need this if? Can\u0027t we just always build the symbols zip?",
       "revId": "a56e27fc2e2cdd13c43dd9d2bb85f7e27182ee95",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb117d5a_32f60bb5",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-03-24T23:25:07Z",
+      "side": 1,
+      "message": "Yeah given that the copying is now done per module I believe this condition is no longer needed.",
+      "parentUuid": "b0f3edcf_e4ff6d83",
+      "revId": "a56e27fc2e2cdd13c43dd9d2bb85f7e27182ee95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
