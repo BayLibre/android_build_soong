@@ -15,9 +15,10 @@
 package filesystem
 
 import (
-	"android/soong/android"
 	"strconv"
 	"strings"
+
+	"android/soong/android"
 
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
@@ -45,6 +46,7 @@ func (f *filesystem) buildAconfigFlagsFiles(
 	specs map[string]android.PackagingSpec,
 	dir android.OutputPath,
 	fullInstallPaths *[]FullInstallPathInfo,
+	platformGeneratedFiles *[]string,
 ) {
 	if !proptools.Bool(f.properties.Gen_aconfig_flags_pb) {
 		return
@@ -88,11 +90,13 @@ func (f *filesystem) buildAconfigFlagsFiles(
 		installAconfigFlagsPath := installEtcDir.Join(ctx, "aconfig_flags.pb")
 		builder.Command().Text("mkdir -p ").Text(installEtcDir.String())
 		builder.Command().Text("cp").Input(aconfigFlagsPb).Text(installAconfigFlagsPath.String())
-		*fullInstallPaths = append(*fullInstallPaths, FullInstallPathInfo{
+		fullInstallPathInfo := FullInstallPathInfo{
 			FullInstallPath: fullInstallPath.Join(ctx, "etc/aconfig_flags.pb"),
 			SourcePath:      aconfigFlagsPb,
-		})
+		}
+		*fullInstallPaths = append(*fullInstallPaths, fullInstallPathInfo)
 		f.appendToEntry(ctx, installAconfigFlagsPath)
+		*platformGeneratedFiles = append(*platformGeneratedFiles, fullInstallPathInfo.FullInstallPath.String())
 
 		// To enable fingerprint, we need to have v2 storage files. The default version is 1.
 		storageFilesVersion := 1
@@ -118,11 +122,13 @@ func (f *filesystem) buildAconfigFlagsFiles(
 			})
 			builder.Command().
 				Text("cp").Input(outPath).Text(installPath.String())
+			fullInstallPath := fullInstallPath.Join(ctx, "etc/aconfig", fileName)
 			*fullInstallPaths = append(*fullInstallPaths, FullInstallPathInfo{
 				SourcePath:      outPath,
-				FullInstallPath: fullInstallPath.Join(ctx, "etc/aconfig", fileName),
+				FullInstallPath: fullInstallPath,
 			})
 			f.appendToEntry(ctx, installPath)
+			*platformGeneratedFiles = append(*platformGeneratedFiles, fullInstallPath.String())
 		}
 
 		if ctx.Config().ReleaseCreateAconfigStorageFile() {
