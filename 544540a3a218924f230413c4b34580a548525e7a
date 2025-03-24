@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7cb5dd6_2c3e4f85",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 791,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-03-24T20:35:56Z",
+      "side": 1,
+      "message": "I had to bring back this conditional. Without it, this CL encounters presubmit errors because some non installable apexes used in CTS tests (e.g. [ApexKeyRotationTestV2_SignedBob](https://cs.android.com/android/_/android/platform/cts/+/2a9bae067b92da48bece73c05c51ddc434a96208:hostsidetests/stagedinstall/Android.bp;l\u003d97-118;bpv\u003d1;bpt\u003d0;drc\u003d037399cc24df533920b8014488bc8f16ec203e16)) currently do not declare their `apps`.\n\nEven though the apex is not installed on any product, the validation is triggered for all prebuilt apexes (installed + not installed) at ToT today. When `RELEASE_APKCERTS_INSTALL_ONLY` is moved to `trunk_staging` and beyond, I think we can drop this conditional.",
+      "range": {
+        "startLine": 791,
+        "startChar": 4,
+        "endLine": 791,
+        "endChar": 23
+      },
+      "revId": "544540a3a218924f230413c4b34580a548525e7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
