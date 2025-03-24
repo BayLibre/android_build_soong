@@ -16,6 +16,24 @@
       "message": "Use `FlagForEachArg`",
       "revId": "ca38758321dc3611c30e11b50b5855296cf9b462",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c9a8376_d341df60",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 976,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-03-24T21:29:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06b4b011_6a0f6ddb",
+      "revId": "ca38758321dc3611c30e11b50b5855296cf9b462",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
