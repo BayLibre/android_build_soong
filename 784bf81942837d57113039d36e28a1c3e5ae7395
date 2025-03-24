@@ -1,0 +1,39 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17558a87_e1568840",
+        "filename": "cmd/incremental_javac_input/README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2025-03-24T18:10:38Z",
+      "side": 1,
+      "message": "It might be better to have them specified one at a time, instead of as a space separated list, since you need to have quotes around the list for it to behave correctly.\n`--localHeaderJars \"[headerJarPath1] [headerJarPath2]\"` as currently coded.",
+      "fixSuggestions": [
+        {
+          "fixId": "5a728b4f_56152335",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "cmd/incremental_javac_input/README.md",
+              "range": {
+                "startLine": 38,
+                "startChar": 0,
+                "endLine": 39,
+                "endChar": 0
+              },
+              "replacement": "incremental_javac_input --srcs [srcRspFile] --deps [depsRspFile] --javacTarget [javacTargetPath] --srcDepsProto [srcDepsProtoPath] --localHeaderJars [headerJarPath1] [headerJarPath2]\n"
+            }
+          ]
+        }
+      ],
+      "revId": "784bf81942837d57113039d36e28a1c3e5ae7395",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
