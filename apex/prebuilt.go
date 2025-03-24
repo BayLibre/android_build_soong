@@ -788,7 +788,7 @@ func (p *Prebuilt) addApkCertsInfo(ctx android.ModuleContext) {
 	}
 	p.apkCertsFile = android.PathForModuleOut(ctx, "apkcerts.txt")
 	var validations android.Paths
-	if p.IsInstallable() {
+	if p.IsInstallable() && !ctx.Config().IsEnvTrue("SKIP_PREBUILT_APEX_APKCERTS_VALIDATION") {
 		// Skip the validation for non-installable prebuilt apexes (e.g. used in CTS tests).
 		validations = append(validations, p.validateApkInPrebuiltApex(ctx, appInfos))
 	}
