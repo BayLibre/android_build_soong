@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06b4b011_6a0f6ddb",
+        "filename": "filesystem/android_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 976,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-03-24T21:21:00Z",
+      "side": 1,
+      "message": "Use `FlagForEachArg`",
+      "revId": "ca38758321dc3611c30e11b50b5855296cf9b462",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
