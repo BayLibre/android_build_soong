@@ -233,7 +233,7 @@ func (bpf *bpf) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		installDir = installDir.Join(ctx, bpf.properties.Sub_dir)
 	}
 	for _, obj := range bpf.objs {
-		ctx.PackageFile(installDir, obj.Base(), obj)
+		ctx.InstallFile(installDir, obj.Base(), obj)
 	}
 
 	android.SetProvider(ctx, BpfInfoProvider, BpfInfo{
