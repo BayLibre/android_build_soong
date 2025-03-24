@@ -236,7 +236,7 @@ func (libbpf *libbpfProg) GenerateAndroidBuildActions(ctx android.ModuleContext)
 		installDir = installDir.Join(ctx, libbpf.properties.Relative_install_path)
 	}
 	for _, obj := range libbpf.objs {
-		ctx.PackageFile(installDir, obj.Base(), obj)
+		ctx.InstallFile(installDir, obj.Base(), obj)
 	}
 
 	ctx.SetOutputFiles(libbpf.objs, "")
