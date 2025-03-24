@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8bff1525_5ff6116e",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 980,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-03-24T23:23:29Z",
+      "side": 1,
+      "message": "I\u0027ve modified `AppendSymbols` to handle nil or duplicate entries. I believe this would enforce cc/rust modules to have a single entry in the `Symbols` array.",
+      "parentUuid": "f8cf782b_499833a8",
+      "revId": "152a6a7793f25bb328e1382f869796938b3a9f54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a027f86c_08243042",
         "filename": "cc/cc.go",
         "patchSetId": 1
