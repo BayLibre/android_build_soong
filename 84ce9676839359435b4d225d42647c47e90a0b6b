@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b373313b_e7208df1",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2025-03-24T01:43:37Z",
+      "side": 1,
+      "message": "`-Z` is to print security contexts of each entry. You can omit it if it\u0027s not needed.",
+      "range": {
+        "startLine": 54,
+        "startChar": 5,
+        "endLine": 54,
+        "endChar": 45
+      },
+      "revId": "84ce9676839359435b4d225d42647c47e90a0b6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
