@@ -25,6 +25,7 @@ import (
 	"android/soong/android"
 
 	"github.com/google/blueprint"
+	"github.com/google/blueprint/depset"
 	"github.com/google/blueprint/proptools"
 )
 
@@ -293,6 +294,17 @@ func (s *superImage) buildMiscInfo(ctx android.ModuleContext, superEmpty bool) (
 			ctx.PropertyErrorf("system_other_partition", "Expected 1 output file from module %q", *&s.properties.System_other_partition)
 		} else {
 			handleSubPartition("system_other", s.partitionProps.System_other_partition)
+		}
+
+		info, ok := android.OtherModuleProvider(ctx, systemOther, FilesystemProvider)
+		if systemInfo, hasSystem := subImageInfo["system"]; ok && hasSystem {
+			newInstalledFilesDepSet := depset.New(
+				depset.POSTORDER,
+				systemInfo.InstalledFilesDepSet.ToList(),
+				[]depset.DepSet[InstalledFilesStruct]{info.InstalledFilesDepSet},
+			)
+			systemInfo.InstalledFilesDepSet = newInstalledFilesDepSet
+			subImageInfo["system"] = systemInfo
 		}
 	}
 
