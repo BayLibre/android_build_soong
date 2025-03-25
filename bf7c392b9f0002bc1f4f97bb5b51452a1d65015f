@@ -16,6 +16,24 @@
       "message": "We shoudln\u0027t create another dir under the rootDir, in case we add a packaging step after this or reorder this to come earlier. Could you instead create use `PathForModuleOut(ctx, \"root_for_installed_files\", \"root\")`?",
       "revId": "bf7c392b9f0002bc1f4f97bb5b51452a1d65015f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f646e3bb_8469b720",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 707,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2025-03-25T23:47:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02646c6d_1b524069",
+      "revId": "bf7c392b9f0002bc1f4f97bb5b51452a1d65015f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
