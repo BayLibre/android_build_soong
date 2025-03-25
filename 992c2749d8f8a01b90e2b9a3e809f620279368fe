@@ -22,6 +22,30 @@
       },
       "revId": "992c2749d8f8a01b90e2b9a3e809f620279368fe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "adaae455_f48f6bc4",
+        "filename": "scripts/check_rust.py",
+        "patchSetId": 15
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 3815749
+      },
+      "writtenOn": "2025-03-25T17:16:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76262c06_104d17f2",
+      "range": {
+        "startLine": 21,
+        "startChar": 86,
+        "endLine": 21,
+        "endChar": 87
+      },
+      "revId": "992c2749d8f8a01b90e2b9a3e809f620279368fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
