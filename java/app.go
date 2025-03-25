@@ -1801,6 +1801,7 @@ func AndroidTestFactory() android.Module {
 	module.appProperties.AlwaysPackageNativeLibs = true
 	module.Module.dexpreopter.isTest = true
 	module.Module.linter.properties.Lint.Test_module_type = proptools.BoolPtr(true)
+	module.aaptProperties.DisableNonUpdatableSystem = true
 
 	module.addHostAndDeviceProperties()
 	module.AddProperties(
@@ -1859,6 +1860,7 @@ func AndroidTestHelperAppFactory() android.Module {
 	module.appProperties.AlwaysPackageNativeLibs = true
 	module.Module.dexpreopter.isTest = true
 	module.Module.linter.properties.Lint.Test_module_type = proptools.BoolPtr(true)
+	module.aaptProperties.DisableNonUpdatableSystem = true
 
 	module.addHostAndDeviceProperties()
 	module.AddProperties(
