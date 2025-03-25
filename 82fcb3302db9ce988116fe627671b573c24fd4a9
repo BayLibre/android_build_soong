@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "babd33ea_02642a61",
+        "filename": "android/compliance_metadata.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-03-25T17:25:24Z",
+      "side": 1,
+      "message": "nit: `platform` is an overloaded term and in some contexts it means the sytem partition. Since we are using this variable to store information about files from all partitions, I would consider using a different variable name.",
+      "range": {
+        "startLine": 135,
+        "startChar": 1,
+        "endLine": 135,
+        "endChar": 23
+      },
+      "revId": "82fcb3302db9ce988116fe627671b573c24fd4a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
