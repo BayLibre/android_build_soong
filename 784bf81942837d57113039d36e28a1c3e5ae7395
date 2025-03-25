@@ -34,6 +34,24 @@
       ],
       "revId": "784bf81942837d57113039d36e28a1c3e5ae7395",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55960584_8ba0346c",
+        "filename": "cmd/incremental_javac_input/README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1972821
+      },
+      "writtenOn": "2025-03-25T13:45:06Z",
+      "side": 1,
+      "message": "Fixed in ag/32642024. Abandoning this review.",
+      "parentUuid": "17558a87_e1568840",
+      "revId": "784bf81942837d57113039d36e28a1c3e5ae7395",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
