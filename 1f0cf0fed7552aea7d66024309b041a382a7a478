@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f88beff2_d9e70b70",
+        "filename": "filesystem/super_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-03-25T17:05:58Z",
+      "side": 1,
+      "message": "Why are we adding it to system\u0027s info? We already have a `subImageInfo[\"system_other\"]`, shouldn\u0027t we use that?",
+      "revId": "1f0cf0fed7552aea7d66024309b041a382a7a478",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1aede3c6_11ad1cdc",
+        "filename": "filesystem/system_other.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-03-25T17:05:58Z",
+      "side": 1,
+      "message": "Can you use `nil` here instead of an empty list? Not sure if an empty list allocates or not.",
+      "revId": "1f0cf0fed7552aea7d66024309b041a382a7a478",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
