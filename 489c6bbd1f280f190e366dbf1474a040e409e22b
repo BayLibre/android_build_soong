@@ -16,6 +16,24 @@
       "message": "```suggestion\n// If soc_specific property is set to true, the prebuilt file is installed to the\n```",
       "revId": "489c6bbd1f280f190e366dbf1474a040e409e22b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fac68aa8_d542fc48",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 867,
+      "author": {
+        "id": 1308036
+      },
+      "writtenOn": "2025-03-25T01:42:47Z",
+      "side": 1,
+      "message": "Done. Thanks Jihoon.",
+      "parentUuid": "856ebfdb_d6db5a3d",
+      "revId": "489c6bbd1f280f190e366dbf1474a040e409e22b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
