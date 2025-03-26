@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99785285_e95ffe4c",
+        "filename": "android/override_module.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-03-26T21:45:55Z",
+      "side": 1,
+      "message": "nit: Can we replace these two booleans with a single boolean for use in line 325?",
+      "range": {
+        "startLine": 261,
+        "startChar": 1,
+        "endLine": 262,
+        "endChar": 38
+      },
+      "revId": "10fd6026a36354d50253461d13691f50bb657278",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84e2e45c_3143c76a",
+        "filename": "android/override_module.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-03-26T21:45:55Z",
+      "side": 1,
+      "message": "nit: `if info.overrideModuleHasPrebuilt \u0026\u0026 info.overrideModuleUsePrebuilt`",
+      "range": {
+        "startLine": 325,
+        "startChar": 1,
+        "endLine": 326,
+        "endChar": 37
+      },
+      "revId": "10fd6026a36354d50253461d13691f50bb657278",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
