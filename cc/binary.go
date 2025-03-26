@@ -203,6 +203,7 @@ func newBinary(hod android.HostOrDeviceSupported) (*Module, *binaryDecorator) {
 	module.compiler = NewBaseCompiler()
 	module.linker = binary
 	module.installer = binary
+	module.incremental = true
 
 	// Allow module to be added as member of an sdk/module_exports.
 	module.sdkMemberTypes = []android.SdkMemberType{

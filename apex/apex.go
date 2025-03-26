@@ -712,7 +712,7 @@ type dependencyTag struct {
 	installable bool
 }
 
-func (d *dependencyTag) SdkMemberType(_ android.Module) android.SdkMemberType {
+func (d *dependencyTag) SdkMemberType(_ android.ModuleContext, _ android.Module) android.SdkMemberType {
 	return d.memberType
 }
 
@@ -2237,6 +2237,8 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	android.SetProvider(ctx, filesystem.ApexKeyPathInfoProvider, filesystem.ApexKeyPathInfo{a.apexKeysPath})
 
 	android.SetProvider(ctx, java.AppInfosProvider, a.appInfos)
+
+	android.SetProvider(ctx, android.ApexBundleTypeInfoProvider, android.ApexBundleTypeInfo{})
 }
 
 // Set prebuiltInfoProvider. This will be used by `apex_prebuiltinfo_singleton` to print out a metadata file

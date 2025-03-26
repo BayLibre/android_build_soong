@@ -1951,6 +1951,8 @@ type CommonModuleInfo struct {
 	ExportedToMake                               bool
 	Team                                         string
 	PartitionTag                                 string
+	ApexAvailable                                []string
+	ImageVariation                               blueprint.Variation
 }
 
 type ApiLevelOrPlatform struct {
@@ -2319,6 +2321,7 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 		ExportedToMake:                               m.ExportedToMake(),
 		Team:                                         m.Team(),
 		PartitionTag:                                 m.PartitionTag(ctx.DeviceConfig()),
+		ImageVariation:                               m.module.ImageVariation(),
 	}
 	if mm, ok := m.module.(interface {
 		MinSdkVersion(ctx EarlyModuleContext) ApiLevel
@@ -2354,6 +2357,7 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 		commonData.MinSdkVersionSupported = am.MinSdkVersionSupported(ctx)
 		commonData.IsInstallableToApex = am.IsInstallableToApex()
 		commonData.IsApexModule = true
+		commonData.ApexAvailable = am.apexModuleBase().ApexAvailable()
 	}
 
 	if _, ok := m.module.(ModuleWithMinSdkVersionCheck); ok {

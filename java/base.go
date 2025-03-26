@@ -1323,6 +1323,7 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars, extraClasspath
 			StubsLinkType:                       j.stubsLinkType,
 			AconfigIntermediateCacheOutputPaths: deps.aconfigProtoFiles,
 			SdkVersion:                          j.SdkVersion(ctx),
+			OverrideMinSdkVersion:               j.overridableProperties.Min_sdk_version,
 		}
 	}
 
@@ -1951,6 +1952,7 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars, extraClasspath
 		AconfigIntermediateCacheOutputPaths: j.aconfigCacheFiles,
 		SdkVersion:                          j.SdkVersion(ctx),
 		OutputFile:                          j.outputFile,
+		OverrideMinSdkVersion:               j.overridableProperties.Min_sdk_version,
 	}
 }
 
