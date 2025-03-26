@@ -16,6 +16,24 @@
       "message": "What tool are you using to find these hotspots?",
       "revId": "7c7e436f1cc093a0977b24de1bff9fe375046cda",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23671276_8f206c5c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2025-03-26T18:10:52Z",
+      "side": 1,
+      "message": "I had manually hacked up calls to `trace.StartTrace` into every mutator and GenerateBuildActions to debug aosp/3561444, and noticed long execution in a single goroutine with the same start and end stacks for every scheduling event.  After that I just added some printf debugging to log all GenerateBuildAction modules that lasted over 1 second.",
+      "parentUuid": "279579d6_9d1e9af4",
+      "revId": "7c7e436f1cc093a0977b24de1bff9fe375046cda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
