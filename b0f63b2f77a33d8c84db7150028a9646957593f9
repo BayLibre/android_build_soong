@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "266d9923_20b2252e",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 603,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2025-03-26T18:03:07Z",
+      "side": 1,
+      "message": "This is only checking if XOM is globally enabled, but it shouldn\u0027t it not error if XOM is disabled by `XOMDisabledForPath` or by an explicit property on the module?",
+      "range": {
+        "startLine": 603,
+        "startChar": 44,
+        "endLine": 603,
+        "endChar": 68
+      },
+      "revId": "b0f63b2f77a33d8c84db7150028a9646957593f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
