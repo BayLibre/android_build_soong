@@ -289,7 +289,7 @@ func (c *complianceMetadataSingleton) GenerateBuildActions(ctx SingletonContext)
 
 	rowId := -1
 	ctx.VisitAllModuleProxies(func(module ModuleProxy) {
-		commonInfo, _ := OtherModuleProvider(ctx, module, CommonModuleInfoProvider)
+		commonInfo, _ := OtherModuleProvider(ctx, module, CommonModuleInfoKey)
 		if !commonInfo.Enabled {
 			return
 		}

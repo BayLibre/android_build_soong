@@ -531,7 +531,7 @@ func (a *AndroidApp) checkJniLibsSdkVersion(ctx android.ModuleContext, minSdkVer
 		if _, ok := android.OtherModuleProvider(ctx, m, cc.CcInfoProvider); !ok {
 			panic(fmt.Errorf("jni dependency is not a cc module: %v", m))
 		}
-		commonInfo, ok := android.OtherModuleProvider(ctx, m, android.CommonModuleInfoProvider)
+		commonInfo, ok := android.OtherModuleProvider(ctx, m, android.CommonModuleInfoKey)
 		if !ok {
 			panic(fmt.Errorf("jni dependency doesn't have CommonModuleInfo provider: %v", m))
 		}
@@ -1229,7 +1229,7 @@ func collectJniDeps(ctx android.ModuleContext,
 	seenModulePaths := make(map[string]bool)
 
 	ctx.WalkDepsProxy(func(module, parent android.ModuleProxy) bool {
-		if !android.OtherModuleProviderOrDefault(ctx, module, android.CommonModuleInfoProvider).Enabled {
+		if !android.OtherModuleProviderOrDefault(ctx, module, android.CommonModuleInfoKey).Enabled {
 			return false
 		}
 		otherName := ctx.OtherModuleName(module)
@@ -1249,7 +1249,7 @@ func collectJniDeps(ctx android.ModuleContext,
 					}
 					seenModulePaths[path.String()] = true
 
-					commonInfo := android.OtherModuleProviderOrDefault(ctx, module, android.CommonModuleInfoProvider)
+					commonInfo := android.OtherModuleProviderOrDefault(ctx, module, android.CommonModuleInfoKey)
 					if checkNativeSdkVersion && commonInfo.SdkVersion == "" {
 						ctx.PropertyErrorf("jni_libs", "JNI dependency %q uses platform APIs, but this module does not",
 							otherName)
@@ -1312,7 +1312,7 @@ func (a *AndroidApp) buildAppDependencyInfo(ctx android.ModuleContext) {
 
 		// Skip dependencies that are only available to APEXes; they are developed with updatability
 		// in mind and don't need manual approval.
-		if android.OtherModuleProviderOrDefault(ctx, to, android.CommonModuleInfoProvider).NotAvailableForPlatform {
+		if android.OtherModuleProviderOrDefault(ctx, to, android.CommonModuleInfoKey).NotAvailableForPlatform {
 			return true
 		}
 
@@ -1322,7 +1322,7 @@ func (a *AndroidApp) buildAppDependencyInfo(ctx android.ModuleContext) {
 			depsInfo[depName] = info
 		} else {
 			toMinSdkVersion := "(no version)"
-			if info, ok := android.OtherModuleProvider(ctx, to, android.CommonModuleInfoProvider); ok &&
+			if info, ok := android.OtherModuleProvider(ctx, to, android.CommonModuleInfoKey); ok &&
 				!info.MinSdkVersion.IsPlatform && info.MinSdkVersion.ApiLevel != nil {
 				toMinSdkVersion = info.MinSdkVersion.ApiLevel.String()
 			}

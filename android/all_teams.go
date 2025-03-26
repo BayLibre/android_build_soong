@@ -116,7 +116,7 @@ func (t *allTeamsSingleton) GenerateBuildActions(ctx SingletonContext) {
 			testOnly:           testModInfo.TestOnly,
 			topLevelTestTarget: testModInfo.TopLevelTarget,
 			kind:               ctx.ModuleType(module),
-			teamName:           OtherModuleProviderOrDefault(ctx, module, CommonModuleInfoProvider).Team,
+			teamName:           OtherModuleProviderOrDefault(ctx, module, CommonModuleInfoKey).Team,
 		}
 		t.teams_for_mods[module.Name()] = entry
 
