@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e0f40a2_cba1f040",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-03-26T18:00:33Z",
+      "side": 1,
+      "message": "I inadvertently missed a newline somewhere in my implementation\n```\nname\u003d\"CtsShim.apk\" certificate\u003d\"build/make/target/product/security/testkey.x509.pem\" private_key\u003d\"build/make/target/product/security/testkey.pk8\" partition\u003d\"system\"\nname\u003d\"CtsShimPriv.apk\" certificate\u003d\"build/make/target/product/security/testkey.x509.pem\" private_key\u003d\"build/make/target/product/security/testkey.pk8\" partition\u003d\"system\"name\u003d\"com.android.appsearch.apk.apk\" certificate\u003d\"packages/modules/AppSearch/apk/com.android.appsearch.apk.x509.pem\" private_key\u003d\"packages/modules/AppSearch/apk/com.android.appsearch.apk.pk8\" partition\u003d\"system\"\n```\n\nI have +2d the revert.",
+      "revId": "0d7022ac6d70c1f1953d7958e9cb4b0522f7d153",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
