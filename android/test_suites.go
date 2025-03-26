@@ -90,6 +90,7 @@ var testSuiteInstallsInfoProvider = blueprint.NewProvider[testSuiteInstallsInfo]
 
 func (t *testSuiteFiles) GenerateBuildActions(ctx SingletonContext) {
 	files := make(map[string]map[string]InstallPaths)
+	allTestSuiteInstalls := make(map[string][]Path)
 	var toInstall []filePair
 
 	ctx.VisitAllModuleProxies(func(m ModuleProxy) {
@@ -102,23 +103,33 @@ func (t *testSuiteFiles) GenerateBuildActions(ctx SingletonContext) {
 				files[testSuite][name] = append(files[testSuite][name],
 					OtherModuleProviderOrDefault(ctx, m, InstallFilesProvider).InstallFiles...)
 			}
-		}
-		if testSuiteInstalls, ok := OtherModuleProvider(ctx, m, testSuiteInstallsInfoProvider); ok {
-			installs := OtherModuleProviderOrDefault(ctx, m, InstallFilesProvider).InstallFiles
-			for _, f := range testSuiteInstalls.Files {
-				alreadyInstalled := false
-				for _, install := range installs {
-					if install.String() == f.dst.String() {
-						alreadyInstalled = true
-						break
+
+			if testSuiteInstalls, ok := OtherModuleProvider(ctx, m, testSuiteInstallsInfoProvider); ok {
+				for _, testSuite := range tsm.TestSuites {
+					for _, f := range testSuiteInstalls.Files {
+						allTestSuiteInstalls[testSuite] = append(allTestSuiteInstalls[testSuite], f.dst)
 					}
 				}
-				if !alreadyInstalled {
-					toInstall = append(toInstall, f)
+				installs := OtherModuleProviderOrDefault(ctx, m, InstallFilesProvider).InstallFiles
+				for _, f := range testSuiteInstalls.Files {
+					alreadyInstalled := false
+					for _, install := range installs {
+						if install.String() == f.dst.String() {
+							alreadyInstalled = true
+							break
+						}
+					}
+					if !alreadyInstalled {
+						toInstall = append(toInstall, f)
+					}
 				}
 			}
 		}
 	})
+
+	for suite, suiteInstalls := range allTestSuiteInstalls {
+		allTestSuiteInstalls[suite] = SortedUniquePaths(suiteInstalls)
+	}
 
 	sort.Slice(toInstall, func(i, j int) bool {
 		c := strings.Compare(toInstall[i].src.String(), toInstall[j].src.String())
@@ -147,6 +158,8 @@ func (t *testSuiteFiles) GenerateBuildActions(ctx SingletonContext) {
 	ravenwoodZip, ravenwoodListZip := buildTestSuite(ctx, "ravenwood-tests", files["ravenwood-tests"])
 	ctx.Phony("ravenwood-tests", ravenwoodZip, ravenwoodListZip)
 	ctx.DistForGoal("ravenwood-tests", ravenwoodZip, ravenwoodListZip)
+
+	buildPerformanceTests(ctx, allTestSuiteInstalls["performance-tests"])
 }
 
 func buildTestSuite(ctx SingletonContext, suiteName string, files map[string]InstallPaths) (Path, Path) {
@@ -212,4 +225,81 @@ func pathForPackaging(ctx PathContext, pathComponents ...string) OutputPath {
 
 func pathForTestCases(ctx PathContext) InstallPath {
 	return pathForInstall(ctx, ctx.Config().BuildOS, X86, "testcases")
+}
+
+func buildPerformanceTests(ctx SingletonContext, files Paths) {
+	hostOutTestCases := pathForInstall(ctx, ctx.Config().BuildOSTarget.Os, ctx.Config().BuildOSTarget.Arch.ArchType, "testcases")
+	targetOutTestCases := pathForInstall(ctx, ctx.Config().AndroidFirstDeviceTarget.Os, ctx.Config().AndroidFirstDeviceTarget.Arch.ArchType, "testcases")
+	hostOut := filepath.Dir(hostOutTestCases.String())
+	targetOut := filepath.Dir(targetOutTestCases.String())
+
+	testsZip := pathForPackaging(ctx, "performance-tests.zip")
+	testsListTxt := pathForPackaging(ctx, "performance-tests_list.txt")
+	testsListZip := pathForPackaging(ctx, "performance-tests_list.zip")
+	testsConfigsZip := pathForPackaging(ctx, "performance-tests_configs.zip")
+	var listLines []string
+
+	testsZipBuilder := NewRuleBuilder(pctx, ctx)
+	testsZipCmd := testsZipBuilder.Command().
+		BuiltTool("soong_zip").
+		Flag("-sha256").
+		Flag("-d").
+		FlagWithOutput("-o ", testsZip).
+		FlagWithArg("-P ", "host").
+		FlagWithArg("-C ", filepath.Dir(hostOutTestCases.String()))
+
+	testsConfigsZipBuilder := NewRuleBuilder(pctx, ctx)
+	testsConfigsZipCmd := testsConfigsZipBuilder.Command().
+		BuiltTool("soong_zip").
+		Flag("-d").
+		FlagWithOutput("-o ", testsConfigsZip).
+		FlagWithArg("-P ", "host").
+		FlagWithArg("-C ", filepath.Dir(hostOutTestCases.String()))
+
+	for _, f := range files {
+		if strings.HasPrefix(f.String(), hostOutTestCases.String()) {
+			testsZipCmd.FlagWithInput("-f ", f)
+
+			if strings.HasSuffix(f.String(), ".config") {
+				testsConfigsZipCmd.FlagWithInput("-f ", f)
+				listLines = append(listLines, strings.Replace(f.String(), hostOut, "host", 1))
+			}
+		}
+	}
+
+	testsZipCmd.
+		FlagWithArg("-P ", "target").
+		FlagWithArg("-C ", filepath.Dir(targetOutTestCases.String()))
+	testsConfigsZipCmd.
+		FlagWithArg("-P ", "target").
+		FlagWithArg("-C ", filepath.Dir(targetOutTestCases.String()))
+
+	for _, f := range files {
+		if strings.HasPrefix(f.String(), targetOutTestCases.String()) {
+			testsZipCmd.FlagWithInput("-f ", f)
+
+			if strings.HasSuffix(f.String(), ".config") {
+				testsConfigsZipCmd.FlagWithInput("-f ", f)
+				listLines = append(listLines, strings.Replace(f.String(), targetOut, "target", 1))
+			}
+		}
+	}
+
+	testsZipBuilder.Build("performance_tests_zip", "building performance-tests zip")
+	testsConfigsZipBuilder.Build("performance_tests_configs_zip", "building performance-tests configs zip")
+
+	WriteFileRule(ctx, testsListTxt, strings.Join(listLines, "\n"))
+
+	testsListZipBuilder := NewRuleBuilder(pctx, ctx)
+	testsListZipBuilder.Command().
+		BuiltTool("soong_zip").
+		Flag("-d").
+		FlagWithOutput("-o ", testsListZip).
+		FlagWithArg("-e ", "performance-tests_list").
+		FlagWithInput("-f ", testsListTxt)
+	testsListZipBuilder.Build("performance_tests_list_zip", "building performance-tests list zip")
+
+	ctx.Phony("performance-tests", testsZip)
+	ctx.DistForGoal("performance-tests", testsZip, testsListZip, testsConfigsZip)
+	ctx.Phony("tests", PathForPhony(ctx, "performance-tests"))
 }
