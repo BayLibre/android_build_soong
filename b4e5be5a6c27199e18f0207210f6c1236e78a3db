@@ -16,6 +16,23 @@
       "message": "(do not submit until Studio have bumped their OS requirements...)",
       "revId": "b4e5be5a6c27199e18f0207210f6c1236e78a3db",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da123fec_976b3e67",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2025-03-28T14:08:03Z",
+      "side": 1,
+      "message": "i\u0027ve cherrypicked the doc comment improvement internally, so we can get that in. but i\u0027m assuming the Windows 10 part of this change isn\u0027t happening any time soon (and we had no particular reason to push for it anyway), so abandoning that.",
+      "revId": "b4e5be5a6c27199e18f0207210f6c1236e78a3db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
