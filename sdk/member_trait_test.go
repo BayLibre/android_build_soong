@@ -45,7 +45,7 @@ func (t *fakeMemberType) AddDependencies(ctx android.SdkDependencyContext, depen
 	}
 }
 
-func (t *fakeMemberType) IsInstance(module android.Module) bool {
+func (t *fakeMemberType) IsInstance(ctx android.ModuleContext, module android.Module) bool {
 	return true
 }
 
@@ -68,7 +68,7 @@ type fakeMemberTypeProperties struct {
 }
 
 func (t *fakeMemberTypeProperties) PopulateFromVariant(ctx android.SdkMemberContext, variant android.Module) {
-	headerJars := variant.(java.ApexDependency).HeaderJars()
+	headerJars := android.OtherModulePointerProviderOrDefault(ctx.SdkModuleContext(), variant, java.JavaInfoProvider).HeaderJars
 	if len(headerJars) != 1 {
 		panic(fmt.Errorf("there must be only one header jar from %q", variant.Name()))
 	}

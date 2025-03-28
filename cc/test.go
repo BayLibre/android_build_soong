@@ -549,6 +549,7 @@ func NewTest(hod android.HostOrDeviceSupported) *Module {
 	module.compiler = test
 	module.linker = test
 	module.installer = test
+	//module.incremental = false
 	return module
 }
 
@@ -725,5 +726,6 @@ func NewBenchmark(hod android.HostOrDeviceSupported) *Module {
 	}
 	module.linker = benchmark
 	module.installer = benchmark
+	module.incremental = false
 	return module
 }

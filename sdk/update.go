@@ -115,10 +115,10 @@ func (gc *generatedContents) UnindentedPrintf(format string, args ...interface{}
 // multilibs (32/64/both) are used by this sdk variant.
 func (s *sdk) collectMembers(ctx android.ModuleContext) {
 	s.multilibUsages = multilibNone
-	ctx.WalkDeps(func(child android.Module, parent android.Module) bool {
+	ctx.WalkDeps(func(child, parent android.Module) bool {
 		tag := ctx.OtherModuleDependencyTag(child)
 		if memberTag, ok := tag.(android.SdkMemberDependencyTag); ok {
-			memberType := memberTag.SdkMemberType(child)
+			memberType := memberTag.SdkMemberType(ctx, child)
 
 			// If a nil SdkMemberType was returned then this module should not be added to the sdk.
 			if memberType == nil {
@@ -126,32 +126,31 @@ func (s *sdk) collectMembers(ctx android.ModuleContext) {
 			}
 
 			// Make sure that the resolved module is allowed in the member list property.
-			if !memberType.IsInstance(child) {
+			if !memberType.IsInstance(ctx, child) {
 				ctx.ModuleErrorf("module %q is not valid in property %s", ctx.OtherModuleName(child), memberType.SdkPropertyName())
 			}
 
 			// Keep track of which multilib variants are used by the sdk.
-			s.multilibUsages = s.multilibUsages.addArchType(child.Target().Arch.ArchType)
+			commonInfo := android.OtherModulePointerProviderOrDefault(ctx, child, android.CommonModuleInfoProvider)
+			s.multilibUsages = s.multilibUsages.addArchType(commonInfo.Target.Arch.ArchType)
 
 			exportedComponentsInfo, _ := android.OtherModuleProvider(ctx, child, android.ExportedComponentsInfoProvider)
 
-			var container android.Module
-			if parent != ctx.Module() {
-				container = parent
-			}
-
-			minApiLevel := android.MinApiLevelForSdkSnapshot(ctx, child)
-
+			minApiLevel := android.MinApiLevelForSdkSnapshot(commonInfo)
 			export := memberTag.ExportMember()
-			s.memberVariantDeps = append(s.memberVariantDeps, sdkMemberVariantDep{
+			vd := sdkMemberVariantDep{
 				sdkVariant:             s,
 				memberType:             memberType,
 				variant:                child,
 				minApiLevel:            minApiLevel,
-				container:              container,
 				export:                 export,
 				exportedComponentsInfo: exportedComponentsInfo,
-			})
+			}
+			if !android.EqualModules(parent, ctx.Module()) {
+				container := parent
+				vd.container = &container
+			}
+			s.memberVariantDeps = append(s.memberVariantDeps, vd)
 
 			// Recurse down into the member's dependencies as it may have dependencies that need to be
 			// automatically added to the sdk.
@@ -198,7 +197,7 @@ func (s *sdk) groupMemberVariantsByMemberThenType(ctx android.ModuleContext, tar
 		if err != nil {
 			targetApiLevel = android.FutureApiLevel
 		}
-		if lastApiLevel, exists := ignoreHostModuleVariantsAboveDessert[name]; exists && targetApiLevel.GreaterThan(lastApiLevel) && memberVariantDep.Host() {
+		if lastApiLevel, exists := ignoreHostModuleVariantsAboveDessert[name]; exists && targetApiLevel.GreaterThan(lastApiLevel) && memberVariantDep.Host(ctx) {
 			// ignore host variant of this module if the targetApiLevel is V and above.
 			continue
 		}
@@ -346,7 +345,7 @@ func (s *sdk) buildSnapshot(ctx android.ModuleContext, sdkVariants []*sdk) {
 		// Always include host variants (e.g. host tools) in the snapshot.
 		// Host variants should not be guarded by a min_sdk_version check. In fact, host variants
 		// do not have a `min_sdk_version`.
-		if memberVariantDep.Host() {
+		if memberVariantDep.Host(ctx) {
 			exclude = false
 		}
 
@@ -655,7 +654,7 @@ func (s *sdk) generateInfoData(ctx android.ModuleContext, memberVariantDeps []sd
 		sdkInfo.memberSpecific[propertyName] = android.SortedUniqueStrings(list)
 
 		if memberVariantDep.container != nil {
-			containerInfo := getModuleInfo(memberVariantDep.container)
+			containerInfo := getModuleInfo(*memberVariantDep.container)
 			containerInfo.deps = android.SortedUniqueStrings(append(containerInfo.deps, memberName))
 		}
 
@@ -1129,8 +1128,8 @@ func (s *snapshotBuilder) AddPrebuiltModule(member android.SdkMember, moduleType
 	}
 
 	// Where available copy apex_available properties from the member.
-	if apexAware, ok := variant.(interface{ ApexAvailable() []string }); ok {
-		apexAvailable := apexAware.ApexAvailable()
+	if info, ok := android.OtherModuleProvider(s.ctx, variant, android.CommonModuleInfoProvider); ok && info.IsApexModule {
+		apexAvailable := info.ApexAvailable
 		if len(apexAvailable) == 0 {
 			// //apex_available:platform is the default.
 			apexAvailable = []string{android.AvailableToPlatform}
@@ -1154,7 +1153,7 @@ func (s *snapshotBuilder) AddPrebuiltModule(member android.SdkMember, moduleType
 	hostSupported := false
 
 	for _, variant := range member.Variants() {
-		osClass := variant.Target().Os.Class
+		osClass := android.OtherModulePointerProviderOrDefault(mctx, variant, android.CommonModuleInfoProvider).Target.Os.Class
 		if osClass == android.Host {
 			hostSupported = true
 		} else if osClass == android.Device {
@@ -1255,7 +1254,7 @@ type sdkMemberVariantDep struct {
 	// The optional container of this member, i.e. the module that is depended upon by the sdk
 	// (possibly transitively) and whose dependency on this module is why it was added to the sdk.
 	// Is nil if this a direct dependency of the sdk.
-	container android.Module
+	container *android.Module
 
 	// True if the member should be exported, i.e. accessible, from outside the sdk.
 	export bool
@@ -1268,8 +1267,8 @@ type sdkMemberVariantDep struct {
 }
 
 // Host returns true if the sdk member is a host variant (e.g. host tool)
-func (s *sdkMemberVariantDep) Host() bool {
-	return s.variant.Target().Os.Class == android.Host
+func (s *sdkMemberVariantDep) Host(ctx android.ModuleContext) bool {
+	return android.OtherModulePointerProviderOrDefault(ctx, s.variant, android.CommonModuleInfoProvider).Host
 }
 
 var _ android.SdkMember = (*sdkMember)(nil)
@@ -1347,12 +1346,13 @@ type variantCoordinate struct {
 func getVariantCoordinate(ctx *memberContext, variant android.Module) variantCoordinate {
 	linkType := ""
 	if len(ctx.MemberType().SupportedLinkages()) > 0 {
-		linkType = getLinkType(variant)
+		linkType = getLinkType(ctx.sdkMemberContext, variant)
 	}
+	info := android.OtherModulePointerProviderOrDefault(ctx.SdkModuleContext(), variant, android.CommonModuleInfoProvider)
 	return variantCoordinate{
-		osType:   variant.Target().Os,
-		archId:   archIdFromTarget(variant.Target()),
-		image:    variant.ImageVariation().Variation,
+		osType:   info.Target.Os,
+		archId:   archIdFromTarget(info.Target),
+		image:    info.ImageVariation.Variation,
 		linkType: linkType,
 	}
 }
@@ -1488,7 +1488,7 @@ func newOsTypeSpecificInfo(ctx android.SdkMemberContext, osType android.OsType, 
 	var variantsByArchId = make(map[archId][]android.Module)
 	var archIds []archId
 	for _, variant := range osTypeVariants {
-		target := variant.Target()
+		target := android.OtherModulePointerProviderOrDefault(ctx.SdkModuleContext(), variant, android.CommonModuleInfoProvider).Target
 		id := archIdFromTarget(target)
 		if _, ok := variantsByArchId[id]; !ok {
 			archIds = append(archIds, id)
@@ -1712,7 +1712,7 @@ func newArchSpecificInfo(ctx android.SdkMemberContext, archId archId, osType and
 		// Group the variants by image type.
 		variantsByImage := make(map[string][]android.Module)
 		for _, variant := range archVariants {
-			image := variant.ImageVariation().Variation
+			image := android.OtherModulePointerProviderOrDefault(ctx.SdkModuleContext(), variant, android.CommonModuleInfoProvider).ImageVariation.Variation
 			variantsByImage[image] = append(variantsByImage[image], variant)
 		}
 
@@ -1730,14 +1730,14 @@ func newArchSpecificInfo(ctx android.SdkMemberContext, archId archId, osType and
 //
 // If the variant is not differentiated by link type then it returns "",
 // otherwise it returns one of "static" or "shared".
-func getLinkType(variant android.Module) string {
+func getLinkType(ctx android.ModuleContext, variant android.Module) string {
 	linkType := ""
-	if linkable, ok := variant.(cc.LinkableInterface); ok {
-		if linkable.Shared() && linkable.Static() {
+	if linkable, ok := android.OtherModuleProvider(ctx, variant, cc.LinkableInfoProvider); ok {
+		if linkable.Shared && linkable.Static {
 			panic(fmt.Errorf("expected variant %q to be either static or shared but was both", variant.String()))
-		} else if linkable.Shared() {
+		} else if linkable.Shared {
 			linkType = "shared"
-		} else if linkable.Static() {
+		} else if linkable.Static {
 			linkType = "static"
 		} else {
 			panic(fmt.Errorf("expected variant %q to be either static or shared but was neither", variant.String()))
@@ -1841,7 +1841,7 @@ func newImageVariantSpecificInfo(ctx android.SdkMemberContext, imageVariant stri
 		// There is more than one variant for this image variant which must be differentiated by link
 		// type. Or there are multiple supported linkages and we need to nest based on link type.
 		for _, linkVariant := range imageVariants {
-			linkType := getLinkType(linkVariant)
+			linkType := getLinkType(ctx.SdkModuleContext(), linkVariant)
 			if linkType == "" {
 				panic(fmt.Errorf("expected one arch specific variant as it is not identified by link type but found %d", len(imageVariants)))
 			} else {
@@ -2010,7 +2010,8 @@ func (s *sdk) createMemberSnapshot(ctx *memberContext, member *sdkMember, bpModu
 	// Group the variants by os type.
 	variantsByOsType := make(map[android.OsType][]android.Module)
 	for _, variant := range variants {
-		osType := variant.Target().Os
+		osType := android.OtherModulePointerProviderOrDefault(
+			ctx.SdkModuleContext(), variant, android.CommonModuleInfoProvider).Target.Os
 		variantsByOsType[osType] = append(variantsByOsType[osType], variant)
 	}
 
