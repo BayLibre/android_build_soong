@@ -105,6 +105,24 @@
       "parentUuid": "0c558f67_66e69605",
       "revId": "99fd863014bffe145d795858c4a5c01a5d44e47c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c545abe_640fe217",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2025-04-02T12:07:13Z",
+      "side": 1,
+      "message": "I don\u0027t think using a module like `java_device_for_host` would work because its not the device/host variant that we need to change, but the underlying toolchain. I can\u0027t change the module variant to device because it is expecting a host variant and will throw a dependency error. If I keep the variant as host then soong will try to compile the Arm64 file as x86_64 and fail.\n\nI have however added a new property (still exclusive to the simulator) that allows us to force the toolchain to Arm64 regardless of the variant in use. This still addresses the underlying issue that the flags will be updated and kept in line with the regular Arm64 flags in use by device variants.",
+      "parentUuid": "fd1d5a72_f50b8553",
+      "revId": "99fd863014bffe145d795858c4a5c01a5d44e47c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
