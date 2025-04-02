@@ -141,6 +141,24 @@
       "parentUuid": "1c545abe_640fe217",
       "revId": "99fd863014bffe145d795858c4a5c01a5d44e47c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5b7879f_6b1890a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2025-04-02T17:57:36Z",
+      "side": 1,
+      "message": "If you configure your build for aosp_arm64-trunk_staging-eng, then build your simulator files as normal device modules, you can then create a `cc_device_for_host` module that makes the output files of the arm64 device modules available to host modules.  As far as I can tell that gives you exactly the same behavior as you are adding here.",
+      "parentUuid": "7f3506ba_92f4f964",
+      "revId": "99fd863014bffe145d795858c4a5c01a5d44e47c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
