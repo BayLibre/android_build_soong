@@ -159,6 +159,24 @@
       "parentUuid": "7f3506ba_92f4f964",
       "revId": "99fd863014bffe145d795858c4a5c01a5d44e47c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d7b403a_d08a36ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2025-04-07T17:06:13Z",
+      "side": 1,
+      "message": "I\u0027ve taken another look at `java_device_for_host` and I\u0027ve realised I originally misunderstood how it worked. I\u0027ve had a go at implementing a `cc_device_for_host` module however I\u0027ve gotten a bit stuck with how the dependency tags, module providers and `PathDeps` work together to form the input and output of a module. Presumably adding a dependency (of the correct tag) from a `cc_device_for_host` module to a `cc_object` module should allow soong to pass the `.o` output through the `cc_device_for_host` module to whatever is including it as an input?\n\nI\u0027ve taken a look at the tags and it looks like the `reuseObjTag` or `objDepTag` could be used for this purpose as they both set `depPaths.Objs`. Would you agree?\n\nFinally, do you have a reason for preferring this method over the `force_arm64` property? As far as I can tell, the `force_arm64` property addresses the issue with keeping the toolchain flags in line with regular Arm64 flags. I\u0027m not sure the `cc_device_for_host` method is providing any additional benefits while being much more complex logically.\n\nNote: the only files that can be used with `force_arm64` are simple Arm64 assembly files which do not vary between host and target variants. As long as the correct toolchain is selected, these files should compile identically regardless of variant.",
+      "parentUuid": "f5b7879f_6b1890a4",
+      "revId": "99fd863014bffe145d795858c4a5c01a5d44e47c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
