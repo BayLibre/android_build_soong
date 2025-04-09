@@ -1757,6 +1757,9 @@ func (c *configImpl) EmptyNinjaFile() bool {
 }
 
 func (c *configImpl) IsBazelMixedBuildForceDisabled() bool {
+	if c.UseABFS() {
+		return true
+	}
 	return c.Environment().IsEnvTrue("BUILD_BROKEN_DISABLE_BAZEL")
 }
 
