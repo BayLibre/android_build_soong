@@ -16,6 +16,24 @@
       "message": "can you ferry this change over internal?\n(uploaded on main because that\u0027s closer to internal, not that it would\u0027ve made any difference)\nwill let us clean-up some horrible looking soong_config_module_type with lots of possible values...",
       "revId": "4fafa58183129eaebda52823bab36f6f6ad51baa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b26327d_6639a005",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-04-14T17:58:02Z",
+      "side": 1,
+      "message": "cherrypicked to ag/33051778. Thanks for the patch.",
+      "parentUuid": "aba01212_fac1e791",
+      "revId": "4fafa58183129eaebda52823bab36f6f6ad51baa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
