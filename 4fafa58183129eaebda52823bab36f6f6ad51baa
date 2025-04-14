@@ -34,6 +34,24 @@
       "parentUuid": "aba01212_fac1e791",
       "revId": "4fafa58183129eaebda52823bab36f6f6ad51baa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a62d4b4a_69df5de6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2025-04-14T18:13:46Z",
+      "side": 1,
+      "message": "Wish it were simpler, alas...",
+      "parentUuid": "5b26327d_6639a005",
+      "revId": "4fafa58183129eaebda52823bab36f6f6ad51baa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
