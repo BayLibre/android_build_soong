@@ -33,6 +33,24 @@
       "message": "https://android.googlesource.com/platform/build/soong/+/refs/heads/main/ui/build/rbe.go requires a set of additional env variables for the build to succeed:\n\n* It relies on \"/usr/bin\" in the path to run \"bash\" and other programs\n* It uses a pile of additional RBE_ prefixed env variables\n\nThis logic is guarded here:\n\nhttps://android.googlesource.com/platform/build/soong/+/refs/heads/main/ui/build/config.go#1371\n\nso it won\u0027t show up in all environments.",
       "revId": "96060798a074c430ae2015a29ae3e87c57df5358",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "715d13f9_e538ef0e",
+        "filename": "scripts/check_rust.py",
+        "patchSetId": 16
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 3815749
+      },
+      "writtenOn": "2025-04-15T15:50:32Z",
+      "side": 1,
+      "message": "Sorry for the late reply here. Won\u0027t these RBE variables be set in the `soong.environment.used.{target_product}.build` file as they are used for the soong build? I am using RBE (not Google\u0027s prod servers) and I do not get any errors when soong_ui.bash is executed.",
+      "parentUuid": "81534fd0_a5719ee3",
+      "revId": "96060798a074c430ae2015a29ae3e87c57df5358",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
