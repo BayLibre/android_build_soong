@@ -16,6 +16,24 @@
       "message": "i\u0027m guessing we should have removed this too? i\u0027ll send out a cl... (internally: https://googleplex-android-review.git.corp.google.com/c/platform/build/soong/+/33053337 :-( )",
       "revId": "189d5c8283a0523b7f197aa73ae27c47a7180ada",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88432c21_f61ea84c",
+        "filename": "cc/config/riscv64_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1978766
+      },
+      "writtenOn": "2025-04-15T21:53:29Z",
+      "side": 1,
+      "message": "thanks for fixing it. i can\u0027t even access it anymore 😄 😭",
+      "parentUuid": "e7fc2fa2_8704d59a",
+      "revId": "189d5c8283a0523b7f197aa73ae27c47a7180ada",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
