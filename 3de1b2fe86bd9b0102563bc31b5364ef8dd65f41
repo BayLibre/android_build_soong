@@ -120,6 +120,24 @@
       "parentUuid": "0238dcb0_853c37a5",
       "revId": "3de1b2fe86bd9b0102563bc31b5364ef8dd65f41",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cb5188a_d1f0028d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884477
+      },
+      "writtenOn": "2025-04-28T20:18:03Z",
+      "side": 1,
+      "message": "^^ that\u0027s reassuring\n\n(for Bluetooth we don\u0027t mean _exactly_ I guess, but that\u0027s a way to document which version is actively used without referring to soong).\n\n((I am meaning to continue my refactoring work on {fmt}, but it has been slow moving due to accumulating work on the Bluetooth side..))",
+      "parentUuid": "a249eeda_9c22e1dc",
+      "revId": "3de1b2fe86bd9b0102563bc31b5364ef8dd65f41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
