@@ -102,6 +102,24 @@
       "message": "😞",
       "revId": "3de1b2fe86bd9b0102563bc31b5364ef8dd65f41",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a249eeda_9c22e1dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2025-04-28T19:39:15Z",
+      "side": 1,
+      "message": "well, to be clear: i\u0027m abandoning here because i\u0027m now going to have to work on this _internally_...\n\n(btw, i noticed bluetooth is one of the few places folks are explicitly opting in to c++20 ... do you really mean \"we want exactly c++20\", or should those be deleted?)",
+      "parentUuid": "0238dcb0_853c37a5",
+      "revId": "3de1b2fe86bd9b0102563bc31b5364ef8dd65f41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
