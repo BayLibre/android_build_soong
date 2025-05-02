@@ -33,6 +33,24 @@
       "message": "I made an equivalent change in product_config.mk in our internal branch: ag/33372140\n\nLet me know if you want it cherrypicked to a release branch or something.",
       "revId": "74d1a96fa419a02365dd773358f8903ed570744b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7373218_fceb57f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1970380
+      },
+      "writtenOn": "2025-05-02T18:14:39Z",
+      "side": 1,
+      "message": "Thank you. Will look for latest drop via partner-android. No need of explicitly to release branch",
+      "parentUuid": "4e7efb0a_3ae41710",
+      "revId": "74d1a96fa419a02365dd773358f8903ed570744b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
