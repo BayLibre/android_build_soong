@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "948c2fdc_a4da0b29",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1970380
+      },
+      "writtenOn": "2025-05-02T14:52:03Z",
+      "side": 1,
+      "message": "Hi Team,\n\nI raised in main branch due to unavailability of this file in android15-release branch\n\nIn Full build, Below is the place where sort function called which sorts and removes duplicates in GNU make which reflects in ALL_DEFAULT_INSTALLED_MODULES\n\nhttps://cs.android.com/android/platform/superproject/main/+/main:build/make/core/main.mk;l\u003d1037\n\n  $(eval _pif_modules :\u003d $(sort $(call resolve-bitness-for-modules,TARGET,$(_pif_modules)))) \\\n \nSo, even Developer make duplicate entries in PRODUCT_PACKAGES which will not go into build system as a duplicates. Google is also not showing anywhere these duplicates. So , no need to keep here as well to make not to notify vendors who are seeing this file to see what all modules are going to build",
+      "revId": "74d1a96fa419a02365dd773358f8903ed570744b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
