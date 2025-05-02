@@ -34,6 +34,15 @@ func (s *productPackagesFileSingleton) GenerateBuildActions(ctx SingletonContext
 	if ctx.Config().HasDeviceProduct() {
 		productPackages := ctx.Config().productVariables.PartitionVarsForSoongMigrationOnlyDoNotUse.ProductPackages
 		output := PathForArbitraryOutput(ctx, "target", "product", ctx.Config().DeviceName(), "product_packages.txt")
+                sort.Strings(productPackages)
+                uniqueProductPackagesMap := make(map[string]bool)
+                var uniqueProductPackages []string
+                for _, individual := range productPackages {
+                  if !uniqueProductPackagesMap[individual] {
+                    uniqueProductPackagesMap[individual] = true
+                    uniqueProductPackages = append(uniqueProductPackages, individual)
+                  }
+                }
 		WriteFileRule(ctx, output, strings.Join(productPackages, "\n"))
 	}
 }
