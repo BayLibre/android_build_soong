@@ -227,6 +227,7 @@ var (
 		"vendor_dlkm":         etc.PrebuiltVendorDlkmFactory,
 		"wallpaper":           etc.PrebuiltWallpaperFactory,
 		"wlc_upt":             etc.PrebuiltWlcUptFactory,
+		"ta/teetz":            etc.PrebuiltTaTeetzFactory,
 	}
 )
 

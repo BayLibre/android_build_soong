@@ -918,6 +918,16 @@ func PrebuiltWlcUptFactory() android.Module {
 	return module
 }
 
+// prebuilt_ta_teetz installs files in <partition>/ta/teetz directory.
+func PrebuiltTaTeetzFactory() android.Module {
+	module := &PrebuiltEtc{}
+	InitPrebuiltEtcModule(module, "ta/teetz")
+	// This module is device-only
+	android.InitAndroidArchModule(module, android.DeviceSupported, android.MultilibCommon)
+	android.InitDefaultableModule(module)
+	return module
+}
+
 // prebuilt_odm installs files in <partition>/odm directory.
 func PrebuiltOdmFactory() android.Module {
 	module := &PrebuiltEtc{}
