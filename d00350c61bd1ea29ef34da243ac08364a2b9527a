@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba212142_9e7ee4f0",
+        "filename": "root.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 4065649
+      },
+      "writtenOn": "2025-05-15T13:13:08Z",
+      "side": 0,
+      "message": "```suggestion\n// subdirs\u003d and optional_subdirs\u003d are obsolete and this file no longer\n```\n```suggestion\n// subdirs\u003d and optional_subdirs\u003d are obsolete and this file no longer\n```\n```suggestion\n// subdirs\u003d and optional_subdirs\u003d are obsolete and this file no longer\n```",
+      "revId": "d00350c61bd1ea29ef34da243ac08364a2b9527a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
