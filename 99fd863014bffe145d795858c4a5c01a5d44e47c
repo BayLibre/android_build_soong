@@ -195,6 +195,24 @@
       "parentUuid": "9d7b403a_d08a36ab",
       "revId": "99fd863014bffe145d795858c4a5c01a5d44e47c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a919b4a7_50c75c61",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2025-05-19T21:17:15Z",
+      "side": 1,
+      "message": "The `force_arm64` method is breaking various abstractions in Soong.  It is creating a module whose toolchain has been overwritten to be arm64, but whose Arch is still x86_64.\n\nYou probably want to create your own dependency tag the way `java_device_for_host` does.  Then you would visit your dependencies, collect relevant data from their providers, and then use SetProvider to re-export that data.",
+      "parentUuid": "42d30609_0c316d9c",
+      "revId": "99fd863014bffe145d795858c4a5c01a5d44e47c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
