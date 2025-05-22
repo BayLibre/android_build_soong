@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10e60046_77e46760",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1253,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2025-05-22T18:28:38Z",
+      "side": 1,
+      "message": "Maps are not ordered, so this is going to result in a nondeterminsitic ordering of the profiles list, which will cause unnecessary rebuilds.\n\nYou can use `profiles \u003d android.FirstUniquePaths(profiles)` to remove duplicates while retaining the original ordering.",
+      "revId": "48fda20a710af6e47e10cce753555eef1449dad9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
