@@ -1227,11 +1227,15 @@ func bootImageProfileRuleCommon(ctx android.ModuleContext, name string, dexFiles
 
 	rule := android.NewRuleBuilder(pctx, ctx)
 
+	// Use map to deduplicate profile paths.
+	profileMap := make(map[string]android.Path)
 	var profiles android.Paths
 	if len(global.BootImageProfiles) > 0 {
-		profiles = append(profiles, global.BootImageProfiles...)
+		for _, profile := range global.BootImageProfiles {
+			profileMap[profile.String()] = profile
+		}
 	} else if path := android.ExistentPathForSource(ctx, defaultProfile); path.Valid() {
-		profiles = append(profiles, path.Path())
+		profileMap[path.Path().String()] = path.Path()
 	} else {
 		// No profile (not even a default one, which is the case on some branches
 		// like master-art-host that don't have frameworks/base).
@@ -1239,11 +1243,16 @@ func bootImageProfileRuleCommon(ctx android.ModuleContext, name string, dexFiles
 		return nil
 	}
 	if path := android.ExistentPathForSource(ctx, artProfile); path.Valid() {
-		profiles = append(profiles, path.Path())
+		profileMap[path.Path().String()] = path.Path()
 	}
 	if path := android.ExistentPathForSource(ctx, extraProfile); path.Valid() {
-		profiles = append(profiles, path.Path())
+		profileMap[path.Path().String()] = path.Path()
 	}
+
+	for _, profile := range profileMap {
+		profiles = append(profiles, profile)
+	}
+
 	bootImageProfile := android.PathForModuleOut(ctx, name, "boot-image-profile.txt")
 	rule.Command().Text("cat").Inputs(profiles).Text(">").Output(bootImageProfile)
 
