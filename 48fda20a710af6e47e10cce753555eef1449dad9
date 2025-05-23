@@ -34,6 +34,24 @@
       "parentUuid": "10e60046_77e46760",
       "revId": "48fda20a710af6e47e10cce753555eef1449dad9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d172a99c_dbe49a52",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1253,
+      "author": {
+        "id": 1965996
+      },
+      "writtenOn": "2025-05-23T07:53:05Z",
+      "side": 1,
+      "message": "Thanks for the change, I will cherry pick it",
+      "parentUuid": "37da552a_fafe1342",
+      "revId": "48fda20a710af6e47e10cce753555eef1449dad9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
