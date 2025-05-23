@@ -1244,6 +1244,9 @@ func bootImageProfileRuleCommon(ctx android.ModuleContext, name string, dexFiles
 	if path := android.ExistentPathForSource(ctx, extraProfile); path.Valid() {
 		profiles = append(profiles, path.Path())
 	}
+
+	// Remove duplicates while preserving order to ensure deterministic builds.
+	profiles = android.FirstUniquePaths(profiles)
 	bootImageProfile := android.PathForModuleOut(ctx, name, "boot-image-profile.txt")
 	rule.Command().Text("cat").Inputs(profiles).Text(">").Output(bootImageProfile)
 
