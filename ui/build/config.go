@@ -70,7 +70,6 @@ type Config struct{ *configImpl }
 type configImpl struct {
 	// Some targets that are implemented in soong_build
 	arguments     []string
-	goma          bool
 	environ       *Environment
 	distDir       string
 	buildDateTime string
@@ -346,10 +345,6 @@ func NewConfig(ctx Context, args ...string) Config {
 		"CCC_CC",
 		"CCC_CXX",
 
-		// Used by the goma compiler wrapper, but should only be set by
-		// gomacc
-		"GOMACC_PATH",
-
 		// We handle this above
 		"OUT_DIR_COMMON_BASE",
 
@@ -599,8 +594,6 @@ func getNinjaWeightListSourceInMetric(s NinjaWeightListSource) *smpb.BuildConfig
 
 func buildConfig(config Config) *smpb.BuildConfig {
 	c := &smpb.BuildConfig{
-		ForceUseGoma:          proto.Bool(config.ForceUseGoma()),
-		UseGoma:               proto.Bool(config.UseGoma()),
 		UseRbe:                proto.Bool(config.UseRBE()),
 		NinjaWeightListSource: getNinjaWeightListSourceInMetric(config.NinjaWeightListSource()),
 	}
@@ -1294,20 +1287,6 @@ func (c *configImpl) UseGoma() bool {
 	return false
 }
 
-func (c *configImpl) StartGoma() bool {
-	if !c.UseGoma() {
-		return false
-	}
-
-	if v, ok := c.environ.Get("NOSTART_GOMA"); ok {
-		v = strings.TrimSpace(v)
-		if v != "" && v != "false" {
-			return false
-		}
-	}
-	return true
-}
-
 func (c *configImpl) canSupportRBE() bool {
 	// Only supported on linux
 	if runtime.GOOS != "linux" {
@@ -1523,7 +1502,7 @@ func (c *configImpl) GoogleProdCredsExist() bool {
 // UseRemoteBuild indicates whether to use a remote build acceleration system
 // to speed up the build.
 func (c *configImpl) UseRemoteBuild() bool {
-	return c.UseGoma() || c.UseRBE()
+	return c.UseRBE()
 }
 
 // StubbyExists checks whether the stubby binary exists on the machine running
@@ -1536,7 +1515,7 @@ func (c *configImpl) StubbyExists() bool {
 }
 
 // RemoteParallel controls how many remote jobs (i.e., commands which contain
-// gomacc) are run in parallel.  Note the parallelism of all other jobs is
+// rewrapper) are run in parallel.  Note the parallelism of all other jobs is
 // still limited by Parallel()
 func (c *configImpl) RemoteParallel() int {
 	if !c.UseRemoteBuild() {
