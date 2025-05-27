@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f73a4170_9be9a8a9",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1074828
+      },
+      "writtenOn": "2025-05-27T10:58:36Z",
+      "side": 1,
+      "message": "ok to remove this too?\nor better to keep for a while?",
+      "revId": "fe262711abbf42f748d574a831f8c1e3d8375617",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
