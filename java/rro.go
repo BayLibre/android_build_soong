@@ -94,7 +94,7 @@ type RuntimeResourceOverlayModule interface {
 }
 
 // RRO's partition logic is different from the partition logic of other modules defined in soong/android/paths.go
-// The default partition for RRO is "/product" and not "/system"
+// The default partition for RRO is "/system"
 func rroPartition(ctx android.ModuleContext) string {
 	var partition string
 	if ctx.DeviceSpecific() {
@@ -103,9 +103,11 @@ func rroPartition(ctx android.ModuleContext) string {
 		partition = ctx.DeviceConfig().VendorPath()
 	} else if ctx.SystemExtSpecific() {
 		partition = ctx.DeviceConfig().SystemExtPath()
-	} else {
+	} else if ctx.ProductSpecific() {
 		partition = ctx.DeviceConfig().ProductPath()
-	}
+	} else {
+                partition = "system"
+        }
 	return partition
 }
 

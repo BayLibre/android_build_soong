@@ -396,7 +396,7 @@ func TestRuntimeResourceOverlayPartition(t *testing.T) {
 		},
 		{
 			name:         "default",
-			expectedPath: "out/soong/target/product/test_device/product/overlay",
+			expectedPath: "out/soong/target/product/test_device/system/overlay",
 		},
 	}
 	for _, testCase := range testCases {
