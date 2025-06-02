@@ -213,6 +213,24 @@
       "parentUuid": "42d30609_0c316d9c",
       "revId": "99fd863014bffe145d795858c4a5c01a5d44e47c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5301ae61_30b8acec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2025-06-02T16:13:31Z",
+      "side": 1,
+      "message": "Ping @ccross@android.com and @mythria@google.com.\n\nThanks for the response. I\u0027ve been experimenting further with this but I still can\u0027t get it to work.\n\nSo far I\u0027ve done the following:\n- Made a `cc_device_for_host` module in the same style as `java_device_for_host`.\n- Created a dependency with `AddFarVariationDependencies()` in `DepsMutator()`. This uses `ctx.Config().AndroidFirstDeviceTarget.Variations()` to get a variation of `[{os android} {arch arm64_armv8-a}]`.\n- Visited that dependency (using my own dependency tag) in `depsToPaths()`.\n- Copied all fields from the dependencies providers (`CcInfoProvider`, `CcObjectInfoProvider`, `LinkableInfoProvider` and `ImplementationDepInfoProvider`) and set them with `SetProvider`.\n\n\nWith this both my `cc_device_for_host` module and `cc_object` modules aren\u0027t showing any signs of building in the log. When my `cc_genrule` (has a dependency on `cc_device_for_host`) builds it has an empty source so it can\u0027t pass the output from `cc_device_for_host` (because it never built) to its script.\n\n\nFor context: I am not an expert with the build system so I would appreciate some help with this. It looks like the dependency is setup correctly however I can\u0027t see how the providers actually build the `cc_device_for_host` module. Does my approach sound correct or am I missing something obvious?",
+      "parentUuid": "a919b4a7_50c75c61",
+      "revId": "99fd863014bffe145d795858c4a5c01a5d44e47c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
