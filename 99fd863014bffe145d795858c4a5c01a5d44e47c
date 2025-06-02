@@ -231,6 +231,24 @@
       "parentUuid": "a919b4a7_50c75c61",
       "revId": "99fd863014bffe145d795858c4a5c01a5d44e47c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68c8919d_30eaebea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2025-06-02T18:46:52Z",
+      "side": 1,
+      "message": "Your approach sounds correct.  Your `cc_device_for_host` module won\u0027t contain any build actions, so you won\u0027t see anything output during the build related to it.  My guess is that the piece you are missing is setting the output file of the module with something like `c.outputFile \u003d android.OptionalPathForPath(android.OutputFileForModule(ctx, dep, \"\"))`",
+      "parentUuid": "5301ae61_30b8acec",
+      "revId": "99fd863014bffe145d795858c4a5c01a5d44e47c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
