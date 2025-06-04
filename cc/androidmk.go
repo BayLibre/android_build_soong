@@ -123,6 +123,12 @@ func (c *Module) PrepareAndroidMKProviderInfo(config android.Config) *android.An
 	}
 	entries.SetBoolIfTrue("LOCAL_UNINSTALLABLE_MODULE", c.IsSkipInstall())
 
+	if c.converter != nil {
+		// The converter is a special case used for exposing device static libraries to host
+		// modules.
+		entries.Class = "STATIC_LIBRARIES"
+	}
+
 	for _, feature := range c.features {
 		c.subAndroidMk(config, entries, feature)
 	}
