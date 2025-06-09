@@ -33,6 +33,24 @@
       "message": "i\u0027ve cherrypicked the doc comment improvement internally, so we can get that in. but i\u0027m assuming the Windows 10 part of this change isn\u0027t happening any time soon (and we had no particular reason to push for it anyway), so abandoning that.",
       "revId": "b4e5be5a6c27199e18f0207210f6c1236e78a3db",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8fda3d6_5df9b409",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2025-06-09T18:09:59Z",
+      "side": 1,
+      "message": "Studio\u0027s bumped their minimum, so i\u0027ve uploaded https://googleplex-android-review.git.corp.google.com/c/platform/build/soong/+/33967075 internally...",
+      "parentUuid": "da123fec_976b3e67",
+      "revId": "b4e5be5a6c27199e18f0207210f6c1236e78a3db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
