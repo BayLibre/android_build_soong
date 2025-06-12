@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6dce05c5_c5d311bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3815749
+      },
+      "writtenOn": "2025-06-12T01:06:53Z",
+      "side": 1,
+      "message": "Hey @bwidawsk@google.com, I have rebased these changes onto the latest release branch. This CL was created before [these changes](https://source.android.com/docs/whatsnew/site-updates?year\u003d2024#aosp-changes) were announced. Unfortunately since I now have to make the changes against the latest release branch, a [new changelist was created when I rebased and pushed](https://android-review.googlesource.com/c/platform/build/soong/+/3661871).\n\nI was not able to reproduce the problem you described. The changes rebased cleanly and I did not encounter any conflicts while rebasing. I also was successfully generate the `build.ninja` file and then build `libbitflags` using the following:\n\n```\nexport SOONG_GEN_RUST_PROJECT\u003d1\nlunch aosp_cf_x86_64_only_phone-aosp_current-userdebug\nm nothing --no-skip-soong-tests\nm libbitflags\n```\n\nI also checked another Rust module, `adevice_test` and I was able to successfully build that as well.\n\nWith this newly rebased changes I tested out direct mode (call ninja directly) and regular mode (call into soong_ui.bash). Direct mode worked fine. The regular mode was giving me issues, specially that bash was not found. This was the issue that @jamesr@google.com had mentioned in [this comment](https://android-review.googlesource.com/c/platform/build/soong/+/3454760/comment/81534fd0_a5719ee3/). I have updated the latest patchset to fix this issue and now both modes work:\n\n```\npython /android-latest-release/build/soong/scripts/check_rust.py /android-latest-release/tools/asuite/adevice/src/commands.rs\npython /android-latest-release/build/soong/scripts/check_rust.py --direct-ninja /android-latest-release/tools/asuite/adevice/src/commands.rs\n```\n\nI am no longer a Google employee so I don\u0027t have access to the internal branch, only the release branch (android-16.0 as of writing this) so it might be a problem with modifications that have not rolled into `android-latest-release` yet.\n\nLet me know if after this rebase you are still seeing issues on your end. I am still working on getting this merged into AOSP and any help would be greatly appreciated. We only need code-owners for the `check-rust.py` script (but will have start all over since [the branch change on the CL reset everything](https://android-review.googlesource.com/c/platform/build/soong/+/3661871)). We have been using it at Meta and it greatly improves the DevX experience.",
+      "parentUuid": "aa36db10_c44a0c30",
+      "revId": "96060798a074c430ae2015a29ae3e87c57df5358",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "81534fd0_a5719ee3",
         "filename": "scripts/check_rust.py",
         "patchSetId": 16
