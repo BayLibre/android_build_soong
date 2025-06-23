@@ -515,6 +515,9 @@ func CommonLibraryLinkerFlags(ctx android.ModuleContext, flags Flags,
 		} else {
 			f = append(f, "-shared")
 			if !ctx.Windows() {
+				if !ctx.Host() && libName != "libc" {
+					f = append(f, "-Wl,-Bsymbolic")
+				}
 				f = append(f, "-Wl,-soname,"+libName+toolchain.ShlibSuffix())
 			}
 		}
