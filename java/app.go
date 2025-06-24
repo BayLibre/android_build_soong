@@ -120,6 +120,9 @@ type appProperties struct {
 	// STL library to use for JNI libraries.
 	Stl *string `android:"arch_variant"`
 
+	// File to read and write stable resource IDs from and to.
+	Stable_resource_id_file *string
+
 	// Store native libraries uncompressed in the APK and set the android:extractNativeLibs="false" manifest
 	// flag so that they are used from inside the APK at runtime.  Defaults to true for android_test modules unless
 	// sdk_version or min_sdk_version is set to a version that doesn't support it (<23), defaults to true for
@@ -234,6 +237,10 @@ type AndroidApp struct {
 	android.ApexBundleDepsInfo
 
 	javaApiUsedByOutputFile android.ModuleOutPath
+
+	stableResourceIdsOutPath android.WritablePath
+
+	checkStableIdTimestampFile android.WritablePath
 
 	privAppAllowlist android.OptionalPath
 
@@ -656,6 +663,12 @@ func (a *AndroidApp) aaptBuildActions(ctx android.ModuleContext) {
 		aaptLinkFlags = append(aaptLinkFlags, "--product", characteristics)
 	}
 
+	if a.appProperties.Stable_resource_id_file != nil {
+		a.aapt.stableResourceIdsIn = android.PathForModuleSrc(ctx, *a.appProperties.Stable_resource_id_file)
+		a.aapt.stableResourceIdsOut = android.PathForModuleGen(ctx, "stable-resource-ids-unsorted.txt")
+		a.stableResourceIdsOutPath = android.PathForModuleOut(ctx, "stable-resource-ids.txt")
+	}
+
 	if !Bool(a.aaptProperties.Aapt_include_all_resources) {
 		// Product AAPT config
 		for _, aaptConfig := range ctx.Config().ProductAAPTConfig() {
@@ -1039,6 +1052,33 @@ func (a *AndroidApp) generateAndroidBuildActions(ctx android.ModuleContext) {
 		a.extraOutputFiles = append(a.extraOutputFiles, v4SignatureFile)
 	}
 
+	if a.appProperties.Stable_resource_id_file != nil {
+		builder := android.NewRuleBuilder(pctx, ctx)
+		builder.Command().Text("sort").
+			Input(a.aapt.stableResourceIdsOut).
+			FlagWithOutput("-o ", a.stableResourceIdsOutPath)
+
+		msg := fmt.Sprintf(`\n******************************\n`+
+			`Stable resource IDs have changed. You must run\n`+
+			`   cp %s %s\n`+
+			`and submit the updated file as part of your change.\n`+
+			`******************************\n`,
+			a.stableResourceIdsOutPath, a.aapt.stableResourceIdsIn)
+
+		a.checkStableIdTimestampFile = android.PathForModuleOut(ctx, "check-stable-ids.timestamp")
+		builder.Command().
+			Text("(").
+			Text("diff").Input(a.aapt.stableResourceIdsIn).Input(a.stableResourceIdsOutPath).
+			Text("&&").
+			Text("touch").Output(a.checkStableIdTimestampFile).
+			Text(") || (").
+			Text("echo").Flag("-e").Flag(`"` + msg + `"`).
+			Text("; exit 38").
+			Text(")")
+
+		builder.Build("stableIdsCheck", "stable resource ids check")
+	}
+
 	if a.aapt.noticeFile.Valid() {
 		// Generating the notice file rule has to be here after a.outputFile is known.
 		noticeFile := android.PathForModuleOut(ctx, "NOTICE.html.gz")
@@ -1158,6 +1198,9 @@ func (a *AndroidApp) setOutputFiles(ctx android.ModuleContext) {
 	ctx.SetOutputFiles([]android.Path{a.outputFile}, ".apk")
 	ctx.SetOutputFiles([]android.Path{a.exportPackage}, ".export-package.apk")
 	ctx.SetOutputFiles([]android.Path{a.aapt.manifestPath}, ".manifest.xml")
+	if a.stableResourceIdsOutPath != nil {
+		ctx.SetOutputFiles([]android.Path{a.stableResourceIdsOutPath}, ".stable-ids.txt")
+	}
 	setOutputFiles(ctx, a.Library.Module)
 }
 

@@ -394,6 +394,14 @@ func (app *AndroidApp) AndroidMkEntries() []android.AndroidMkEntries {
 					fmt.Fprintf(w, "$(call dist-for-goals,%s,%s:%s/$(notdir %s))\n",
 						app.installApkName, app.javaApiUsedByOutputFile.String(), "java_apis_used_by_apex", app.javaApiUsedByOutputFile.String())
 				}
+
+				if app.checkStableIdTimestampFile != nil {
+					fmt.Fprintln(w, ".PHONY:", app.Name()+"-check-stable-resource-ids")
+					fmt.Fprintln(w, app.Name()+"-check-stable-resource-ids:", app.checkStableIdTimestampFile.String())
+
+					fmt.Fprintln(w, ".PHONY:", "droidcore")
+					fmt.Fprintln(w, "droidcore: ", app.Name()+"-check-stable-resource-ids")
+				}
 			},
 		}},
 	}

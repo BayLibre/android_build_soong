@@ -5088,3 +5088,72 @@ my_custom_override_android_app {
 		})
 	}
 }
+
+func TestStableResourceId(t *testing.T) {
+	fs := android.MockFS{
+		"STABLEIDS.txt": nil,
+	}
+
+	bp := `
+		android_app {
+			name: "foo",
+			srcs: ["a.java"],
+			sdk_version: "current",
+			stable_resource_id_file: "STABLEIDS.txt",
+		}
+	`
+
+	result := android.GroupFixturePreparers(
+		prepareForJavaTest,
+		fs.AddToFixture(),
+	).RunTestWithBp(t, bp)
+
+	foo := result.ModuleForTests("foo", "android_common")
+
+	res := foo.Output("package-res.apk")
+	aapt2Flags := res.Args["flags"]
+
+	stableIdFlag := "--stable-ids STABLEIDS.txt"
+	android.AssertStringDoesContain(t, "aapt2 link flags", aapt2Flags, stableIdFlag)
+
+	emitIdsFlag := "--emit-ids out/soong/.intermediates/foo/android_common/gen/stable-resource-ids-unsorted.txt"
+	android.AssertStringDoesContain(t, "aapt2 link flags", aapt2Flags, emitIdsFlag)
+
+	timestampFile := foo.Output("check-stable-ids.timestamp")
+	if timestampFile.Rule == nil {
+		t.Error("stable resource ID timestamp file not found")
+	}
+
+	checkRule := foo.Rule("stableIdsCheck")
+	if checkRule.Rule == nil {
+		t.Error("stable resource ID check rule not found")
+	}
+
+	expectedString := "sort out/soong/.intermediates/foo/android_common/gen/stable-resource-ids-unsorted.txt "+
+		"-o out/soong/.intermediates/foo/android_common/stable-resource-ids.txt && "+
+		"( diff STABLEIDS.txt out/soong/.intermediates/foo/android_common/stable-resource-ids.txt && "+
+		"touch out/soong/.intermediates/foo/android_common/check-stable-ids.timestamp ) || "+
+		"( echo -e \"\\n******************************\\n"+
+		"Stable resource IDs have changed. You must run\\n"+
+		"   cp out/soong/.intermediates/foo/android_common/stable-resource-ids.txt STABLEIDS.txt\\n"+
+		"and submit the updated file as part of your change.\\n"+
+		"******************************\\n\" ; exit 38 ) # hash of input list: "
+	if !strings.HasPrefix(checkRule.RuleParams.Command, expectedString) {
+		t.Errorf("unexpected command\n%s\ngot\n%s", checkRule.RuleParams.Command, expectedString)
+	}
+	if len(checkRule.Inputs) != 0 {
+		t.Errorf("unexpected inputs %s", checkRule.Inputs.Strings())
+	}
+	expectedArray := []string{"out/soong/.intermediates/foo/android_common/gen/stable-resource-ids-unsorted.txt", "STABLEIDS.txt"}
+	if !reflect.DeepEqual(checkRule.Implicits.Strings(), expectedArray) {
+		t.Errorf("expected implicit outputs %v, got %v", expectedArray, checkRule.Implicits.Strings())
+	}
+	expectedArray = []string{"out/soong/.intermediates/foo/android_common/stable-resource-ids.txt"}
+	if !reflect.DeepEqual(checkRule.ImplicitOutputs.Strings(), expectedArray) {
+		t.Errorf("expected implicit outputs %v, got %v", expectedArray, checkRule.ImplicitOutputs.Strings())
+	}
+	expectedString = "out/soong/.intermediates/foo/android_common/check-stable-ids.timestamp"
+	if !reflect.DeepEqual(checkRule.Output.String(), expectedString) {
+		t.Errorf("expected implicit outputs %v, got %v", expectedString, checkRule.Output.String())
+	}
+}

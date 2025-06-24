@@ -16,6 +16,7 @@ package java
 
 import (
 	"reflect"
+	"strings"
 	"testing"
 
 	"android/soong/android"
@@ -308,5 +309,39 @@ func TestJniAsRequiredDeps(t *testing.T) {
 		entries := android.AndroidMkEntriesForTest(t, ctx.TestContext, mod)[0]
 		required := entries.EntryMap["LOCAL_REQUIRED_MODULES"]
 		android.AssertDeepEquals(t, "unexpected required deps", tc.expected, required)
+	}
+}
+
+func TestStableResourceIdMakeRules(t *testing.T) {
+	ctx, _ := testJava(t, `
+		android_app {
+			name: "foo",
+			srcs: ["a.java"],
+			sdk_version: "current",
+			stable_resource_id_file: "stable-resource-ids.txt",
+		}
+	`)
+
+	mod := ctx.ModuleForTests("foo", "android_common").Module()
+	entries := android.AndroidMkEntriesForTest(t, ctx, mod)[0]
+
+	footerLines := entries.FooterLinesForTests()
+	t.Log("All footer lines:")
+	for _, footer := range footerLines {
+		t.Log(footer)
+	}
+	footerText := strings.Join(footerLines, "\n")
+
+	expectedPatterns := []string{
+		".PHONY: foo-check-stable-resource-ids",
+		"foo-check-stable-resource-ids:",
+		".PHONY: droidcore",
+		"droidcore:  foo-check-stable-resource-ids",
+	}
+
+	for _, pattern := range expectedPatterns {
+		if !strings.Contains(footerText, pattern) {
+			t.Errorf("Expected pattern %q not found in footer lines:\n%s", pattern, footerText)
+		}
 	}
 }

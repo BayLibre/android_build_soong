@@ -226,7 +226,7 @@ func aapt2Link(ctx android.ModuleContext,
 	packageRes, genJar, proguardOptions, rTxt android.WritablePath,
 	flags []string, deps android.Paths,
 	compiledRes, compiledOverlay, assetPackages android.Paths, splitPackages android.WritablePaths,
-	featureFlagsPaths android.Paths) {
+	featureFlagsPaths android.Paths, additionalImplicitOutputDeps android.WritablePaths) {
 
 	var inFlags []string
 
@@ -265,6 +265,7 @@ func aapt2Link(ctx android.ModuleContext,
 
 	// Set auxiliary outputs as implicit outputs to establish correct dependency chains.
 	implicitOutputs := append(splitPackages, proguardOptions, rTxt)
+	implicitOutputs = append(implicitOutputs, additionalImplicitOutputDeps...)
 	linkOutput := packageRes
 
 	// AAPT2 ignores assets in overlays. Merge them after linking.
