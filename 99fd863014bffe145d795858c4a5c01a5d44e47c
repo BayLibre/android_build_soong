@@ -249,6 +249,24 @@
       "parentUuid": "5301ae61_30b8acec",
       "revId": "99fd863014bffe145d795858c4a5c01a5d44e47c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1dabdefb_990e4209",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2025-06-24T14:45:13Z",
+      "side": 1,
+      "message": "Thanks for your help on this, it\u0027s much appreciated!\n\nI\u0027ve changed this patch to add the `cc_device_for_host` module. With the output file and the make module class set, this patch is working for our purposes. PTAL @ccross@android.com.",
+      "parentUuid": "68c8919d_30eaebea",
+      "revId": "99fd863014bffe145d795858c4a5c01a5d44e47c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
