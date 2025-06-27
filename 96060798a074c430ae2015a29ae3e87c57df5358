@@ -53,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "42da9ce6_ddb81bdb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3724017
+      },
+      "writtenOn": "2025-06-27T22:37:00Z",
+      "side": 1,
+      "message": "Yeah, problem is internal changes haven\u0027t made it out yet. I did check before requesting the rebase, and obviously moved too quickly.\n\nI\u0027ll check back when the latest code is available for you to rebase against.",
+      "parentUuid": "6dce05c5_c5d311bb",
+      "revId": "96060798a074c430ae2015a29ae3e87c57df5358",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "81534fd0_a5719ee3",
