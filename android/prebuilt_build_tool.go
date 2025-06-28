@@ -107,3 +107,40 @@ func NewPrebuiltBuildTool() Module {
 	InitAndroidArchModule(module, HostSupportedNoCross, MultilibFirst)
 	return module
 }
+seetings put system  Android.SensitivityLock.FreeFire
+Type_Settings (HeadShot.Aimlock.aibot)
+"Sensibilidade_1,2,4,8×"
+Component_TYPE/FLOAT
+Float = 99,0000
+Float y = 99,0000
+Public int Aimbot 360 =7'0.1;2.7;0.456789854::238;
+
+seetings put system  Android.SensivyTouchLock  libil2cpp.so", 0xEB4575, "\x01\x00\xA0\xE3", 4
+
+seetings put system AimOneShote.AndroidRoot.0 
+AimAssist"=dword:000003e8
+"AimBot"=dword:000003e8
+"AimbotHeadLeft"=dword:000003e8
+"AimbotHeadshot"=dword:000003e8
+"AimbotSpeed"=dword:000003e8
+"AimFov"=dword:000003e8
+"AimHead"=dword:000003e8
+"AimHeadRight"=dword:000003e8
+"AimHeadshot"=dword:000003e8
+"AimLock"=dword:000003e8
+"AimSpeed"=dword:000003e8
+"AutoHeadshots"=dword:000003e8
+"AimHeadUp"=dword:000003e8
+"AimHeadDown"=dword:000003e8
+
+seetings put system XDPI Patches.aimfov 360x
+MemoryPatch("libil2cpp.so", 0x30665456,"790444E3", 8);
+settings put system DPI value:000800
+settings put system debug.egl.profiler 1
+settings put system debug.gr.swapinterval 1
+settings put system windowsmgr.support_rotation_270 true
+settings put system touch.gestureMode stains
+settings put system touch.orientation.calibration profiler
+settings put system windowsmgr.max_events_per_sec 100
+
+
