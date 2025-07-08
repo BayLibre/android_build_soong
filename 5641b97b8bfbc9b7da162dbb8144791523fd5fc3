@@ -16,6 +16,91 @@
       "message": "@ccross@android.com ping for review on this patch, PTAL.",
       "revId": "5641b97b8bfbc9b7da162dbb8144791523fd5fc3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bef1ce5_fe663075",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2025-07-08T18:31:39Z",
+      "side": 1,
+      "message": "Can this be `c.subAndroidMk(config, entries, c.converter)`, and then have the converter type do the `entries.Class \u003d \"STATIC_LIBRARIES\"`?",
+      "revId": "5641b97b8bfbc9b7da162dbb8144791523fd5fc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6702e611_5e42616c",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 3406,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2025-07-08T18:31:39Z",
+      "side": 1,
+      "message": "This is going to cause analysis failures and broken build if anything is checked into the tree that uses `cc_device_for_host` and the build is run without `ART_USE_SIMULATOR`.  What is the purpose of this check?",
+      "revId": "5641b97b8bfbc9b7da162dbb8144791523fd5fc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f26d14d_1a7b63a3",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 3411,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2025-07-08T18:31:39Z",
+      "side": 1,
+      "message": "This is significantly different than the flow used by any other module.  Can you store the output file in a new field in `depPaths`, and make `deviceHostConverter` also implement the `linker` interface, and have it\u0027s `link` method retrieve the path from `deps` and return it as the output file?",
+      "revId": "5641b97b8bfbc9b7da162dbb8144791523fd5fc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f4ba1d9_738e2304",
+        "filename": "cc/device_for_host.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2025-07-08T18:31:39Z",
+      "side": 1,
+      "message": "It\u0027s a little odd to have the module be both the `android.Module` and the `converter` objects.  Can you move the converter interface implementation and the properties into a separate object and create it here to use as the converter interface?  See for example https://cs.android.com/android/platform/superproject/main/+/main:build/soong/cc/object.go;l\u003d97;drc\u003dfa403882d5aa0fa3d4f7a77e4e52409357626938",
+      "revId": "5641b97b8bfbc9b7da162dbb8144791523fd5fc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61b5f55a_ad5f3e99",
+        "filename": "cc/device_for_host.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2025-07-08T18:31:39Z",
+      "side": 1,
+      "message": "If converter is moved to a separate object this would be done by a `converter.converterInit()` method called [here](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/cc/cc.go;l\u003d777;drc\u003d61197364367c9e404c7da6900658f1b16c42d0da)",
+      "revId": "5641b97b8bfbc9b7da162dbb8144791523fd5fc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
