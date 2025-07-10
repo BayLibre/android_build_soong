@@ -42,6 +42,9 @@ var (
 		"-fno-omit-frame-pointer",
 		"-Wno-frame-larger-than=",
 		"-fsanitize-hwaddress-abi=platform",
+		"-Rpass=hwasan",
+		"-fsave-optimization-record",
+		"-foptimization-record-passes=hwasan",
 	}
 
 	// ThinLTO performs codegen during link time, thus these flags need to
