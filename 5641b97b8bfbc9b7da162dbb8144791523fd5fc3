@@ -89,6 +89,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "82476bea_5d0ab45b",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 3406,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2025-07-10T17:12:47Z",
+      "side": 1,
+      "message": "I assume you\u0027re planning to check in some uses of `cc_device_for_host` to AOSP.  If so, won\u0027t that immediately break the normal builds that don\u0027t set `ART_USE_SIMULATOR`?",
+      "parentUuid": "585aa1f4_4a6ab170",
+      "revId": "5641b97b8bfbc9b7da162dbb8144791523fd5fc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4f26d14d_1a7b63a3",
         "filename": "cc/cc.go",
         "patchSetId": 3
