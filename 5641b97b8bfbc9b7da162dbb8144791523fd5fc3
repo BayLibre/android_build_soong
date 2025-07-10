@@ -71,6 +71,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "585aa1f4_4a6ab170",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 3406,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2025-07-10T14:21:31Z",
+      "side": 1,
+      "message": "This is used to restrict use of the module to the ART simulator specific modules that we need this for, similar to the way that `java_device_for_host` is restricted to a few projects where it is needed. This way we also ensure that production builds are not affected by this change.\n\nI don\u0027t think there is a technical reason this guard couldn\u0027t be expanded or removed altogether however I think that can be done in the future as and when someone wants to use it.",
+      "parentUuid": "6702e611_5e42616c",
+      "revId": "5641b97b8bfbc9b7da162dbb8144791523fd5fc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4f26d14d_1a7b63a3",
         "filename": "cc/cc.go",
         "patchSetId": 3
