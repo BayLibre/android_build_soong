@@ -107,6 +107,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "819a7c69_ff23e1af",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 3406,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2025-07-11T09:43:13Z",
+      "side": 1,
+      "message": "No because those uses are only enabled when `ART_USE_SIMULATOR` is set, see  https://android-review.googlesource.com/c/platform/art/+/2680026/14/runtime/Android.bp#694 for the only uses of this module. Those modules are in turn only ever used when the simulator is enabled as the regular .S entrypoint files are used otherwise.",
+      "parentUuid": "82476bea_5d0ab45b",
+      "revId": "5641b97b8bfbc9b7da162dbb8144791523fd5fc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4f26d14d_1a7b63a3",
         "filename": "cc/cc.go",
         "patchSetId": 3
