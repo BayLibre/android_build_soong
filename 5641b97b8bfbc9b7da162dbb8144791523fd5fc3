@@ -125,6 +125,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8edf653c_c8d44030",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 3406,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2025-07-16T17:31:33Z",
+      "side": 1,
+      "message": "I see, you\u0027re requiring that all `cc_device_for_host` modules use a product config variable keyed off of `ART_USE_SIMULATOR` to disable themselves.\n\nI\u0027m fine with keeping it as is, but also consider whether that complexity is adding any value.  Having `cc_device_for_host` modules enabled when `ART_USE_SIMULATOR` is not set shouldn\u0027t cause any problems.\n\nIf you do remove the conditional I\u0027d suggest adding checks in neverallow.go to restrict the usage of `cc_device_for_host` to the art directories.",
+      "parentUuid": "819a7c69_ff23e1af",
+      "revId": "5641b97b8bfbc9b7da162dbb8144791523fd5fc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4f26d14d_1a7b63a3",
         "filename": "cc/cc.go",
         "patchSetId": 3
