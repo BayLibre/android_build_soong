@@ -52,6 +52,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5674ebb9_e3f37f83",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2025-07-22T15:10:46Z",
+      "side": 1,
+      "message": "Now that we implement the linker class, we can reuse that `subAndroidMk()` call to set the class.",
+      "parentUuid": "8bef1ce5_fe663075",
+      "revId": "5641b97b8bfbc9b7da162dbb8144791523fd5fc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6702e611_5e42616c",
@@ -141,6 +159,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4abb4bb3_267488a7",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 3406,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2025-07-22T15:10:46Z",
+      "side": 1,
+      "message": "Thanks, I\u0027d rather be a little more conservative and leaving this as is. As said previously, if there are any uses for this module for other applications in the future I\u0027d be happy for this check to be modified/removed.",
+      "parentUuid": "8edf653c_c8d44030",
+      "revId": "5641b97b8bfbc9b7da162dbb8144791523fd5fc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f26d14d_1a7b63a3",
@@ -154,6 +190,24 @@
       "writtenOn": "2025-07-08T18:31:39Z",
       "side": 1,
       "message": "This is significantly different than the flow used by any other module.  Can you store the output file in a new field in `depPaths`, and make `deviceHostConverter` also implement the `linker` interface, and have it\u0027s `link` method retrieve the path from `deps` and return it as the output file?",
+      "revId": "5641b97b8bfbc9b7da162dbb8144791523fd5fc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aff01f1c_d720e2b6",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 3411,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2025-07-22T15:10:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f26d14d_1a7b63a3",
       "revId": "5641b97b8bfbc9b7da162dbb8144791523fd5fc3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -175,6 +229,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f9af855_7c8fd3ca",
+        "filename": "cc/device_for_host.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2025-07-22T15:10:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f4ba1d9_738e2304",
+      "revId": "5641b97b8bfbc9b7da162dbb8144791523fd5fc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "61b5f55a_ad5f3e99",
@@ -188,6 +260,24 @@
       "writtenOn": "2025-07-08T18:31:39Z",
       "side": 1,
       "message": "If converter is moved to a separate object this would be done by a `converter.converterInit()` method called [here](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/cc/cc.go;l\u003d777;drc\u003d61197364367c9e404c7da6900658f1b16c42d0da)",
+      "revId": "5641b97b8bfbc9b7da162dbb8144791523fd5fc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6105a5e9_462c2f20",
+        "filename": "cc/device_for_host.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2025-07-22T15:10:46Z",
+      "side": 1,
+      "message": "Instead of using the `converterInit()` method, I used `converterProps()` and set the properties alongside the other decorator interfaces in `cc.go:Init()`.",
+      "parentUuid": "61b5f55a_ad5f3e99",
       "revId": "5641b97b8bfbc9b7da162dbb8144791523fd5fc3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
