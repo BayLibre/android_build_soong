@@ -16,6 +16,29 @@
       "message": "Thanks for the comments, PTAL!",
       "revId": "338c7ec506566fc3316e01cfcf2c995e7829ac2e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "245563aa_a160ffde",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 3418,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2025-07-22T16:00:10Z",
+      "side": 1,
+      "message": "Can you call this something like `deviceFileForHost`?",
+      "range": {
+        "startLine": 3418,
+        "startChar": 12,
+        "endLine": 3418,
+        "endChar": 22
+      },
+      "revId": "338c7ec506566fc3316e01cfcf2c995e7829ac2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
