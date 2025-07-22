@@ -85,7 +85,7 @@ var (
 		"sse4":   []string{"-msse4"},
 		"sse4_1": []string{"-msse4.1"},
 		"sse4_2": []string{"-msse4.2"},
-		"funroll":[]string{"-funroll-loops"},
+		"branches_within_32B": []string{"-mllvm", "-x86-branches-within-32B-boundaries"},
 
 		// Not all cases there is performance gain by enabling -mavx -mavx2
 		// flags so these flags are not enabled by default.
