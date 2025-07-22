@@ -85,6 +85,7 @@ var (
 		"sse4":   []string{"-msse4"},
 		"sse4_1": []string{"-msse4.1"},
 		"sse4_2": []string{"-msse4.2"},
+		"funroll":[]string{"-funroll-loops"},
 
 		// Not all cases there is performance gain by enabling -mavx -mavx2
 		// flags so these flags are not enabled by default.
