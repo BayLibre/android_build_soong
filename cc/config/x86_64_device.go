@@ -25,9 +25,13 @@ var (
 	x86_64Cflags = []string{
 		// Help catch common 32/64-bit errors.
 		"-Werror=implicit-function-declaration",
+		"-funroll-loops",
+		"-mllvm", "-x86-branches-within-32B-boundaries",
 	}
 
-	x86_64Cppflags = []string{}
+	x86_64Cppflags = []string{
+		"-funroll-loops",
+	}
 
 	x86_64Ldflags = []string{
 		"-Wl,-z,separate-loadable-segments",
