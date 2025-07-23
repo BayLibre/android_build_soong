@@ -16,6 +16,24 @@
       "message": "`-funroll` is not an architecture feature and so doesn\u0027t belong in this list.  In addition, you haven\u0027t added it as a feature to any architecture variants [here](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/android/arch_list.go;l\u003d342;drc\u003d8f607c7943e80faea5fec30f312587ec6a06ea83), so this patch won\u0027t do anything.",
       "revId": "271c60ae70148d8a60b17b29ebb71281522d453e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ed0cbd2_913a9300",
+        "filename": "cc/config/x86_64_device.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 3639569
+      },
+      "writtenOn": "2025-07-23T06:49:07Z",
+      "side": 1,
+      "message": "Thank you for pointing that out, and apologies for the earlier mistake in placing the -funroll-loops flag under x86_64ArchFeatureCflags. I\u0027ve now corrected it by moving the flag to x86_64Cflags and x86_64Cppflags as per the proper usage.\n\nI’ve verified the change locally, and the flag is now correctly applied during compilation (confirmed via verbose build logs). Please let me know if any further adjustments are needed.",
+      "parentUuid": "0a4df31c_f6ba8b04",
+      "revId": "271c60ae70148d8a60b17b29ebb71281522d453e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
