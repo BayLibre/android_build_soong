@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8d9fa6b_66ce9220",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1096946
+      },
+      "writtenOn": "2025-07-23T13:51:46Z",
+      "side": 1,
+      "message": "Looking at Clang\u0027s code, it seems `-funroll-loops` is implied for all compilations with `-Os`, `-Oz` (strangely, but I\u0027m sure the middle-end handles it appropriately), `-O2`, and `-O3`. You can also see this in action here: https://godbolt.org/z/shTzvbnW5\n\nBecause of this, I\u0027m not seeing how this change can impact performance, assuming Android\u0027s not building performance-critical binaries with `-O0`, `-O1`, or `-Og` (if it is, we\u0027ll likely see better results by fixing those targeted issues, rather than encouraging one more optimization in TUs that are very incorrectly optimized).\n\nCan you please expand on your performance testing methodology? I\u0027m not seeing links on this CL.\n\nFor completeness, here\u0027s what I found that led to my first statement:\n\n- Clang\u0027s `lib/Frontend/CompilerInvocation.cpp` sets `Opts.OptimizationLevel` to the result of `getOptimizationLevel`, which (for non-CL) returns the int if the last `-O` flag ends in an int, 1 for `g`, and 2 for `s`/`z`.\n- In the same file, `Opts.UnrollLoops \u003d Args.hasFlag(OPT_funroll_loops, OPT_fno_unroll_loops, (Opts.OptimizationLevel \u003e 1));`. This boils down to \"if `-funroll-loops` is specified, enable this. If `-fno-unroll-loops` is specified, disable this. Otherwise, it should be enabled if `Opts.OptimizationLevel \u003e 1`.\n- I did not see significant other C/C++ logic to modify these values, and the godbolt link seems to confirm my glance.",
+      "revId": "1b96002e321f3f231d652c7770fef57f16d1da2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1a687d5_216b5496",
+        "filename": "cc/config/x86_64_device.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1096946
+      },
+      "writtenOn": "2025-07-23T13:51:46Z",
+      "side": 1,
+      "message": "this formatting is incorrect; please fix (is there an upload hook that should catch this? i haven\u0027t contributed much to soong recently)\n\n\n\n```suggestion\n\t}\n```",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 1
+      },
+      "revId": "1b96002e321f3f231d652c7770fef57f16d1da2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
