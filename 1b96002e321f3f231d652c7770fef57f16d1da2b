@@ -39,6 +39,30 @@
       },
       "revId": "1b96002e321f3f231d652c7770fef57f16d1da2b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5ef1a6b_13135841",
+        "filename": "cc/config/x86_64_device.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 3639569
+      },
+      "writtenOn": "2025-07-23T13:59:08Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "b1a687d5_216b5496",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 1
+      },
+      "revId": "1b96002e321f3f231d652c7770fef57f16d1da2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
