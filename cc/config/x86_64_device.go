@@ -31,6 +31,7 @@ var (
 
 	x86_64Cppflags = []string{
 		"-funroll-loops",
+		"-mllvm", "-x86-branches-within-32B-boundaries",
 	}
 
 	x86_64Ldflags = []string{
