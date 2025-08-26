@@ -16,6 +16,23 @@
       "message": "Could you check please?",
       "revId": "4a00e8f03a6ca60fef07315a0f6a3803554b6a24",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ff53700_283bdcfb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2025-08-26T12:00:09Z",
+      "side": 1,
+      "message": "doesn\u0027t this apply to x86/x86-64 too?",
+      "revId": "4a00e8f03a6ca60fef07315a0f6a3803554b6a24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
