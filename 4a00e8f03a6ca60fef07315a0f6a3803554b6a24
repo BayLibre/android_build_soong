@@ -33,6 +33,24 @@
       "message": "doesn\u0027t this apply to x86/x86-64 too?",
       "revId": "4a00e8f03a6ca60fef07315a0f6a3803554b6a24",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81ab215c_7ee78176",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3649280
+      },
+      "writtenOn": "2025-08-26T12:30:39Z",
+      "side": 1,
+      "message": "No, I guess. They don’t change LdFlags/LldFlags in ToolchainFactory.\n\nhttps://android.googlesource.com/platform/build/soong/+/refs/tags/android-16.0.0_r2/cc/config/x86_64_device.go#185\n\nhttps://android.googlesource.com/platform/build/soong/+/refs/tags/android-16.0.0_r2/cc/config/x86_device.go#176",
+      "parentUuid": "4ff53700_283bdcfb",
+      "revId": "4a00e8f03a6ca60fef07315a0f6a3803554b6a24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
