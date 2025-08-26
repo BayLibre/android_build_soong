@@ -69,6 +69,24 @@
       "parentUuid": "81ab215c_7ee78176",
       "revId": "4a00e8f03a6ca60fef07315a0f6a3803554b6a24",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e01aae87_1d1f2511",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3649280
+      },
+      "writtenOn": "2025-08-26T19:04:45Z",
+      "side": 1,
+      "message": "Okay, I see the point, I’ll apply it to x86/x86_64 as well, thanks.",
+      "parentUuid": "8b952ba1_05559689",
+      "revId": "4a00e8f03a6ca60fef07315a0f6a3803554b6a24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
