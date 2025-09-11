@@ -75,7 +75,7 @@ func runNinjaForBuild(ctx Context, config Config) {
 			//"--frontend-file", fifo,
 		}
 	default:
-		// NINJA_NINJA is the default.
+		// NINJA_NINJA or NINJA_NINJAGO.
 		executable = config.NinjaBin()
 		args = []string{
 			"-d", "keepdepfile",
