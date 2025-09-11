@@ -16,6 +16,7 @@ package build
 
 import (
 	"bytes"
+	"encoding/json"
 	"os"
 	"os/exec"
 	"os/user"
@@ -50,6 +51,7 @@ var (
 
 const (
 	nsjailPath = "prebuilts/build-tools/linux-x86/bin/nsjail"
+	abfsSrcDir = "/src"
 )
 
 var sandboxConfig struct {
@@ -60,6 +62,19 @@ var sandboxConfig struct {
 	srcDir  string
 	outDir  string
 	distDir string
+}
+
+func (c *Cmd) envForSandbox(env *Environment) []string {
+	if !c.config.UseABFS() {
+		return env.Environ()
+	}
+
+	replaced := env.Copy().Environ()
+	for i, val := range replaced {
+		replaced[i] = strings.ReplaceAll(val, sandboxConfig.srcDir, abfsSrcDir)
+	}
+
+	return replaced
 }
 
 func (c *Cmd) sandboxSupported() bool {
@@ -93,19 +108,24 @@ func (c *Cmd) sandboxSupported() bool {
 			sandboxConfig.distDir = absPath(c.ctx, derefPath)
 		}
 
-		sandboxArgs := []string{
+		var sandboxArgs []string
+		sandboxArgs = append(sandboxArgs,
 			"-H", "android-build",
 			"-e",
 			"-u", "nobody",
 			"-g", sandboxConfig.group,
-			"-R", "/",
+		)
+		sandboxArgs = append(sandboxArgs,
+			c.readMountArgs()...,
+		)
+		sandboxArgs = append(sandboxArgs,
 			// Mount tmp before srcDir
 			// srcDir is /tmp/.* in integration tests, which is a child dir of /tmp
 			// nsjail throws an error if a child dir is mounted before its parent
 			"-B", "/tmp",
-			c.config.sandboxConfig.SrcDirMountFlag(), sandboxConfig.srcDir,
-			"-B", sandboxConfig.outDir,
-		}
+			c.config.sandboxConfig.SrcDirMountFlag(), c.srcDirArg(),
+			"-B", c.outDirArg(),
+		)
 
 		if _, err := os.Stat(sandboxConfig.distDir); !os.IsNotExist(err) {
 			//Mount dist dir as read-write if it already exists
@@ -120,7 +140,7 @@ func (c *Cmd) sandboxSupported() bool {
 
 		cmd := exec.CommandContext(c.ctx.Context, nsjailPath, sandboxArgs...)
 
-		cmd.Env = c.config.Environment().Environ()
+		cmd.Env = c.envForSandbox(c.config.Environment())
 
 		c.ctx.Verboseln(cmd.Args)
 		data, err := cmd.CombinedOutput()
@@ -217,6 +237,28 @@ func (c *Cmd) workDir() string {
 	return abfsSrcDir
 }
 
+func abfsCacheFromMount() (string, error) {
+	wd, _ := os.Getwd()
+	type Config struct {
+		CacheDir string
+	}
+	type MountDetails struct {
+		Config Config
+	}
+	var m MountDetails
+	file, err := os.Open(filepath.Join(wd, ".repo/mount-details"))
+	if err != nil {
+		return "", err
+	}
+	defer file.Close()
+	d := json.NewDecoder(file)
+	if err := d.Decode(&m); err != nil {
+		return "", err
+	}
+
+	return m.Config.CacheDir, nil
+}
+
 func (c *Cmd) wrapSandbox() {
 	wd := c.workDir()
 
@@ -277,7 +319,11 @@ func (c *Cmd) wrapSandbox() {
 		"-q",
 	)
 	if c.config.UseABFS() {
-		sandboxArgs = append(sandboxArgs, "-B", "{ABFS_DIR}")
+		cacheDir, err := abfsCacheFromMount()
+		if err != nil {
+			c.ctx.Fatalln("Error getting ABFS cache directory:", err)
+		}
+		sandboxArgs = append(sandboxArgs, "-B", cacheDir)
 	}
 
 	// Mount srcDir RW allowlists as Read-Write
@@ -317,5 +363,5 @@ func (c *Cmd) wrapSandbox() {
 	if _, hasUser := env.Get("USER"); hasUser {
 		env.Set("USER", "nobody")
 	}
-	c.Env = []string(env)
+	c.Env = c.envForSandbox(&env)
 }
