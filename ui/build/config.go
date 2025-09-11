@@ -26,6 +26,7 @@ import (
 	"runtime"
 	"strconv"
 	"strings"
+	"sync"
 	"syscall"
 	"time"
 
@@ -123,6 +124,10 @@ type configImpl struct {
 
 	// Data source to write ninja weight list
 	ninjaWeightListSource NinjaWeightListSource
+
+	// cached value to avoid process spawning
+	useABFSMu sync.Mutex
+	useABFS   *bool
 }
 
 type NinjaWeightListSource uint
@@ -316,6 +321,10 @@ func NewConfig(ctx Context, args ...string) Config {
 		environ:       OsEnvironment(),
 		sandboxConfig: &SandboxConfig{},
 	}
+	wd, err := os.Getwd()
+	if err != nil {
+		ctx.Fatalln("Failed to get working directory:", err)
+	}
 
 	// Default matching ninja
 	ret.parallel = runtime.NumCPU() + 2
@@ -333,11 +342,7 @@ func NewConfig(ctx Context, args ...string) Config {
 	} else {
 		outDir := "out"
 		if baseDir, ok := ret.environ.Get("OUT_DIR_COMMON_BASE"); ok {
-			if wd, err := os.Getwd(); err != nil {
-				ctx.Fatalln("Failed to get working directory:", err)
-			} else {
-				outDir = filepath.Join(baseDir, filepath.Base(wd))
-			}
+			outDir = filepath.Join(baseDir, filepath.Base(wd))
 		}
 		ret.environ.Set("OUT_DIR", outDir)
 	}
@@ -1336,6 +1341,31 @@ func (c *configImpl) StartGoma() bool {
 	return true
 }
 
+func (c *configImpl) UseABFS() (useABFS bool) {
+	c.useABFSMu.Lock()
+	defer c.useABFSMu.Unlock()
+
+	if c.useABFS != nil {
+		return *c.useABFS
+	}
+
+	defer func() {
+		c.useABFS = new(bool)
+		*c.useABFS = useABFS
+	}()
+
+	if v, ok := c.environ.Get("NO_ABFS"); ok {
+		v = strings.ToLower(strings.TrimSpace(v))
+		if v == "true" || v == "1" {
+			return false
+		}
+	}
+
+	abfsBox := c.PrebuiltBuildTool("abfsbox")
+	err := exec.Command(abfsBox, "hash", srcDirFileCheck).Run()
+	return err == nil
+}
+
 func (c *configImpl) UseRBE() bool {
 	if v, ok := c.Environment().Get("USE_RBE"); ok {
 		v = strings.TrimSpace(v)
@@ -1605,6 +1635,23 @@ func (c *configImpl) HostPrebuiltTag() string {
 	}
 }
 
+func (c *configImpl) KatiBin() string {
+	binName := "ckati"
+	if c.UseABFS() {
+		binName = "ckati-wrap"
+	}
+
+	return c.PrebuiltBuildTool(binName)
+}
+
+func (c *configImpl) NinjaBin() string {
+	binName := "ninja"
+	if c.UseABFS() {
+		binName = "ninjago"
+	}
+	return c.PrebuiltBuildTool(binName)
+}
+
 func (c *configImpl) PrebuiltBuildTool(name string) string {
 	if v, ok := c.environ.Get("SANITIZE_HOST"); ok {
 		if sanitize := strings.Fields(v); inList("address", sanitize) {
@@ -1695,7 +1742,19 @@ func (c *configImpl) EmptyNinjaFile() bool {
 }
 
 func (c *configImpl) IsBazelMixedBuildForceDisabled() bool {
+	if c.UseABFS() {
+		return true
+	}
 	return c.Environment().IsEnvTrue("BUILD_BROKEN_DISABLE_BAZEL")
+}
+
+func (c *configImpl) SkipMetricsUpload() bool {
+	// b/362625275 - Metrics upload sometimes prevents abfs unmount
+	if c.UseABFS() {
+		return true
+	}
+
+	return c.skipMetricsUpload
 }
 
 func (c *configImpl) IsPersistentBazelEnabled() bool {
@@ -1704,10 +1763,6 @@ func (c *configImpl) IsPersistentBazelEnabled() bool {
 
 func (c *configImpl) BazelModulesForceEnabledByFlag() string {
 	return c.bazelForceEnabledModules
-}
-
-func (c *configImpl) SkipMetricsUpload() bool {
-	return c.skipMetricsUpload
 }
 
 // Returns a Time object if one was passed via a command-line flag.

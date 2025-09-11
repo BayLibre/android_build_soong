@@ -70,7 +70,7 @@ func genKatiSuffix(ctx Context, config Config) {
 // arguments, and a custom function closure to mutate the environment Kati runs
 // in.
 func runKati(ctx Context, config Config, extraSuffix string, args []string, envFunc func(*Environment)) {
-	executable := config.PrebuiltBuildTool("ckati")
+	executable := config.KatiBin()
 	// cKati arguments.
 	args = append([]string{
 		// Instead of executing commands directly, generate a Ninja file.

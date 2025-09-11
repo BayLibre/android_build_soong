@@ -275,6 +275,7 @@ type productVariables struct {
 	HostStaticBinaries           *bool    `json:",omitempty"`
 	Binder32bit                  *bool    `json:",omitempty"`
 	UseGoma                      *bool    `json:",omitempty"`
+	UseABFS                      *bool    `json:",omitempty"`
 	UseRBE                       *bool    `json:",omitempty"`
 	UseRBEJAVAC                  *bool    `json:",omitempty"`
 	UseRBER8                     *bool    `json:",omitempty"`
