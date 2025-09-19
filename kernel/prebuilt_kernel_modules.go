@@ -71,6 +71,11 @@ type prebuiltKernelModulesProperties struct {
 	// Whether debug symbols should be stripped from the *.ko files.
 	// Defaults to true.
 	Strip_debug_symbols *bool
+
+	// A file that contains a list of kernel modules to be installed, one per line from "srcs".
+	// If this property is set, only kernel modules from "srcs" that are listed in this file will be installed.
+	// This file will be installed as modules.load. "load_by_default" may not be used with this option.
+	Modules_load_src *string `android:"path"`
 }
 
 // prebuilt_kernel_modules installs a set of prebuilt kernel module files to the correct directory.
@@ -100,8 +105,19 @@ func (pkm *prebuiltKernelModules) GenerateAndroidBuildActions(ctx android.Module
 		pkm.SkipInstall()
 	}
 
+	if pkm.properties.Modules_load_src != nil && pkm.properties.Load_by_default != nil {
+		ctx.PropertyErrorf("Modules_load_src", "cannot be set at the same time as `load_by_default`")
+	}
+
 	modules := android.PathsForModuleSrc(ctx, pkm.properties.Srcs)
 	systemModules := android.PathsForModuleSrc(ctx, pkm.properties.System_deps)
+
+	if pkm.properties.Modules_load_src != nil {
+		modulesLoadFile := android.PathForModuleSrc(ctx, *pkm.properties.Modules_load_src)
+		// Filter the modules based on the content of modulesLoadFile.
+		// The modulesLoadFile is a source file and can be read during build graph generation.
+		modules = pkm.FilterSrcs(ctx, modules, modulesLoadFile)
+	}
 
 	depmodOut := pkm.runDepmod(ctx, modules, systemModules)
 	if proptools.BoolDefault(pkm.properties.Strip_debug_symbols, true) {
@@ -159,6 +175,36 @@ func (pkm *prebuiltKernelModules) installOptionsFile(ctx android.ModuleContext, 
 		Output: optionsOut,
 	})
 	ctx.InstallFile(installDir, "modules.options", optionsOut)
+}
+
+// FilterSrcs filters the given list of kernel modules (allModules) based on the basenames
+// listed in the modulesLoadSrcFile. Only modules whose basenames are present in the
+// modulesLoadSrcFile will be returned.
+// The modulesLoadSrcFile is expected to contain one module basename per line.
+func (pkm *prebuiltKernelModules) FilterSrcs(ctx android.ModuleContext, allModules android.Paths, modulesLoadSrcFile android.Path) android.Paths {
+	content, err := modulesLoadSrcFile.ReadFile(ctx)
+	if err != nil {
+		ctx.PropertyErrorf("Modules_load_src", "failed to read file %q: %s", modulesLoadSrcFile.String(), err)
+		return nil // Return nil to indicate an error, which will halt the build.
+	}
+
+	allowedBasenames := make(map[string]bool)
+	lines := strings.Split(string(content), "\n")
+	for _, line := range lines {
+		line = strings.TrimSpace(line)
+		if line == "" || strings.HasPrefix(line, "#") { // Ignore empty lines and comments
+			continue
+		}
+		allowedBasenames[line] = true
+	}
+
+	var filteredModules android.Paths
+	for _, m := range allModules {
+		if allowedBasenames[filepath.Base(m.String())] {
+			filteredModules = append(filteredModules, m)
+		}
+	}
+	return filteredModules
 }
 
 var (
@@ -280,8 +326,11 @@ func (pkm *prebuiltKernelModules) runDepmod(ctx android.ModuleContext, modules a
 
 	// Enumerate modules to load
 	modulesLoad := modulesDir.Join(ctx, "modules.load")
-	// If Load_by_default is set to false explicitly, create an empty modules.load
-	if pkm.properties.Load_by_default != nil && !*pkm.properties.Load_by_default {
+	if pkm.properties.Modules_load_src != nil {
+		modulesLoadFile := android.PathForModuleSrc(ctx, *pkm.properties.Modules_load_src)
+		builder.Command().Text("cp").Input(modulesLoadFile).Output(modulesLoad)
+	} else if pkm.properties.Load_by_default != nil && !*pkm.properties.Load_by_default {
+		// If Load_by_default is set to false explicitly, create an empty modules.load
 		builder.Command().Text("rm").Flag("-rf").Text(modulesLoad.String())
 		builder.Command().Text("touch").Output(modulesLoad)
 	} else {
