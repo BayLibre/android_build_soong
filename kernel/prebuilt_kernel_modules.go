@@ -71,6 +71,11 @@ type prebuiltKernelModulesProperties struct {
 	// Whether debug symbols should be stripped from the *.ko files.
 	// Defaults to true.
 	Strip_debug_symbols *bool
+
+	// A file that contains a list of kernel modules to be installed, one per line from "srcs".
+	// If this property is set, only kernel modules from "srcs" that are listed in this file will be installed.
+	// This file will be installed as modules.load. "load_by_default" may not be used with this option.
+	Modules_load_src *string `android:"path"`
 }
 
 // prebuilt_kernel_modules installs a set of prebuilt kernel module files to the correct directory.
