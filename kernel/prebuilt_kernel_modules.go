@@ -71,6 +71,11 @@ type prebuiltKernelModulesProperties struct {
 	// Whether debug symbols should be stripped from the *.ko files.
 	// Defaults to true.
 	Strip_debug_symbols *bool
+
+	// A file that contains a list of kernel modules to be installed, one per line from "srcs".
+	// If this property is set, only kernel modules from "srcs" that are listed in this file will be installed.
+	// This file will be installed as modules.load. "load_by_default" may not be used with this option.
+	Modules_load_src *string `android:"path"`
 }
 
 // prebuilt_kernel_modules installs a set of prebuilt kernel module files to the correct directory.
@@ -100,8 +105,24 @@ func (pkm *prebuiltKernelModules) GenerateAndroidBuildActions(ctx android.Module
 		pkm.SkipInstall()
 	}
 
+	if pkm.properties.Modules_load_src != nil && pkm.properties.Load_by_default != nil {
+		ctx.PropertyErrorf("Modules_load_src", "cannot be set at the same time as `load_by_default`")
+	}
+
 	modules := android.PathsForModuleSrc(ctx, pkm.properties.Srcs)
 	systemModules := android.PathsForModuleSrc(ctx, pkm.properties.System_deps)
+
+	if pkm.properties.Modules_load_src != nil {
+		modulesLoadFile := android.PathForModuleSrc(ctx, *pkm.properties.Modules_load_src)
+		// Rule to create a file containing the basenames from modules.load
+		filteredModulesList := android.PathForModuleOut(ctx, "filtered_modules.list")
+		ctx.Build(pctx, android.BuildParams{
+			Rule:   android.Cat,
+			Input:  modulesLoadFile,
+			Output: filteredModulesList,
+		})
+		modules = ctx.FilterSrcs(modules, []string{filteredModulesList.String()})
+	}
 
 	depmodOut := pkm.runDepmod(ctx, modules, systemModules)
 	if proptools.BoolDefault(pkm.properties.Strip_debug_symbols, true) {
@@ -280,8 +301,11 @@ func (pkm *prebuiltKernelModules) runDepmod(ctx android.ModuleContext, modules a
 
 	// Enumerate modules to load
 	modulesLoad := modulesDir.Join(ctx, "modules.load")
-	// If Load_by_default is set to false explicitly, create an empty modules.load
-	if pkm.properties.Load_by_default != nil && !*pkm.properties.Load_by_default {
+	if pkm.properties.Modules_load_src != nil {
+		modulesLoadFile := android.PathForModuleSrc(ctx, *pkm.properties.Modules_load_src)
+		builder.Command().Text("cp").Input(modulesLoadFile).Output(modulesLoad)
+	} else if pkm.properties.Load_by_default != nil && !*pkm.properties.Load_by_default {
+		// If Load_by_default is set to false explicitly, create an empty modules.load
 		builder.Command().Text("rm").Flag("-rf").Text(modulesLoad.String())
 		builder.Command().Text("touch").Output(modulesLoad)
 	} else {
