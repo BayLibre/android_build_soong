@@ -26,6 +26,7 @@ import (
 	"runtime"
 	"strconv"
 	"strings"
+	"sync"
 	"syscall"
 	"time"
 
@@ -42,7 +43,6 @@ const (
 
 	configFetcher         = "vendor/google/tools/soong/expconfigfetcher"
 	envConfigFetchTimeout = 10 * time.Second
-	abfsSrcDir   = "/src"
 )
 
 var (
@@ -124,6 +124,10 @@ type configImpl struct {
 
 	// Data source to write ninja weight list
 	ninjaWeightListSource NinjaWeightListSource
+
+	// cached value to avoid process spawning
+	useABFSMu sync.Mutex
+	useABFS   *bool
 }
 
 type NinjaWeightListSource uint
@@ -334,13 +338,13 @@ func NewConfig(ctx Context, args ...string) Config {
 	}
 	// Make sure OUT_DIR is set appropriately
 	if outDir, ok := ret.environ.Get("OUT_DIR"); ok {
-		ret.environ.Set("OUT_DIR", ret.sandboxPath(wd, filepath.Clean(outDir)))
+		ret.environ.Set("OUT_DIR", filepath.Clean(outDir))
 	} else {
 		outDir := "out"
 		if baseDir, ok := ret.environ.Get("OUT_DIR_COMMON_BASE"); ok {
 			outDir = filepath.Join(baseDir, filepath.Base(wd))
 		}
-		ret.environ.Set("OUT_DIR", ret.sandboxPath(wd, outDir))
+		ret.environ.Set("OUT_DIR", outDir)
 	}
 
 	// loadEnvConfig needs to know what the OUT_DIR is, so it should
@@ -429,12 +433,12 @@ func NewConfig(ctx Context, args ...string) Config {
 	ret.environ.Set("PYTHONDONTWRITEBYTECODE", "1")
 
 	tmpDir := absPath(ctx, ret.TempDir())
-	ret.environ.Set("TMPDIR", ret.sandboxPath(wd, tmpDir))
+	ret.environ.Set("TMPDIR", tmpDir)
 
 	// Always set ASAN_SYMBOLIZER_PATH so that ASAN-based tools can symbolize any crashes
 	symbolizerPath := filepath.Join("prebuilts/clang/host", ret.HostPrebuiltTag(),
 		"llvm-binutils-stable/llvm-symbolizer")
-	ret.environ.Set("ASAN_SYMBOLIZER_PATH", ret.sandboxPath(wd, absPath(ctx, symbolizerPath)))
+	ret.environ.Set("ASAN_SYMBOLIZER_PATH", absPath(ctx, symbolizerPath))
 
 	// Precondition: the current directory is the top of the source tree
 	checkTopDir(ctx)
@@ -493,11 +497,11 @@ func NewConfig(ctx Context, args ...string) Config {
 	}
 
 	ret.environ.Unset("OVERRIDE_ANDROID_JAVA_HOME")
-	ret.environ.Set("JAVA_HOME", ret.sandboxPath(wd, absJavaHome))
-	ret.environ.Set("ANDROID_JAVA_HOME", ret.sandboxPath(wd, javaHome))
-	ret.environ.Set("ANDROID_JAVA8_HOME", ret.sandboxPath(wd, java8Home))
-	ret.environ.Set("ANDROID_JAVA9_HOME", ret.sandboxPath(wd, java9Home))
-	ret.environ.Set("ANDROID_JAVA11_HOME", ret.sandboxPath(wd, java11Home))
+	ret.environ.Set("JAVA_HOME", absJavaHome)
+	ret.environ.Set("ANDROID_JAVA_HOME", javaHome)
+	ret.environ.Set("ANDROID_JAVA8_HOME", java8Home)
+	ret.environ.Set("ANDROID_JAVA9_HOME", java9Home)
+	ret.environ.Set("ANDROID_JAVA11_HOME", java11Home)
 	ret.environ.Set("PATH", strings.Join(newPath, string(filepath.ListSeparator)))
 
 	if ret.MultitreeBuild() {
@@ -512,8 +516,8 @@ func NewConfig(ctx Context, args ...string) Config {
 		ret.buildDateTime = strconv.FormatInt(time.Now().Unix(), 10)
 	}
 
-	ret.environ.Set("BUILD_DATETIME_FILE", ret.sandboxPath(wd, buildDateTimeFile))
-	ret.environ.Set("PWD", ret.sandboxPath(wd, wd))
+	ret.environ.Set("BUILD_DATETIME_FILE", buildDateTimeFile)
+	ret.environ.Set("PWD", wd)
 	if ret.UseRBE() {
 		for k, v := range getRBEVars(ctx, Config{ret}) {
 			ret.environ.Set(k, v)
@@ -1355,7 +1359,19 @@ func (c *configImpl) canSupportRBE() bool {
 	return true
 }
 
-func (c *configImpl) UseABFS() bool {
+func (c *configImpl) UseABFS() (useABFS bool) {
+	c.useABFSMu.Lock()
+	defer c.useABFSMu.Unlock()
+
+	if c.useABFS != nil {
+		return *c.useABFS
+	}
+
+	defer func() {
+		c.useABFS = new(bool)
+		*c.useABFS = useABFS
+	}()
+
 	if v, ok := c.environ.Get("NO_ABFS"); ok {
 		v = strings.ToLower(strings.TrimSpace(v))
 		if v == "true" || v == "1" {
@@ -1366,19 +1382,6 @@ func (c *configImpl) UseABFS() bool {
 	abfsBox := c.PrebuiltBuildTool("abfsbox")
 	err := exec.Command(abfsBox, "hash", srcDirFileCheck).Run()
 	return err == nil
-}
-
-func (c *configImpl) sandboxPath(base, in string) string {
-	if !c.UseABFS() {
-		return in
-	}
-
-	rel, err := filepath.Rel(base, in)
-	if err != nil {
-		return in
-	}
-
-	return filepath.Join(abfsSrcDir, rel)
 }
 
 func (c *configImpl) UseRBE() bool {
