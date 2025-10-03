@@ -45,7 +45,7 @@ type prebuiltKernelModules struct {
 
 type prebuiltKernelModulesProperties struct {
 	// List or filegroup of prebuilt kernel module files. Should have .ko suffix.
-	Srcs []string `android:"path,arch_variant"`
+	Srcs proptools.Configurable[[]string] `android:"path,replace_instead_of_append"`
 
 	// List of system_dlkm kernel modules that the local kernel modules depend on.
 	// The deps will be assembled into intermediates directory for running depmod
