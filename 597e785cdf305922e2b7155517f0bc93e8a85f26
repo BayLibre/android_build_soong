@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0653aaa_c5ad1940",
+        "filename": "java/rro.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2025-10-06T17:38:04Z",
+      "side": 1,
+      "message": "RROs should definitely not go on the system partition, the main point of RROs is to make the system image generic by moving these resources off onto other partitions.",
+      "revId": "597e785cdf305922e2b7155517f0bc93e8a85f26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
