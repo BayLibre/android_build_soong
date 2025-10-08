@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e100f988_b9cad7da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2025-10-08T18:03:20Z",
+      "side": 1,
+      "message": "We don\u0027t submit changes into AOSP/main any more so you can abandon this one.",
+      "revId": "08dc88356846d739a540ba8851725af2abb8a680",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
