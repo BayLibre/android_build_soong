@@ -5088,3 +5088,95 @@ my_custom_override_android_app {
 		})
 	}
 }
+
+func TestAndroidAppInstallPaths(t *testing.T) {
+	// Test that Android apps are installed in the correct partition directories
+	// based on their properties (privileged, vendor, system_ext_specific, etc.)
+	bp := `
+		android_app {
+			name: "regular_app",
+			srcs: ["a.java"],
+			sdk_version: "current",
+		}
+
+		android_app {
+			name: "privileged_app",
+			srcs: ["a.java"],
+			sdk_version: "current",
+			privileged: true,
+		}
+
+		android_app {
+			name: "system_ext_app",
+			srcs: ["a.java"],
+			sdk_version: "current",
+			system_ext_specific: true,
+		}
+
+		android_app {
+			name: "product_app",
+			srcs: ["a.java"],
+			sdk_version: "current",
+			product_specific: true,
+		}
+
+		android_app {
+			name: "vendor_app",
+			srcs: ["a.java"],
+			sdk_version: "current",
+			vendor: true,
+		}
+	`
+
+	result := android.GroupFixturePreparers(
+		prepareForJavaTest,
+	).RunTestWithBp(t, bp)
+
+	// Test cases verify that apps are installed in the correct partition directories
+	// based on their properties (privileged -> priv-app, vendor -> vendor, etc.)
+	testCases := []struct {
+		name         string
+		expectedPath string
+	}{
+		{
+			name:         "regular_app",
+			expectedPath: "out/soong/target/product/test_device/system/app/regular_app/regular_app.apk",
+		},
+		{
+			name:         "privileged_app",
+			expectedPath: "out/soong/target/product/test_device/system/priv-app/privileged_app/privileged_app.apk",
+		},
+		{
+			name:         "system_ext_app",
+			expectedPath: "out/soong/target/product/test_device/system_ext/app/system_ext_app/system_ext_app.apk",
+		},
+		{
+			name:         "product_app",
+			expectedPath: "out/soong/target/product/test_device/product/app/product_app/product_app.apk",
+		},
+		{
+			name:         "vendor_app",
+			expectedPath: "out/soong/target/product/test_device/vendor/app/vendor_app/vendor_app.apk",
+		},
+	}
+
+	for _, testCase := range testCases {
+		t.Run(testCase.name, func(t *testing.T) {
+			module := result.ModuleForTests(testCase.name, "android_common")
+			app := module.Module().(*AndroidApp)
+			dexJarInstallPath := app.DexJarInstallPath()
+			if dexJarInstallPath == nil {
+				t.Errorf("DexJarInstallPath() returned nil for %s", testCase.name)
+				return
+			}
+
+			outSoongDir := result.Config.SoongOutDir()
+			installPath := android.StringPathRelativeToTop(outSoongDir, dexJarInstallPath.String())
+
+			if installPath != testCase.expectedPath {
+				t.Errorf("DexJarInstallPath() for %s: got %s, expected %s",
+					testCase.name, installPath, testCase.expectedPath)
+			}
+		})
+	}
+}

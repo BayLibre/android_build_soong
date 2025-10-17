@@ -973,6 +973,11 @@ func (a *AndroidApp) generateAndroidBuildActions(ctx android.ModuleContext) {
 		a.dexpreopter.disableDexpreopt()
 	}
 
+	// Set installFile for DexJarInstallPath() to work correctly with uses-library dependencies
+	if a.IsInstallable() {
+		a.installFile = a.installPath(ctx)
+	}
+
 	var noticeAssetPath android.WritablePath
 	if Bool(a.appProperties.Embed_notices) || ctx.Config().IsEnvTrue("ALWAYS_EMBED_NOTICES") {
 		// The rule to create the notice file can't be generated yet, as the final output path
@@ -1109,7 +1114,14 @@ func (a *AndroidApp) generateAndroidBuildActions(ctx android.ModuleContext) {
 				}
 			}
 		}
-		ctx.InstallFile(a.installDir, a.outputFile.Base(), a.outputFile, extraInstalledPaths...)
+		installedFile := ctx.InstallFile(a.installDir, a.outputFile.Base(), a.outputFile, extraInstalledPaths...)
+
+		// Verify that InstallFile returns the same path as a.installFile (except in testcases where they differ)
+		if !ctx.InstallInTestcases() {
+			if installedFile.String() != a.installFile.String() {
+				ctx.ModuleErrorf("InstallFile path mismatch: got %q, expected %q", installedFile.String(), a.installFile.String())
+			}
+		}
 	}
 
 	ctx.CheckbuildFile(a.outputFile)
