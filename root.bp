@@ -2,3 +2,4 @@
 // subdirs= and optional_subdirs= are obsolete and this file no longer
 // needs a list of the top level directories that may contain Android.bp
 // files.
+
