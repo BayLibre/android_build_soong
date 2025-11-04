@@ -33,6 +33,23 @@
       "message": "git pull https://android.googlesource.com/platform/build/soong refs/changes/28/3558028/1",
       "revId": "effb464e30da10acdeb9c65d3cfd4303a2430dd2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d0a8535_59377818",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4331759
+      },
+      "writtenOn": "2025-11-04T22:04:35Z",
+      "side": 1,
+      "message": ".",
+      "revId": "effb464e30da10acdeb9c65d3cfd4303a2430dd2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
