@@ -411,6 +411,7 @@ func init() {
 
 	pctx.StaticVariable("CommonGlobalConlyflags", strings.Join(commonGlobalConlyflags, " "))
 	pctx.StaticVariable("CommonGlobalAsflags", strings.Join(commonGlobalAsflags, " "))
+<<<<<<< HEAD
 	pctx.StaticVariable("DeviceGlobalCppflags", strings.Join(deviceGlobalCppflags, " "))
 	pctx.StaticVariable("DeviceGlobalLdflags", strings.Join(deviceGlobalLdflags, " "))
 	pctx.StaticVariable("DeviceGlobalLldflags", strings.Join(deviceGlobalLldflags, " "))
@@ -418,6 +419,15 @@ func init() {
 	pctx.StaticVariable("HostGlobalLdflags", strings.Join(hostGlobalLdflags, " "))
 	pctx.StaticVariable("HostGlobalLldflags", strings.Join(hostGlobalLldflags, " "))
 
+=======
+	ClangDefaultBase = "prebuilts/clang/host"
+	// The Clang version used in the trunk branch.
+	// NOTE: This is deprecated and will be removed in a future version, use the getter function instead.
+	ClangDefaultVersion = "clang-r574158"
+	// The Clang short version used in the trunk branch.
+	// NOTE: This is deprecated and will be removed in a future version, use the getter function instead.
+	ClangDefaultShortVersion = "21"
+>>>>>>> PATCH
 	pctx.VariableFunc("CommonGlobalCflags", func(ctx android.PackageVarContext) string {
 		flags := slices.Clone(commonGlobalCflags)
 
