@@ -406,6 +406,7 @@ var (
 
 func init() {
 	if runtime.GOOS == "linux" {
+<<<<<<< HEAD
 		commonGlobalCflags = append(commonGlobalCflags, "-fdebug-prefix-map=/proc/self/cwd=")
 	}
 
@@ -413,6 +414,15 @@ func init() {
 	pctx.StaticVariable("CommonGlobalAsflags", strings.Join(commonGlobalAsflags, " "))
 	pctx.StaticVariable("DeviceGlobalCppflags", strings.Join(deviceGlobalCppflags, " "))
 	pctx.StaticVariable("DeviceGlobalLdflags", strings.Join(deviceGlobalLdflags, " "))
+=======
+	ClangDefaultBase = "prebuilts/clang/host"
+	// The Clang version used in the trunk branch.
+	// NOTE: This is deprecated and will be removed in a future version, use the getter function instead.
+	ClangDefaultVersion = "clang-r563880c"
+	// The Clang short version used in the trunk branch.
+	// NOTE: This is deprecated and will be removed in a future version, use the getter function instead.
+	ClangDefaultShortVersion = "21"
+>>>>>>> PATCH
 	pctx.StaticVariable("DeviceGlobalLldflags", strings.Join(deviceGlobalLldflags, " "))
 	pctx.StaticVariable("HostGlobalCppflags", strings.Join(hostGlobalCppflags, " "))
 	pctx.StaticVariable("HostGlobalLdflags", strings.Join(hostGlobalLdflags, " "))
