@@ -16,6 +16,23 @@
       "message": "Not sure if you want something like that, but it lets us get rid of this ugly workaround https://review.lineageos.org/c/LineageOS/android_hardware_interfaces/+/459956",
       "revId": "3006d6e79c19cd2fdc84b9f814e9ddbb1fbd1f06",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39d785f9_2b244f16",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2025-11-18T22:36:14Z",
+      "side": 1,
+      "message": "Thanks for the contribution, I\u0027ve cherry-picked it to our internal branch.",
+      "revId": "3006d6e79c19cd2fdc84b9f814e9ddbb1fbd1f06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
