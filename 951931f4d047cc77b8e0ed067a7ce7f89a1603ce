@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b75b7051_8f31c49f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2025-11-25T18:38:47Z",
+      "side": 1,
+      "message": "This looks like a mixture of a refactoring (`sdkLinkType` from `int` -\u003e `struct`) and a functional change (adding `javaTest`) that makes it more difficult to review but it seems to do what is described.",
+      "revId": "951931f4d047cc77b8e0ed067a7ce7f89a1603ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
