@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5880c92d_b8d20388",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2025-12-03T09:19:34Z",
+      "side": 1,
+      "message": "I didn\u0027t add any test as I didn\u0027t really see any that covers rust_prebuilt_library functionality (other than setting up the required builds deps for generic testing)\n\nLet me know what you think, but I verified the with/without strip usecase works.",
+      "revId": "b5fe802640f41370036c921222219ec8aaad7233",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
