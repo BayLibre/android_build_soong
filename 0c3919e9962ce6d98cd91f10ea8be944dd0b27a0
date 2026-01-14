@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38ab7bca_2d6659b6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4577570
+      },
+      "writtenOn": "2026-01-14T02:07:19Z",
+      "side": 1,
+      "message": "katiSuffix string\n}\n\nconst srcDirFileCheck \u003d \"build/soong/root.bp\"\n\nfunc NewConfig(ctx Context, args ...string) Config {\n\tret :\u003d \u0026configImpl{\n\t\tenviron: OsEnvironment(),\n\t}\n\n\t// Make sure OUT_DIR is set appropriately\n\tif _, ok :\u003d ret.environ.Get(\"OUT_DIR\"); !ok {\n\t\toutDir :\u003d \"out\"\n\t\tif baseDir, ok :\u003d ret.environ.Get(\"OUT_DIR_COMMON_BASE\"); ok {\n\t\t\tif wd, err :\u003d os.Getwd(); err !\u003d nil {\n\t\t\t\tctx.Fatalln(\"Failed to get working directory:\", err)\n\t\t\t} else {\n\t\t\t\toutDir \u003d filepath.Join(baseDir, filepath.Base(wd))\n\t\t\t}\n\t\t}\n\t\tret.environ.Set(\"OUT_DIR\", outDir)\n\t}\n\n\tret.environ.Unset(\n\t\t// We\u0027re already using it\n\t\t\"USE_SOONG_UI\",\n\n\t\t// We should never use GOROOT/GOPATH from the shell environment\n\t\t\"GOROOT\",\n\t\t\"GOPATH\",\n\n\t\t// These should only come from Soong, not the environment.\n\t\t\"CLANG\",\n\t\t\"CLANG_CXX\",\n\t\t\"CCC_CC\",\n\t\t\"CCC_CXX\",\n\n\t\t// Used by the goma compiler wrapper, but should only be set by\n\t\t// gomacc\n\t\t\"GOMACC_PATH\",\n\n\t\t// We handle this above\n\t\t\"OUT_DIR_COMMON_BASE\",\n\t)\n\n\t// Tell python not to spam the source tree with .pyc files.\n\tret.environ.Set(\"PYTHONDONTWRITEBYTECODE\", \"1\")\n\n\t// Sane default matching ninja\n\tret.parallel \u003d runtime.NumCPU() + 2\n\tret.keepGoing \u003d 1\n\n\t// Precondition: the current directory is the top of the source tree",
+      "revId": "0c3919e9962ce6d98cd91f10ea8be944dd0b27a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
