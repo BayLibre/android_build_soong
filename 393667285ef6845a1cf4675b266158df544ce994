@@ -85,6 +85,23 @@
       "message": "Cómo lo instalo",
       "revId": "393667285ef6845a1cf4675b266158df544ce994",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a553503a_55305f34",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4577570
+      },
+      "writtenOn": "2026-01-14T02:02:32Z",
+      "side": 1,
+      "message": "https://cs.android.com/android/platform/superproject/main/+/main:build/soong/root.bp;drc\u003dd3fac5d7dda110cebddad39801e1e44c93bebebd?hl\u003des-419",
+      "revId": "393667285ef6845a1cf4675b266158df544ce994",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
