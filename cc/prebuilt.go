@@ -243,7 +243,13 @@ func (p *prebuiltLibraryLinker) link(ctx ModuleContext,
 }
 
 func (p *prebuiltLibraryLinker) prebuiltSrcs(ctx android.BaseModuleContext) []string {
-	sanitize := ctx.Module().(*Module).sanitize
+	// Use a type assertion to safely get sanitize settings. During prebuilt
+	// selection, ctx.Module() may not be a cc.Module (e.g., when a rust module
+	// depends on a cc prebuilt), so we must handle the non-cc case gracefully.
+	var sanitize *sanitize
+	if ccMod, ok := ctx.Module().(*Module); ok {
+		sanitize = ccMod.sanitize
+	}
 	srcs := p.properties.Srcs.GetOrDefault(ctx, nil)
 	srcs = append(srcs, srcsForSanitizer(sanitize, p.properties.Sanitized)...)
 	if p.static() {
