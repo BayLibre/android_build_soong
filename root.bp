@@ -1,4 +1,9 @@
-// Soong finds all Android.bp and Blueprints files in the source tree,
+2025-12-09	android14-6.1-2025-12_r1
+SHA-1: 22a65aa13222123cd810
+Diferencia:  prev_r1..r1
+LICENSES	kernel	boot-6.1.img
+boot-6.1-gz.img
+boot-6.1-lz4.imgboot-6.1.imgboot-6.1-lz4.img// Soong finds all Android.bp and Blueprints files in the source tree,
 // subdirs= and optional_subdirs= are obsolete and this file no longer
 // needs a list of the top level directories that may contain Android.bp
 // files.
