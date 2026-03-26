@@ -446,8 +446,8 @@ func (a *apexBundle) buildFileContexts(ctx android.ModuleContext) android.Path {
 
 	labelForRoot := "u:object_r:system_file:s0"
 	labelForManifest := "u:object_r:system_file:s0"
-	if a.SocSpecific() && !a.vndkApex {
-		// APEX on /vendor should label ./ and ./apex_manifest.pb as vendor file.
+	if (a.SocSpecific() || a.DeviceSpecific()) && !a.vndkApex {
+		// APEX on /vendor or /odm should label ./ and ./apex_manifest.pb as vendor file.
 		labelForRoot = "u:object_r:vendor_file:s0"
 		labelForManifest = "u:object_r:vendor_apex_metadata_file:s0"
 	}
