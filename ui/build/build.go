@@ -368,7 +368,7 @@ func Build(ctx Context, config Config) {
 			ctx.Verboseln("Loaded previous kati config:", string(katiSuffix))
 			config.SetKatiSuffix(string(katiSuffix))
 		}
-	} else if what&RunSoong != 0 {
+	} else if what&RunSoong != 0 && !config.SkipKati() {
 		runKatiPackage(ctx, config, true)
 	}
 

@@ -104,8 +104,9 @@ type configImpl struct {
 	dist            bool
 	jsonModuleGraph bool
 	reportMkMetrics bool // Collect and report mk2bp migration progress metrics.
-	soongDocs       bool
-	skipConfig      bool
+	soongDocs             bool
+	soongModuleTypeSchema bool
+	skipConfig            bool
 	// Either the user or product config requested that we skip soong (for the banner). The other
 	// skip flags tell whether *this* soong_ui invocation will skip kati - which will be true
 	// during lunch.
@@ -1101,6 +1102,12 @@ func (c *configImpl) parseArgs(ctx Context, args []string) {
 			c.jsonModuleGraph = true
 		} else if arg == "soong_docs" {
 			c.soongDocs = true
+		} else if arg == "soong_module_type_schema" {
+			c.soongModuleTypeSchema = true
+			if !c.skipKatiControlledByFlags {
+				c.skipKati = true
+				c.skipKatiNinja = true
+			}
 		} else {
 			if arg == "checkbuild" {
 				c.checkbuild = true
@@ -1193,7 +1200,7 @@ func (c *configImpl) SoongBuildInvocationNeeded() bool {
 		return true
 	}
 
-	if !c.JsonModuleGraph() && !c.SoongDocs() {
+	if !c.JsonModuleGraph() && !c.SoongDocs() && !c.SoongModuleTypeSchema() {
 		// Command line was empty, the default Ninja target is built
 		return true
 	}
@@ -1265,6 +1272,10 @@ func (c *configImpl) SoongDocsHtml() string {
 	return shared.JoinPath(c.SoongOutDir(), "docs/soong_build.html")
 }
 
+func (c *configImpl) SoongModuleTypeSchemaFile() string {
+	return shared.JoinPath(c.SoongOutDir(), "docs/module_types.json")
+}
+
 func (c *configImpl) ModuleGraphFile() string {
 	return shared.JoinPath(c.SoongOutDir(), "module-graph.json")
 }
@@ -1304,6 +1315,10 @@ func (c *configImpl) JsonModuleGraph() bool {
 
 func (c *configImpl) SoongDocs() bool {
 	return c.soongDocs
+}
+
+func (c *configImpl) SoongModuleTypeSchema() bool {
+	return c.soongModuleTypeSchema
 }
 
 func (c *configImpl) IsVerbose() bool {

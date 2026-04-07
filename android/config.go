@@ -86,7 +86,8 @@ type CmdArgs struct {
 	KatiSuffix     string
 	KatiEnabled    bool
 
-	DocFile string
+	DocFile              string
+	ModuleTypeSchemaFile string
 
 	BuildFromSourceStub bool
 
@@ -100,6 +101,9 @@ const (
 
 	// Generate a documentation file for module type definitions and exit.
 	GenerateDocFile
+
+	// Generate a JSON schema file for module type definitions and exit.
+	GenerateModuleTypeSchema
 )
 
 const testKeyDir = "build/make/target/product/security"
@@ -871,6 +875,7 @@ func initConfig(cmdArgs CmdArgs, availableEnv map[string]string) (*config, error
 		}
 	}
 	setBuildMode(cmdArgs.DocFile, GenerateDocFile)
+	setBuildMode(cmdArgs.ModuleTypeSchemaFile, GenerateModuleTypeSchema)
 
 	newConfig.productVariables.Build_from_text_stub = boolPtr(newConfig.BuildFromTextStub())
 

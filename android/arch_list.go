@@ -150,6 +150,21 @@ var archFeatures = map[ArchType][]string{
 	},
 }
 
+// ArchVariantsFor returns the list of arch variants for the given architecture.
+func ArchVariantsFor(arch ArchType) []string {
+	return append([]string(nil), archVariants[arch]...)
+}
+
+// CpuVariantsFor returns the list of CPU variants for the given architecture.
+func CpuVariantsFor(arch ArchType) []string {
+	return append([]string(nil), cpuVariants[arch]...)
+}
+
+// ArchFeaturesFor returns the list of optional features for the given architecture.
+func ArchFeaturesFor(arch ArchType) []string {
+	return append([]string(nil), archFeatures[arch]...)
+}
+
 // Lists which optional features are automatically enabled
 // for each value of TARGET_ARCH_VARIANT.
 var androidArchFeatureMap = map[ArchType]map[string][]string{

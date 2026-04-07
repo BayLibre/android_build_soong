@@ -196,6 +196,13 @@ type variableProperties struct {
 
 var defaultProductVariables interface{} = variableProperties{}
 
+// DefaultProductVariableProperties returns the default variableProperties struct for use
+// in schema generation. The returned value contains the Product_variables field with all
+// variable definitions and their supported properties.
+func DefaultProductVariableProperties() interface{} {
+	return defaultProductVariables
+}
+
 type ProductVariables struct {
 	// Suffix to add to generated Makefiles
 	Make_suffix *string `json:",omitempty"`

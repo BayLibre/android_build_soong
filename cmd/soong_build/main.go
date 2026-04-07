@@ -79,6 +79,7 @@ func init() {
 
 	// Flags representing various modes soong_build can run in
 	flag.StringVar(&cmdlineArgs.DocFile, "soong_docs", "", "build documentation file to output")
+	flag.StringVar(&cmdlineArgs.ModuleTypeSchemaFile, "module_type_schema", "", "module type JSON schema file to output")
 	flag.StringVar(&cmdlineArgs.OutFile, "o", "build.ninja", "the Ninja file to output")
 	flag.StringVar(&cmdlineArgs.SoongVariables, "soong_variables", "soong.variables", "the file contains all build variables")
 	flag.BoolVar(&cmdlineArgs.EmptyNinjaFile, "empty-ninja-file", false, "write out a 0-byte ninja file")
@@ -259,6 +260,8 @@ func runSoongOnlyBuild(ctx *android.Context) (string, []string) {
 	switch ctx.Config().BuildMode {
 	case android.GenerateDocFile:
 		stopBefore = bootstrap.StopBeforePrepareBuildActions
+	case android.GenerateModuleTypeSchema:
+		stopBefore = bootstrap.StopBeforePrepareBuildActions
 	default:
 		stopBefore = bootstrap.DoEverything
 	}
@@ -275,6 +278,10 @@ func runSoongOnlyBuild(ctx *android.Context) (string, []string) {
 		err := writeDocs(ctx, shared.JoinPath(topDir, cmdlineArgs.DocFile))
 		maybeQuit(err, "error building Soong documentation")
 		return cmdlineArgs.DocFile, ninjaDeps
+	case android.GenerateModuleTypeSchema:
+		err := writeModuleTypeSchema(ctx, shared.JoinPath(topDir, cmdlineArgs.ModuleTypeSchemaFile))
+		maybeQuit(err, "error generating module type schema")
+		return cmdlineArgs.ModuleTypeSchemaFile, ninjaDeps
 	default:
 		// The actual output (build.ninja) was written in the RunBlueprint() call
 		// above

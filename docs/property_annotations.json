@@ -1,0 +1,397 @@
+{
+  "version": 1,
+  "description": "Supplementary property annotations for the Soong module type schema. Provides module-reference and enum metadata that is not yet derivable from struct tags.",
+  "module_references": {
+    "description": "Properties whose values are module names (dependency references). These are string or string_list properties that should offer module-name completions, not file-path completions.",
+    "properties": {
+      "defaults": {
+        "type": "string_list",
+        "description": "Defaults modules to inherit properties from."
+      },
+      "required": {
+        "type": "string_list",
+        "description": "Modules to install alongside this module."
+      },
+      "host_required": {
+        "type": "string_list",
+        "description": "Host modules to install when this module is installed on device."
+      },
+      "target_required": {
+        "type": "string_list",
+        "description": "Target modules to install when this module is installed on host."
+      },
+      "licenses": {
+        "type": "string_list",
+        "description": "License modules."
+      },
+      "static_libs": {
+        "type": "string_list",
+        "description": "Modules to link or compile statically."
+      },
+      "shared_libs": {
+        "type": "string_list",
+        "description": "Modules to link dynamically."
+      },
+      "header_libs": {
+        "type": "string_list",
+        "description": "Modules providing headers only (no compiled output)."
+      },
+      "whole_static_libs": {
+        "type": "string_list",
+        "description": "Static libraries whose objects are linked in their entirety."
+      },
+      "runtime_libs": {
+        "type": "string_list",
+        "description": "Modules installed alongside at runtime but not linked."
+      },
+      "system_shared_libs": {
+        "type": "string_list",
+        "description": "System shared libraries depended on."
+      },
+      "export_shared_lib_headers": {
+        "type": "string_list",
+        "description": "Shared libs whose headers are re-exported to dependents."
+      },
+      "export_static_lib_headers": {
+        "type": "string_list",
+        "description": "Static libs whose headers are re-exported to dependents."
+      },
+      "export_header_lib_headers": {
+        "type": "string_list",
+        "description": "Header libs whose headers are re-exported to dependents."
+      },
+      "export_generated_headers": {
+        "type": "string_list",
+        "description": "Generated header modules re-exported to dependents."
+      },
+      "exclude_static_libs": {
+        "type": "string_list",
+        "description": "Static libs to exclude from the dependency set."
+      },
+      "exclude_shared_libs": {
+        "type": "string_list",
+        "description": "Shared libs to exclude from the dependency set."
+      },
+      "exclude_header_libs": {
+        "type": "string_list",
+        "description": "Header libs to exclude from the dependency set."
+      },
+      "exclude_runtime_libs": {
+        "type": "string_list",
+        "description": "Runtime libs to exclude from the dependency set."
+      },
+      "generated_sources": {
+        "type": "string_list",
+        "description": "Modules generating source files (e.g. genrule)."
+      },
+      "generated_headers": {
+        "type": "string_list",
+        "description": "Modules generating header files (e.g. genrule)."
+      },
+      "device_first_generated_headers": {
+        "type": "string_list",
+        "description": "Generated headers resolved with device-first architecture."
+      },
+      "libs": {
+        "type": "string_list",
+        "description": "Library modules added to the classpath (Java) or dependency set (Python)."
+      },
+      "associates": {
+        "type": "string_list",
+        "description": "Kotlin libraries whose internal members are accessible."
+      },
+      "plugins": {
+        "type": "string_list",
+        "description": "Annotation processor or compiler plugin modules."
+      },
+      "exported_plugins": {
+        "type": "string_list",
+        "description": "Annotation processor modules exported to dependents."
+      },
+      "kotlin_plugins": {
+        "type": "string_list",
+        "description": "Kotlin compiler plugin modules."
+      },
+      "extra_check_modules": {
+        "type": "string_list",
+        "description": "Extra error-prone check modules."
+      },
+      "hiddenapi_additional_annotations": {
+        "type": "string_list",
+        "description": "Modules providing additional hidden API annotations."
+      },
+      "additional_certificates": {
+        "type": "string_list",
+        "description": "Additional android_app_certificate modules for signing."
+      },
+      "jni_libs": {
+        "type": "string_list",
+        "description": "Native libraries to include in APK or APEX."
+      },
+      "system_modules": {
+        "type": "string",
+        "description": "java_system_modules module for compilation."
+      },
+      "rlibs": {
+        "type": "string_list",
+        "description": "Rust rlib crate dependencies."
+      },
+      "rustlibs": {
+        "type": "string_list",
+        "description": "Rust libraries linked as rlib or dylib as appropriate."
+      },
+      "proc_macros": {
+        "type": "string_list",
+        "description": "Rust procedural macro dependencies."
+      },
+      "dylibs": {
+        "type": "string_list",
+        "description": "Rust dylib crate dependencies."
+      },
+      "stdlibs": {
+        "type": "string_list",
+        "description": "Rust standard library dependencies."
+      },
+      "tools": {
+        "type": "string_list",
+        "description": "Host executable modules used as build tools (genrule)."
+      },
+      "native_shared_libs": {
+        "type": "string_list",
+        "description": "Native shared libraries to embed (APEX)."
+      },
+      "exclude_native_shared_libs": {
+        "type": "string_list",
+        "description": "Native shared libraries to exclude (APEX)."
+      },
+      "binaries": {
+        "type": "string_list",
+        "description": "Native executables to embed (APEX)."
+      },
+      "exclude_binaries": {
+        "type": "string_list",
+        "description": "Native executables to exclude (APEX)."
+      },
+      "tests": {
+        "type": "string_list",
+        "description": "Test modules to embed (APEX)."
+      },
+      "exclude_tests": {
+        "type": "string_list",
+        "description": "Test modules to exclude (APEX)."
+      },
+      "prebuilts": {
+        "type": "string_list",
+        "description": "prebuilt_etc modules to embed (APEX)."
+      },
+      "exclude_prebuilts": {
+        "type": "string_list",
+        "description": "prebuilt_etc modules to exclude (APEX)."
+      },
+      "filesystems": {
+        "type": "string_list",
+        "description": "Filesystem modules to embed (APEX)."
+      },
+      "exclude_filesystems": {
+        "type": "string_list",
+        "description": "Filesystem modules to exclude (APEX)."
+      },
+      "bootclasspath_fragments": {
+        "type": "string_list",
+        "description": "Bootclasspath fragment modules (APEX)."
+      },
+      "systemserverclasspath_fragments": {
+        "type": "string_list",
+        "description": "System server classpath fragment modules (APEX)."
+      },
+      "java_libs": {
+        "type": "string_list",
+        "description": "Java library modules to embed (APEX)."
+      },
+      "sh_binaries": {
+        "type": "string_list",
+        "description": "Shell script binary modules to embed (APEX)."
+      },
+      "compat_configs": {
+        "type": "string_list",
+        "description": "Platform compatibility config modules (APEX)."
+      },
+      "exclude_jni_libs": {
+        "type": "string_list",
+        "description": "JNI libraries to exclude (APEX)."
+      },
+      "certificate": {
+        "type": "string",
+        "description": "Certificate module or name for signing."
+      }
+    }
+  },
+  "enums": {
+    "description": "Properties that accept a fixed set of values. Where values differ by language/context, all valid values are listed with a context note.",
+    "properties": {
+      "stl": {
+        "type": "string",
+        "description": "C++ STL implementation to use.",
+        "values": [
+          "",
+          "libc++",
+          "libc++_static",
+          "libstdc++",
+          "none"
+        ],
+        "ndk_values": [
+          "ndk_libc++_shared",
+          "ndk_libc++_static",
+          "ndk_system"
+        ]
+      },
+      "c_std": {
+        "type": "string",
+        "description": "C standard version. Empty string uses the build system default.",
+        "values": [
+          "",
+          "experimental",
+          "gnu17",
+          "gnu11",
+          "gnu99",
+          "gnu89",
+          "c17",
+          "c11",
+          "c99",
+          "c89"
+        ]
+      },
+      "cpp_std": {
+        "type": "string",
+        "description": "C++ standard version. Empty string uses the build system default.",
+        "values": [
+          "",
+          "experimental",
+          "gnu++23",
+          "gnu++20",
+          "gnu++2a",
+          "gnu++17",
+          "gnu++14",
+          "gnu++11",
+          "c++23",
+          "c++20",
+          "c++2a",
+          "c++17",
+          "c++14",
+          "c++11"
+        ]
+      },
+      "instruction_set": {
+        "type": "string",
+        "description": "Instruction set for ARM targets. Only meaningful on ARM architectures.",
+        "values": [
+          "",
+          "arm",
+          "thumb"
+        ]
+      },
+      "proto.type": {
+        "type": "string",
+        "description": "Protocol buffer generator type. Available values differ by language.",
+        "cc_values": [
+          "full",
+          "lite"
+        ],
+        "java_values": [
+          "full",
+          "lite",
+          "micro",
+          "nano",
+          "stream"
+        ],
+        "nanopb_values": [
+          "nanopb-c",
+          "nanopb-c-enable_malloc",
+          "nanopb-c-16bit",
+          "nanopb-c-enable_malloc-16bit",
+          "nanopb-c-32bit",
+          "nanopb-c-enable_malloc-32bit"
+        ]
+      },
+      "sdk_version": {
+        "type": "string",
+        "description": "SDK version to compile against. Format: [kind_]version. If kind is omitted, 'public' is assumed.",
+        "kinds": [
+          "public",
+          "system",
+          "test",
+          "test_frameworks_core",
+          "core",
+          "core_platform",
+          "module-lib",
+          "system-server",
+          "none"
+        ],
+        "versions": [
+          "current",
+          "<numeric API level>"
+        ],
+        "examples": [
+          "current",
+          "30",
+          "system_current",
+          "system_30",
+          "module-lib_current",
+          "core_platform",
+          "none"
+        ]
+      },
+      "min_sdk_version": {
+        "type": "string",
+        "description": "Minimum SDK version. Same format as sdk_version.",
+        "see": "sdk_version"
+      },
+      "max_sdk_version": {
+        "type": "string",
+        "description": "Maximum SDK version. Same format as sdk_version.",
+        "see": "sdk_version"
+      },
+      "target_sdk_version": {
+        "type": "string",
+        "description": "Target SDK version. Same format as sdk_version.",
+        "see": "sdk_version"
+      },
+      "java_version": {
+        "type": "string",
+        "description": "Java language version for source compilation.",
+        "values": [
+          "1.8",
+          "1.9",
+          "8",
+          "9",
+          "11",
+          "17",
+          "21",
+          "25"
+        ],
+        "legacy_aliases": {
+          "1.6": "1.8",
+          "6": "1.8",
+          "1.7": "1.8",
+          "7": "1.8"
+        }
+      },
+      "kotlin_lang_version": {
+        "type": "string",
+        "description": "Kotlin language version.",
+        "values": [
+          "1.9",
+          "2"
+        ]
+      },
+      "apex_available": {
+        "type": "string_list",
+        "description": "APEX modules this module may be included in. Accepts specific APEX names or special tokens.",
+        "special_values": [
+          "//apex_available:platform",
+          "//apex_available:anyapex"
+        ]
+      }
+    }
+  }
+}

@@ -50,9 +50,10 @@ const (
 	availableEnvFile = "soong.environment.available"
 	usedEnvFile      = "soong.environment.used"
 
-	soongBuildTag      = "build"
-	jsonModuleGraphTag = "modulegraph"
-	soongDocsTag       = "soong_docs"
+	soongBuildTag              = "build"
+	jsonModuleGraphTag         = "modulegraph"
+	soongDocsTag               = "soong_docs"
+	soongModuleTypeSchemaTag   = "soong_module_type_schema"
 
 	// bootstrapEpoch is used to determine if an incremental build is incompatible with the current
 	// version of bootstrap and needs cleaning before continuing the build.  Increment this for
@@ -356,6 +357,15 @@ func bootstrapBlueprint(ctx Context, config Config) {
 				"--soong_docs", config.SoongDocsHtml(),
 			),
 		},
+		{
+			name:        soongModuleTypeSchemaTag,
+			description: fmt.Sprintf("generating module type schema at %s", config.SoongModuleTypeSchemaFile()),
+			config:      config,
+			output:      config.SoongModuleTypeSchemaFile(),
+			specificArgs: append(baseArgs,
+				"--module_type_schema", config.SoongModuleTypeSchemaFile(),
+			),
+		},
 	}
 
 	// Figure out which invocations will be run under the debugger:
@@ -616,6 +626,10 @@ func runSoong(ctx Context, config Config, enforceNoSoongOutput bool) {
 		if config.SoongDocs() {
 			checkEnvironmentFile(ctx, soongBuildEnv, config.UsedEnvFile(soongDocsTag))
 		}
+
+		if config.SoongModuleTypeSchema() {
+			checkEnvironmentFile(ctx, soongBuildEnv, config.UsedEnvFile(soongModuleTypeSchemaTag))
+		}
 	}()
 
 	ninja := func(targets ...string) {
@@ -717,6 +731,10 @@ func runSoong(ctx Context, config Config, enforceNoSoongOutput bool) {
 
 	if config.SoongDocs() {
 		targets = append(targets, config.SoongDocsHtml())
+	}
+
+	if config.SoongModuleTypeSchema() {
+		targets = append(targets, config.SoongModuleTypeSchemaFile())
 	}
 
 	if config.SoongBuildInvocationNeeded() {
