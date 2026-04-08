@@ -434,7 +434,10 @@ func NewConfig(ctx Context, args ...string) Config {
 	// Precondition: the current directory is the top of the source tree
 	checkTopDir(ctx)
 
-	srcDir := absPath(ctx, ".")
+	srcDir := "."
+	if !ret.UseVirtualOutDir() {
+		srcDir = absPath(ctx, ".")
+	}
 	if strings.ContainsRune(srcDir, ' ') {
 		ctx.Println("You are building in a directory whose absolute path contains a space character:")
 		ctx.Println()
