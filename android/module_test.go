@@ -17,6 +17,7 @@ package android
 import (
 	"path/filepath"
 	"runtime"
+	"strings"
 	"testing"
 
 	"github.com/google/blueprint"
@@ -228,6 +229,33 @@ var prepareForModuleTests = FixtureRegisterWithContext(func(ctx RegistrationCont
 	ctx.RegisterModuleType("deps", depsModuleFactory)
 })
 
+type symlinkTestModule struct {
+	ModuleBase
+}
+
+func (m *symlinkTestModule) GenerateAndroidBuildActions(ctx ModuleContext) {
+	outputFile := PathForModuleOut(ctx, ctx.ModuleName())
+	ctx.Build(pctx, BuildParams{
+		Rule:   Touch,
+		Output: outputFile,
+	})
+
+	symlinkFile := PathForModuleOut(ctx, ctx.ModuleName()+".symlink")
+	ctx.Build(pctx, BuildParams{
+		Rule:   Symlink,
+		Output: symlinkFile,
+		Args: map[string]string{
+			"fromPath": outputFile.String(),
+		},
+	})
+}
+
+func symlinkTestModuleFactory() Module {
+	m := &symlinkTestModule{}
+	InitAndroidArchModule(m, HostAndDeviceDefault, MultilibCommon)
+	return m
+}
+
 func TestErrorDependsOnDisabledModule(t *testing.T) {
 	bp := `
 		deps {
@@ -397,6 +425,27 @@ func TestInstall(t *testing.T) {
 	assertInputs(symlinkRule("foo"), installRule("foo").Output)
 	assertImplicits(symlinkRule("foo"))
 	assertOrderOnlys(symlinkRule("foo"))
+}
+
+func TestSymlinkRule(t *testing.T) {
+	bp := `
+		symlink_test {
+			name: "foo",
+		}
+	`
+
+	result := GroupFixturePreparers(
+		FixtureRegisterWithContext(func(ctx RegistrationContext) {
+			ctx.RegisterModuleType("symlink_test", symlinkTestModuleFactory)
+		}),
+	).RunTestWithBp(t, bp)
+
+	foo := result.ModuleForTests(t, "foo", "android_common")
+	symlinkRule := foo.Output("foo.symlink")
+
+	if !strings.Contains(symlinkRule.RuleParams.Command, "realpath") {
+		t.Errorf("Expected command to contain realpath, but got: %s", symlinkRule.RuleParams.Command)
+	}
 }
 
 func TestInstallKatiEnabled(t *testing.T) {
