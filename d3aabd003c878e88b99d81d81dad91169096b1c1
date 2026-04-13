@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea8ca822_24166224",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2026-04-13T18:17:09Z",
+      "side": 1,
+      "message": "This needs to be submitted to internal main.",
+      "revId": "d3aabd003c878e88b99d81d81dad91169096b1c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9c2c00e_aac485e3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2026-04-13T18:17:09Z",
+      "side": 1,
+      "message": "You talk about python a lot here, but there\u0027s nothing python related in the cl?\n\nCould you please give a reproduction step showing some problem? I don\u0027t understand what the issue is.",
+      "revId": "d3aabd003c878e88b99d81d81dad91169096b1c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
