@@ -99,7 +99,9 @@ func (a *avbAddHashFooter) GenerateAndroidBuildActions(ctx android.ModuleContext
 	}
 	input := android.PathForModuleSrc(ctx, src)
 	output := android.PathForModuleOut(ctx, a.installFileName())
+	builder.Command().Text("rm").Flag("-f").Text(output.String())
 	builder.Command().Text("cp").Input(input).Output(output)
+	builder.Command().Text("chmod").FlagWithArg("+w ", output.String())
 
 	cmd := builder.Command().BuiltTool("avbtool").Text("add_hash_footer")
 
