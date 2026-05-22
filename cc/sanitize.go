@@ -116,6 +116,23 @@ var Sanitizers = []SanitizerType{
 	cfi, // cfi is last to prevent it running before incompatible mutators
 }
 
+func appendUniqueSanitizer(list []string, sanitizer string) []string {
+	if !inList(sanitizer, list) {
+		return append(list, sanitizer)
+	}
+	return list
+}
+
+func removeSanitizerIfPresent(list []string, sanitizer string) []string {
+	filtered := make([]string, 0, len(list))
+	for _, item := range list {
+		if item != sanitizer {
+			filtered = append(filtered, item)
+		}
+	}
+	return filtered
+}
+
 // Name of the sanitizer variation for this sanitizer type
 func (t SanitizerType) variationName() string {
 	switch t {
@@ -626,6 +643,22 @@ func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 		s.Cfi = proptools.BoolPtr(true)
 		if inList("cfi", ctx.Config().SanitizeDeviceDiag()) {
 			s.Diag.Cfi = proptools.BoolPtr(true)
+		}
+	}
+
+	// Enable/disable generic UBSan checks for configured include/exclude paths.
+	if ctx.Arch().ArchType == android.Arm64 && ctx.toolchain().Bionic() {
+		ubsanMiscChecks := ctx.Config().UBSanMiscChecks()
+		if ctx.Config().UBSanMiscEnabledForPath(ctx.ModuleDir()) {
+			for _, sanitizer := range ubsanMiscChecks {
+				s.Misc_undefined = appendUniqueSanitizer(s.Misc_undefined, sanitizer)
+			}
+		}
+		if ctx.Config().UBSanMiscDisabledForPath(ctx.ModuleDir()) {
+			for _, sanitizer := range ubsanMiscChecks {
+				s.Misc_undefined = removeSanitizerIfPresent(s.Misc_undefined, sanitizer)
+				s.Diag.Misc_undefined = removeSanitizerIfPresent(s.Diag.Misc_undefined, sanitizer)
+			}
 		}
 	}
 

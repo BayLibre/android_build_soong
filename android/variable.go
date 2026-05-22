@@ -320,6 +320,9 @@ type ProductVariables struct {
 	ApexBootJars ConfiguredJarList `json:",omitempty"`
 
 	IntegerOverflowExcludePaths []string `json:",omitempty"`
+	UBSanMiscChecks             []string `json:",omitempty"`
+	UBSanMiscExcludePaths       []string `json:",omitempty"`
+	UBSanMiscIncludePaths       []string `json:",omitempty"`
 
 	EnableCFI       *bool    `json:",omitempty"`
 	CFIExcludePaths []string `json:",omitempty"`
