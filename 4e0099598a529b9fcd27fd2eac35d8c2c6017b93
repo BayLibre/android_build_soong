@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f81dc8f_753659b6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3564171
+      },
+      "writtenOn": "2026-05-22T08:50:36Z",
+      "side": 1,
+      "message": "please help to review the change.\nBuganizer: 515600171",
+      "revId": "4e0099598a529b9fcd27fd2eac35d8c2c6017b93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
