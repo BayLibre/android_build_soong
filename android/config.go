@@ -1928,6 +1928,24 @@ func (c *config) IntegerOverflowDisabledForPath(path string) bool {
 	return HasAnyPrefix(path, c.productVariables.IntegerOverflowExcludePaths)
 }
 
+func (c *config) UBSanMiscChecks() []string {
+	return c.productVariables.UBSanMiscChecks
+}
+
+func (c *config) UBSanMiscEnabledForPath(path string) bool {
+	if len(c.productVariables.UBSanMiscIncludePaths) == 0 {
+		return false
+	}
+	return HasAnyPrefix(path, c.productVariables.UBSanMiscIncludePaths)
+}
+
+func (c *config) UBSanMiscDisabledForPath(path string) bool {
+	if len(c.productVariables.UBSanMiscExcludePaths) == 0 {
+		return false
+	}
+	return HasAnyPrefix(path, c.productVariables.UBSanMiscExcludePaths)
+}
+
 func (c *config) CFIDisabledForPath(path string) bool {
 	if len(c.productVariables.CFIExcludePaths) == 0 {
 		return false
