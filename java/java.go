@@ -2604,7 +2604,7 @@ func metalavaStubCmd(ctx android.ModuleContext, rule *android.RuleBuilder,
 	}
 
 	cmd.BuiltTool("metalava").ImplicitTool(ctx.Config().HostJavaToolPath(ctx, "metalava.jar")).
-		Flag(config.JavacVmFlags).
+		Flag(config.MetalavaVmFlags).
 		Flag("-J--add-opens=java.base/java.util=ALL-UNNAMED").
 		FlagWithInputList("--source-files ", srcs, " ")
 

@@ -780,7 +780,7 @@ func metalavaUseRewrapper(ctx android.ModuleContext) bool {
 
 func metalavaCmd(ctx android.ModuleContext, rule *android.RuleBuilder, srcs android.Paths,
 	srcJarList android.Path, homeDir android.WritablePath, params stubsCommandConfigParams,
-	configFiles android.Paths, apiSurface *string) *android.RuleBuilderCommand {
+	configFiles android.Paths, apiSurface *string, highMem bool) *android.RuleBuilderCommand {
 	rule.Command().Text("rm -rf").Flag(homeDir.String())
 	rule.Command().Text("mkdir -p").Flag(homeDir.String())
 
@@ -808,9 +808,17 @@ func metalavaCmd(ctx android.ModuleContext, rule *android.RuleBuilder, srcs andr
 	}
 
 	cmd.BuiltTool("metalava").ImplicitTool(ctx.Config().HostJavaToolPath(ctx, "metalava.jar")).
-		Flag(config.JavacVmFlags).
+		Flag(config.MetalavaVmFlags).
 		Flag(config.MetalavaAddOpens).
-		FlagWithArg("--java-source ", params.javaVersion.String()).
+		Flag("-J-XX:+UseParallelGC")
+
+	if highMem {
+		cmd.Flag("-J-Xmx8G")
+	} else {
+		cmd.Flag("-J-Xmx4G")
+	}
+
+	cmd.FlagWithArg("--java-source ", params.javaVersion.String()).
 		FlagWithRspFileInputList("@", android.PathForModuleOut(ctx, fmt.Sprintf("%s.metalava.rsp", params.stubsType.String())), srcs).
 		FlagWithInput("@", srcJarList)
 
@@ -930,7 +938,7 @@ func (d *Droidstubs) commonMetalavaStubCmd(ctx android.ModuleContext, rule *andr
 	configFiles := android.PathsForModuleSrc(ctx, d.properties.ConfigFiles)
 
 	cmd := metalavaCmd(ctx, rule, d.Javadoc.srcFiles, srcJarList, homeDir, params.stubConfig,
-		configFiles, d.properties.Api_surface)
+		configFiles, d.properties.Api_surface, BoolDefault(d.properties.High_mem, false))
 	cmd.Implicits(d.Javadoc.implicits)
 
 	d.stubsFlags(ctx, cmd, params.stubsDir, params.stubConfig.stubsType, params.stubConfig.checkApi)

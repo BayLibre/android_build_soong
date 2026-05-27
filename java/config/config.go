@@ -56,6 +56,7 @@ var (
 
 var (
 	JavacVmFlags    = strings.Join(javacVmFlagsList, " ")
+	MetalavaVmFlags = strings.Join(metalavaVmFlagsList, " ")
 	javaVmFlagsList = []string{
 		`-XX:OnError="cat hs_err_pid%p.log"`,
 		"-XX:CICompilerCount=6",
@@ -67,6 +68,12 @@ var (
 		"-J-XX:+UseDynamicNumberOfGCThreads",
 		"-J-XX:+TieredCompilation",
 		"-J-XX:TieredStopAtLevel=1",
+	}
+	metalavaVmFlagsList = []string{
+		`-J-XX:OnError="cat hs_err_pid%p.log"`,
+		"-J-XX:CICompilerCount=6",
+		"-J-XX:+UseDynamicNumberOfGCThreads",
+		"-J-XX:+TieredCompilation",
 	}
 	dexerJavaVmFlagsList = []string{
 		`-JXX:OnError="cat hs_err_pid%p.log"`,
@@ -128,6 +135,7 @@ func init() {
 
 	pctx.StaticVariable("JavaVmFlags", strings.Join(javaVmFlagsList, " "))
 	pctx.StaticVariable("JavacVmFlags", strings.Join(javacVmFlagsList, " "))
+	pctx.StaticVariable("MetalavaVmFlags", strings.Join(metalavaVmFlagsList, " "))
 
 	pctx.VariableConfigMethod("hostPrebuiltTag", android.Config.PrebuiltOS)
 
