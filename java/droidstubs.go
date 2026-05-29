@@ -751,7 +751,15 @@ func metalavaCmd(ctx android.ModuleContext, rule *android.RuleBuilder, srcs andr
 	cmd.BuiltTool("metalava").ImplicitTool(ctx.Config().HostJavaToolPath(ctx, "metalava.jar")).
 		Flag(config.JavacVmFlags).
 		Flag(config.MetalavaAddOpens).
-		FlagWithArg("--java-source ", params.javaVersion.String()).
+		Flag("-J-XX:+UseParallelGC")
+
+	if rule.IsHighMem() {
+		cmd.Flag("-J-Xmx8G")
+	} else {
+		cmd.Flag("-J-Xmx4G")
+	}
+
+	cmd.FlagWithArg("--java-source ", params.javaVersion.String()).
 		FlagWithRspFileInputList("@", android.PathForModuleOut(ctx, fmt.Sprintf("%s.metalava.rsp", params.stubsType.String())), srcs).
 		FlagWithInput("@", srcJarList)
 

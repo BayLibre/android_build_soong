@@ -142,6 +142,11 @@ func (r *RuleBuilder) HighMem() *RuleBuilder {
 	return r
 }
 
+// IsHighMem returns true if the rule was marked as a high memory rule.
+func (r *RuleBuilder) IsHighMem() bool {
+	return r.highmem
+}
+
 // Remoteable marks the rule as supporting remote execution.
 func (r *RuleBuilder) Remoteable(supports RemoteRuleSupports) *RuleBuilder {
 	r.remoteable = supports
