@@ -89,6 +89,10 @@ type CommonProperties struct {
 	// list of module-specific flags that will be used for javac compiles
 	Javacflags []string `android:"arch_variant"`
 
+	// list of custom JVM flags (e.g. -J-Xmx, -J-XX:MaxHeapSize) to pass to the compiler tools.
+	// Used for per-package hyperparameter optimization.
+	Jvm_flags []string `android:"arch_variant"`
+
 	// list of module-specific flags that will be used for kotlinc compiles
 	Kotlincflags []string `android:"arch_variant"`
 
@@ -1174,6 +1178,8 @@ func (j *Module) collectJavacFlags(
 		}
 	}
 
+	javacFlags = append(javacFlags, j.properties.Jvm_flags...)
+
 	if len(javacFlags) > 0 {
 		// optimization.
 		ctx.Variable(pctx, "javacFlags", strings.Join(javacFlags, " "))
@@ -1396,6 +1402,7 @@ func (j *Module) compile(ctx android.ModuleContext) *JavaInfo {
 
 		// user defined kotlin flags.
 		kotlincFlags := j.properties.Kotlincflags
+		kotlincFlags = append(kotlincFlags, j.properties.Jvm_flags...)
 		CheckKotlincFlags(ctx, kotlincFlags)
 
 		// Available kotlin versions can be found at
@@ -3306,3 +3313,7 @@ func (j *Module) UsesLibrary() *usesLibrary {
 }
 
 var _ ModuleWithUsesLibrary = (*Module)(nil)
+
+func (j *Module) jvmFlags() *[]string {
+	return &j.properties.Jvm_flags
+}
