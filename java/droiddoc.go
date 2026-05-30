@@ -38,6 +38,10 @@ func RegisterDocsBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("droiddoc_exported_dir", ExportedDroiddocDirFactory)
 	ctx.RegisterModuleType("javadoc", JavadocFactory)
 	ctx.RegisterModuleType("javadoc_host", JavadocHostFactory)
+
+	ctx.PostDepsMutators(func(ctx android.RegisterMutatorsContext) {
+		ctx.BottomUp("hyperoptimizer", hyperoptimizerMutator)
+	})
 }
 
 type JavadocProperties struct {
@@ -99,6 +103,10 @@ type JavadocProperties struct {
 
 	// names of the output files used in args that will be generated
 	Out []string
+
+	// list of custom JVM flags (e.g. -J-Xmx, -J-XX:MaxHeapSize) to pass to the tool.
+	// Used for per-package hyperparameter optimization.
+	Jvm_flags []string
 }
 
 type ApiToCheck struct {
@@ -207,6 +215,10 @@ func apiCheckEnabled(ctx android.ModuleContext, apiToCheck ApiToCheck, apiVersio
 	}
 
 	return false
+}
+
+func (j *Javadoc) jvmFlags() *[]string {
+	return &j.properties.Jvm_flags
 }
 
 // Javadoc
@@ -559,7 +571,7 @@ func (j *Javadoc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	javaVersion := getJavaVersion(ctx, String(j.properties.Java_version), android.SdkContext(j))
 
 	cmd := javadocSystemModulesCmd(ctx, rule, j.srcFiles, outDir, srcJarDir, srcJarList,
-		deps.systemModules, deps.classpath, j.sourcepaths)
+		deps.systemModules, deps.classpath, j.sourcepaths, j.properties.Jvm_flags)
 
 	cmd.FlagWithArg("-source ", javaVersion.String()).
 		Flag("-J-Xmx1024m").
@@ -727,12 +739,17 @@ func (d *Droiddoc) postDoclavaCmds(ctx android.ModuleContext, rule *android.Rule
 }
 
 func javadocCmd(ctx android.ModuleContext, rule *android.RuleBuilder, srcs android.Paths,
-	outDir, srcJarDir, srcJarList android.Path, sourcepaths android.Paths) *android.RuleBuilderCommand {
+	outDir, srcJarDir, srcJarList android.Path, sourcepaths android.Paths, jvmFlags []string) *android.RuleBuilderCommand {
 
 	cmd := rule.Command().
 		BuiltTool("soong_javac_wrapper").Tool(config.JavadocCmd(ctx)).
-		Flag(config.JavacVmFlags).
-		FlagWithRspFileInputList("@", android.PathForModuleOut(ctx, "javadoc.rsp"), srcs).
+		Flag(config.JavacVmFlags)
+
+	for _, flag := range jvmFlags {
+		cmd.Flag(flag)
+	}
+
+	cmd.FlagWithRspFileInputList("@", android.PathForModuleOut(ctx, "javadoc.rsp"), srcs).
 		FlagWithInput("@", srcJarList)
 
 	// TODO(ccross): Remove this if- statement once we finish migration for all Doclava
@@ -754,9 +771,9 @@ func javadocCmd(ctx android.ModuleContext, rule *android.RuleBuilder, srcs andro
 
 func javadocSystemModulesCmd(ctx android.ModuleContext, rule *android.RuleBuilder, srcs android.Paths,
 	outDir, srcJarDir, srcJarList android.Path, systemModules *systemModules,
-	classpath classpath, sourcepaths android.Paths) *android.RuleBuilderCommand {
+	classpath classpath, sourcepaths android.Paths, jvmFlags []string) *android.RuleBuilderCommand {
 
-	cmd := javadocCmd(ctx, rule, srcs, outDir, srcJarDir, srcJarList, sourcepaths)
+	cmd := javadocCmd(ctx, rule, srcs, outDir, srcJarDir, srcJarList, sourcepaths, jvmFlags)
 
 	flag, deps := systemModules.FormJavaSystemModulesPath(ctx.Device())
 	cmd.Flag(flag).Implicits(deps)
@@ -772,9 +789,9 @@ func javadocSystemModulesCmd(ctx android.ModuleContext, rule *android.RuleBuilde
 
 func javadocBootclasspathCmd(ctx android.ModuleContext, rule *android.RuleBuilder, srcs android.Paths,
 	outDir, srcJarDir, srcJarList android.Path, bootclasspath, classpath classpath,
-	sourcepaths android.Paths) *android.RuleBuilderCommand {
+	sourcepaths android.Paths, jvmFlags []string) *android.RuleBuilderCommand {
 
-	cmd := javadocCmd(ctx, rule, srcs, outDir, srcJarDir, srcJarList, sourcepaths)
+	cmd := javadocCmd(ctx, rule, srcs, outDir, srcJarDir, srcJarList, sourcepaths, jvmFlags)
 
 	if len(bootclasspath) == 0 && ctx.Device() {
 		// explicitly specify -bootclasspath "" if the bootclasspath is empty to
@@ -828,7 +845,7 @@ func (d *Droiddoc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		cmd = dokkaCmd(ctx, rule, outDir, srcJarDir, deps.bootClasspath, deps.classpath)
 	} else {
 		cmd = javadocBootclasspathCmd(ctx, rule, d.Javadoc.srcFiles, outDir, srcJarDir, srcJarList,
-			deps.bootClasspath, deps.classpath, d.Javadoc.sourcepaths)
+			deps.bootClasspath, deps.classpath, d.Javadoc.sourcepaths, d.Javadoc.properties.Jvm_flags)
 	}
 
 	d.expandArgs(ctx, cmd)
