@@ -33,7 +33,15 @@ var (
 	}
 	Riscv64LinkFlags = []string{}
 
-	Riscv64ArchVariantRustFlags = map[string][]string{"": {}}
+	Riscv64ArchVariantRustFlags = map[string][]string{
+		"": {},
+		// SpaceMit X60 (BananaPi F3 / K1).  Mirrors the C/C++ variant defined
+		// in build/soong/cc/config/riscv64_device.go.
+		"x60": {
+			"-C target-feature=+v,+zba,+zbb,+zbs,+zicond,+zfh,+zvfh,+zicboz,+zicbop,+zbc,+zkt",
+			"-C target-cpu=spacemit-x60",
+		},
+	}
 )
 
 func init() {
