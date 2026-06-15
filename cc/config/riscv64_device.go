@@ -41,13 +41,29 @@ var (
 		"-mno-implicit-float",
 	}
 
-	riscv64ArchVariantCflags = map[string][]string{}
+	riscv64ArchVariantCflags = map[string][]string{
+		// SpaceMit X60 (BananaPi F3 / SpaceMit K1).  Adds every ISA
+		// extension the X60 advertises in /proc/cpuinfo on top of the
+		// rv64gcv_zba_zbb_zbs AOSP baseline.  Binaries built with this
+		// variant will not run on RISC-V cores lacking these extensions.
+		"x60": {
+			"-march=rv64gcv_zba_zbb_zbs_zicond_zfh_zvfh_zicboz_zicbop_zbc_zkt",
+			"-mcpu=spacemit-x60",
+			"-mtune=spacemit-x60",
+		},
+	}
 
 	riscv64Ldflags = []string{
 		// This is already the driver's Android default, but duplicated here (and
 		// above) for ease of experimentation with additional extensions.
 		"-march=rv64gcv_zba_zbb_zbs_zvbb",
 		"-Wl,-z,max-page-size=4096",
+	}
+
+	riscv64ArchVariantLdflags = map[string][]string{
+		"x60": {
+			"-march=rv64gcv_zba_zbb_zbs_zicond_zfh_zvfh_zicboz_zicbop_zbc_zkt",
+		},
 	}
 
 	riscv64Cppflags = []string{}
@@ -63,10 +79,26 @@ func init() {
 
 	pctx.StaticVariable("Riscv64Cflags", strings.Join(riscv64Cflags, " "))
 	pctx.StaticVariable("Riscv64Cppflags", strings.Join(riscv64Cppflags, " "))
+
+	for variant, flags := range riscv64ArchVariantCflags {
+		pctx.StaticVariable("Riscv64"+variant+"VariantCflags",
+			strings.Join(flags, " "))
+		riscv64ArchVariantCflagsVar[variant] =
+			"${config.Riscv64" + variant + "VariantCflags}"
+	}
+
+	for variant, flags := range riscv64ArchVariantLdflags {
+		pctx.StaticVariable("Riscv64"+variant+"VariantLdflags",
+			strings.Join(flags, " "))
+		riscv64ArchVariantLdflagsVar[variant] =
+			"${config.Riscv64" + variant + "VariantLdflags}"
+	}
 }
 
 var (
 	riscv64ArchVariantCflagsVar = map[string]string{}
+
+	riscv64ArchVariantLdflagsVar = map[string]string{}
 
 	riscv64CpuVariantCflagsVar = map[string]string{}
 
@@ -117,7 +149,7 @@ func (toolchainRiscv64) LibclangRuntimeLibraryArch() string {
 
 func riscv64ToolchainFactory(arch android.Arch) Toolchain {
 	switch arch.ArchVariant {
-	case "":
+	case "", "x60":
 	default:
 		panic(fmt.Sprintf("Unknown Riscv64 architecture version: %q", arch.ArchVariant))
 	}
@@ -127,9 +159,11 @@ func riscv64ToolchainFactory(arch android.Arch) Toolchain {
 		variantOrDefault(riscv64CpuVariantCflagsVar, arch.CpuVariant))
 
 	extraLdflags := variantOrDefault(riscv64CpuVariantLdflags, arch.CpuVariant)
+	archLdflags := riscv64ArchVariantLdflagsVar[arch.ArchVariant]
 	return &toolchainRiscv64{
 		ldflags: strings.Join([]string{
 			"${config.Riscv64Ldflags}",
+			archLdflags,
 			extraLdflags,
 		}, " "),
 		toolchainCflags: strings.Join(toolchainCflags, " "),

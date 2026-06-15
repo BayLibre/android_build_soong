@@ -78,6 +78,12 @@ var archVariants = map[ArchType][]string{
 		"tremont",
 		"whiskeylake",
 	},
+	Riscv64: {
+		// SpaceMit X60 (BananaPi F3 / SpaceMit K1).  Enables all ISA
+		// extensions advertised by the X60 in /proc/cpuinfo on top of
+		// the rv64gcv_zba_zbb_zbs AOSP baseline, plus -mcpu/-mtune.
+		"x60",
+	},
 }
 
 var cpuVariants = map[ArchType][]string{
