@@ -226,6 +226,14 @@ func (pb PrimaryBuilderFactory) primaryBuilderInvocation(config Config) bootstra
 
 	commonArgs = append(commonArgs, "-l", filepath.Join(pb.config.FileListDir(), "Android.bp.list"))
 	invocationEnv := make(map[string]string)
+	// soong_build runs under `env -i`, so forward the Go runtime memory knobs when
+	// set in the environment. GOMEMLIMIT (soft heap cap) / GOGC let the analysis phase
+	// trade CPU for a lower peak RSS instead of the default GOGC=100 ~2x heap slack.
+	for _, k := range []string{"GOGC", "GOMEMLIMIT"} {
+		if v := os.Getenv(k); v != "" {
+			invocationEnv[k] = v
+		}
+	}
 	if pb.debugPort != "" {
 		//debug mode
 		commonArgs = append(commonArgs, "--delve_listen", pb.debugPort,
