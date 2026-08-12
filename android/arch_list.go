@@ -83,6 +83,10 @@ var archVariants = map[ArchType][]string{
 		// extensions advertised by the X60 in /proc/cpuinfo on top of
 		// the rv64gcv_zba_zbb_zbs AOSP baseline, plus -mcpu/-mtune.
 		"x60",
+		// SpaceMit X100 (SpaceMit K3).  Same idea, but clang has no
+		// -mcpu=spacemit-x100 yet, so the extensions are spelled out and
+		// scheduling is tuned for a generic out-of-order core.
+		"x100",
 	},
 }
 

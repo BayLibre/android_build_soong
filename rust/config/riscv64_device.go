@@ -41,6 +41,13 @@ var (
 			"-C target-feature=+v,+zba,+zbb,+zbs,+zicond,+zfh,+zvfh,+zicboz,+zicbop,+zbc,+zkt",
 			"-C target-cpu=spacemit-x60",
 		},
+		// SpaceMit X100 (SpaceMit K3).  rustc has no spacemit-x100 either, so
+		// no target-cpu.  The feature list stays on the subset proven by the
+		// X60 variant, all of which the X100 also has; the C/C++ variant is
+		// richer because clang takes the full extension string from the DTS.
+		"x100": {
+			"-C target-feature=+v,+zba,+zbb,+zbs,+zicond,+zfh,+zvfh,+zicboz,+zicbop,+zbc,+zkt,+zfa,+zvbb",
+		},
 	}
 )
 

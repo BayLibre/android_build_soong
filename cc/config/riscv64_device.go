@@ -51,6 +51,16 @@ var (
 			"-mcpu=spacemit-x60",
 			"-mtune=spacemit-x60",
 		},
+		// SpaceMit X100 (SpaceMit K3).  clang does not know
+		// -mcpu=spacemit-x100 yet, so name the extensions the core
+		// advertises instead.  Deliberately not -march=rva23u64: the
+		// profile also mandates zawrs, which this core does not
+		// advertise.  The X100 is out-of-order, so tune for that rather
+		// than leaving the in-order default.
+		"x100": {
+			"-march=rv64imafdc_b_v_za64rs_zba_zbb_zbc_zbs_zca_zcb_zcd_zcmop_zfa_zfbfmin_zfh_zfhmin_zicbom_zicbop_zicboz_ziccamoa_ziccif_zicclsm_zicntr_zicond_zicsr_zifencei_zihintntl_zihintpause_zihpm_zimop_zkt_zvbb_zvbc_zvfbfmin_zvfbfwma_zvfh_zvfhmin_zvkb_zvkg_zvkn_zvknc_zvkned_zvkng_zvknha_zvknhb_zvks_zvksc_zvksed_zvksg_zvksh_zvkt",
+			"-mtune=generic-ooo",
+		},
 	}
 
 	riscv64Ldflags = []string{
@@ -63,6 +73,9 @@ var (
 	riscv64ArchVariantLdflags = map[string][]string{
 		"x60": {
 			"-march=rv64gcv_zba_zbb_zbs_zicond_zfh_zvfh_zicboz_zicbop_zbc_zkt",
+		},
+		"x100": {
+			"-march=rv64imafdc_b_v_za64rs_zba_zbb_zbc_zbs_zca_zcb_zcd_zcmop_zfa_zfbfmin_zfh_zfhmin_zicbom_zicbop_zicboz_ziccamoa_ziccif_zicclsm_zicntr_zicond_zicsr_zifencei_zihintntl_zihintpause_zihpm_zimop_zkt_zvbb_zvbc_zvfbfmin_zvfbfwma_zvfh_zvfhmin_zvkb_zvkg_zvkn_zvknc_zvkned_zvkng_zvknha_zvknhb_zvks_zvksc_zvksed_zvksg_zvksh_zvkt",
 		},
 	}
 
@@ -149,7 +162,7 @@ func (toolchainRiscv64) LibclangRuntimeLibraryArch() string {
 
 func riscv64ToolchainFactory(arch android.Arch) Toolchain {
 	switch arch.ArchVariant {
-	case "", "x60":
+	case "", "x60", "x100":
 	default:
 		panic(fmt.Sprintf("Unknown Riscv64 architecture version: %q", arch.ArchVariant))
 	}
