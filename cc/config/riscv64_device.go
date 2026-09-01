@@ -53,12 +53,11 @@ var (
 		},
 		// SpaceMit X100 (SpaceMit K3).  clang does not know
 		// -mcpu=spacemit-x100 yet, so name the extensions the core
-		// advertises instead.  Deliberately not -march=rva23u64: the
-		// profile also mandates zawrs, which this core does not
-		// advertise.  The X100 is out-of-order, so tune for that rather
-		// than leaving the in-order default.
+		// advertises in its device tree instead.  The X100 is
+		// out-of-order, so tune for that rather than leaving the
+		// in-order default.
 		"x100": {
-			"-march=rv64imafdc_b_v_za64rs_zba_zbb_zbc_zbs_zca_zcb_zcd_zcmop_zfa_zfbfmin_zfh_zfhmin_zicbom_zicbop_zicboz_ziccamoa_ziccif_zicclsm_zicntr_zicond_zicsr_zifencei_zihintntl_zihintpause_zihpm_zimop_zkt_zvbb_zvbc_zvfbfmin_zvfbfwma_zvfh_zvfhmin_zvkb_zvkg_zvkn_zvknc_zvkned_zvkng_zvknha_zvknhb_zvks_zvksc_zvksed_zvksg_zvksh_zvkt",
+			"-march=rv64imafdc_b_v_za64rs_zawrs_zba_zbb_zbc_zbs_zca_zcb_zcd_zcmop_zfa_zfbfmin_zfh_zfhmin_zicbom_zicbop_zicboz_ziccamoa_ziccif_zicclsm_zicntr_zicond_zicsr_zifencei_zihintntl_zihintpause_zihpm_zimop_zkt_zvbb_zvbc_zvfbfmin_zvfbfwma_zvfh_zvfhmin_zvkb_zvkg_zvkn_zvknc_zvkned_zvkng_zvknha_zvknhb_zvks_zvksc_zvksed_zvksg_zvksh_zvkt",
 			"-mtune=generic-ooo",
 		},
 	}
@@ -75,7 +74,7 @@ var (
 			"-march=rv64gcv_zba_zbb_zbs_zicond_zfh_zvfh_zicboz_zicbop_zbc_zkt",
 		},
 		"x100": {
-			"-march=rv64imafdc_b_v_za64rs_zba_zbb_zbc_zbs_zca_zcb_zcd_zcmop_zfa_zfbfmin_zfh_zfhmin_zicbom_zicbop_zicboz_ziccamoa_ziccif_zicclsm_zicntr_zicond_zicsr_zifencei_zihintntl_zihintpause_zihpm_zimop_zkt_zvbb_zvbc_zvfbfmin_zvfbfwma_zvfh_zvfhmin_zvkb_zvkg_zvkn_zvknc_zvkned_zvkng_zvknha_zvknhb_zvks_zvksc_zvksed_zvksg_zvksh_zvkt",
+			"-march=rv64imafdc_b_v_za64rs_zawrs_zba_zbb_zbc_zbs_zca_zcb_zcd_zcmop_zfa_zfbfmin_zfh_zfhmin_zicbom_zicbop_zicboz_ziccamoa_ziccif_zicclsm_zicntr_zicond_zicsr_zifencei_zihintntl_zihintpause_zihpm_zimop_zkt_zvbb_zvbc_zvfbfmin_zvfbfwma_zvfh_zvfhmin_zvkb_zvkg_zvkn_zvknc_zvkned_zvkng_zvknha_zvknhb_zvks_zvksc_zvksed_zvksg_zvksh_zvkt",
 		},
 	}
 
