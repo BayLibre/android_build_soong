@@ -59,6 +59,10 @@ var (
 		"x100": {
 			"-march=rv64imafdc_b_v_za64rs_zawrs_zba_zbb_zbc_zbs_zca_zcb_zcd_zcmop_zfa_zfbfmin_zfh_zfhmin_zicbom_zicbop_zicboz_ziccamoa_ziccif_zicclsm_zicntr_zicond_zicsr_zifencei_zihintntl_zihintpause_zihpm_zimop_zkt_zvbb_zvbc_zvfbfmin_zvfbfwma_zvfh_zvfhmin_zvkb_zvkg_zvkn_zvknc_zvkned_zvkng_zvknha_zvknhb_zvks_zvksc_zvksed_zvksg_zvksh_zvkt",
 			"-mtune=generic-ooo",
+			// Overrides the -mno-implicit-float in the riscv64
+			// baseline, which is there only to keep RVV out of qemu.
+			// Arch variant cflags come after the baseline ones.
+			"-mimplicit-float",
 		},
 	}
 
