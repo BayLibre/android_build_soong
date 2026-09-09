@@ -64,6 +64,11 @@ var (
 			// Arch variant cflags come after the baseline ones.
 			"-mimplicit-float",
 		},
+		// Alibaba/T-Head ZhiHe A210.  Extension list taken from /proc/cpuinfo
+		"a210": {
+			"-march=rv64imafdcv_zicntr_zicsr_zifencei_zihpm_zaamo_zalrsc_zca_zcd_zba_zbb_zbc_zbs_zve32f_zve32x_zve64d_zve64f_zve64x_sscofpmf_svpbmt",
+			"-mimplicit-float",
+		},
 	}
 
 	riscv64Ldflags = []string{
@@ -79,6 +84,9 @@ var (
 		},
 		"x100": {
 			"-march=rv64imafdc_b_v_za64rs_zawrs_zba_zbb_zbc_zbs_zca_zcb_zcd_zcmop_zfa_zfbfmin_zfh_zfhmin_zicbom_zicbop_zicboz_ziccamoa_ziccif_zicclsm_zicntr_zicond_zicsr_zifencei_zihintntl_zihintpause_zihpm_zimop_zkt_zvbb_zvbc_zvfbfmin_zvfbfwma_zvfh_zvfhmin_zvkb_zvkg_zvkn_zvknc_zvkned_zvkng_zvknha_zvknhb_zvks_zvksc_zvksed_zvksg_zvksh_zvkt",
+		},
+		"a210": {
+			"-march=rv64imafdcv_zicntr_zicsr_zifencei_zihpm_zaamo_zalrsc_zca_zcd_zba_zbb_zbc_zbs_zve32f_zve32x_zve64d_zve64f_zve64x_sscofpmf_svpbmt",
 		},
 	}
 
@@ -165,7 +173,7 @@ func (toolchainRiscv64) LibclangRuntimeLibraryArch() string {
 
 func riscv64ToolchainFactory(arch android.Arch) Toolchain {
 	switch arch.ArchVariant {
-	case "", "x60", "x100":
+	case "", "x60", "x100", "a210":
 	default:
 		panic(fmt.Sprintf("Unknown Riscv64 architecture version: %q", arch.ArchVariant))
 	}
