@@ -48,13 +48,9 @@ var (
 		"x100": {
 			"-C target-feature=+v,+zba,+zbb,+zbs,+zicond,+zfh,+zvfh,+zicboz,+zicbop,+zbc,+zkt,+zfa,+zvbb",
 		},
-		// Alibaba/T-Head ZhiHe A210 (C908 + C920 clusters, confirmed
-		// ISA-identical on-device -- see build/soong/cc/config/
-		// riscv64_device.go). Mirrors the C/C++ variant; unlike x100,
-		// rustc recognizes every extension this board advertises, so
-		// the full list carries over rather than a conservative subset.
+		// Keep the common C908/C920v2 ISA in sync with the C/C++ variant.
 		"a210": {
-			"-C target-feature=+v,+zicntr,+zicsr,+zifencei,+zihpm,+zaamo,+zalrsc,+zca,+zcd,+zba,+zbb,+zbc,+zbs,+zve32f,+zve32x,+zve64d,+zve64f,+zve64x,+sscofpmf,+svpbmt",
+			"-C target-feature=+v,+zicbom,+zicbop,+zicboz,+zicntr,+zicsr,+zifencei,+zihintpause,+zihpm,+zfh,+zba,+zbb,+zbc,+zbs,+zvfh,+xtheadba,+xtheadbb,+xtheadbs,+xtheadcmo,+xtheadcondmov,+xtheadfmemidx,+xtheadmac,+xtheadmemidx,+xtheadmempair,+xtheadsync,+xtheadvdot",
 		},
 	}
 )

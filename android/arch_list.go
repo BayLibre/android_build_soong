@@ -87,9 +87,7 @@ var archVariants = map[ArchType][]string{
 		// -mcpu=spacemit-x100 yet, so the extensions are spelled out and
 		// scheduling is tuned for a generic out-of-order core.
 		"x100",
-		// Alibaba/T-Head ZhiHe A210 (heterogeneous C908 + C920 cluster
-		// pair).  Enables all ISA extensions advertised in /proc/cpuinfo
-		// on top of the AOSP baseline, minus Zvbb
+		// Alibaba/T-Head ZhiHe A210: extensions common to C908 and C920v2.
 		"a210",
 	},
 }
